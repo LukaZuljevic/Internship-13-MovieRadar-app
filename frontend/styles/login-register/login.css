@@ -1,0 +1,66 @@
+.login-container {
+    display: block;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    left: 25%;
+    width: 40%;
+    height: 500px;
+    border-radius: 20px;
+    position: relative;
+    background-color: rgb(255, 234, 207);
+}
+
+#register {
+    height: 650px;
+    margin-bottom: 100px;
+}
+
+.login-title, .email-title, .password-title {
+    background-color: transparent;
+    margin-top: 20px;
+    font-size: 1.5em;
+    padding: 30px;
+}
+
+.login-title {
+    padding-top: 50px;
+    font-size: 3em;
+}
+
+.password-title {
+    margin-top: 50px;
+}
+
+.input-box {
+    margin-top: 10px;
+    scale: 1.5;
+    background-color: transparent;
+    border-radius: 10px;
+    width: 50%;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.input-box:hover {
+    background-color: rgb(170, 156, 138);
+    cursor: pointer;
+}
+
+.register-login-button {
+    background-color:  rgb(52, 50, 50);
+    color: white;
+    scale: 1.2;
+    border-radius: 20px;
+    padding: 10px;
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.register-login-button:hover {
+    background-color: rgb(255, 234, 207);
+    color: black;
+    cursor: pointer;
+}
