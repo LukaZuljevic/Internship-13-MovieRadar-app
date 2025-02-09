@@ -23,6 +23,7 @@
     margin-top: 20px;
     font-size: 1.5em;
     padding: 30px;
+    color: black;
 }
 
 .login-title {
@@ -91,4 +92,5 @@
     left: 10%;
     text-align: center;
     width: 80%;
+    color: black;
 }
