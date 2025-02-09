@@ -1,3 +1,4 @@
+import { registerUser, loginUser } from "../api.js";
 import { validateLogin, validateRegister } from "./validation.js";
 
 export function setupLoginRegister () {
@@ -23,11 +24,20 @@ export function setupLoginRegister () {
         loginContainer.style.display = "block";
     });
 
-    document.getElementById("login-submit").addEventListener("click", function () {
-        validateLogin(loginEmailInput.value.trim(), loginPasswordInput.value.trim());
+    document.getElementById("login-submit").addEventListener("click", async function () {
+        const email = loginEmailInput.value.trim();
+        const password = loginPasswordInput.value.trim();
+        if (validateLogin(email, password)) {
+            await loginUser(email, password); 
+        }
     });
 
-    document.getElementById("register-submit").addEventListener("click", function () {
-        validateRegister(registerEmailInput.value.trim(), registerPasswordInput.value.trim(), confirmPasswordInput.value.trim());
+    document.getElementById("register-submit").addEventListener("click", async function () {
+        const email = registerEmailInput.value.trim();
+        const password = registerPasswordInput.value.trim();
+        const confirmPassword = confirmPasswordInput.value.trim();
+        if (validateRegister(email, password, confirmPassword)) {
+            await registerUser(email, password);  
+        }
     });
 }

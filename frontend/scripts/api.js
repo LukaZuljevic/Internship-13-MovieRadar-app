@@ -1,9 +1,7 @@
-require('dotenv').config();
+import { createClient, SupabaseClient } from "../../node_modules/@supabase/supabase-js";
 
-import { createClient, SupabaseClient } from "@supabase/supabase-js";
-
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
+const supabaseUrl = "https://tngerdgbjeqzckgbhkta.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRuZ2VyZGdiamVxemNrZ2Joa3RhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzkwMTUzMTIsImV4cCI6MjA1NDU5MTMxMn0.ya8wKxuIIkRQjPPEymgPCy_fJEyFEUD6CmeS_0R-ySc";
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
