@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internship-13-MovieRadar.Data", "Internship-13-MovieRadar.Data\Internship-13-MovieRadar.Data.csproj", "{68BA8D8F-CC61-43CD-864D-C97229CA509D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68BA8D8F-CC61-43CD-864D-C97229CA509D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68BA8D8F-CC61-43CD-864D-C97229CA509D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68BA8D8F-CC61-43CD-864D-C97229CA509D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68BA8D8F-CC61-43CD-864D-C97229CA509D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
