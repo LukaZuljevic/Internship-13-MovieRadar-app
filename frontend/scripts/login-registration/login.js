@@ -1,7 +1,7 @@
 import { validateLogin, validateRegister } from "./validation.js";
 
 export function setupLoginRegister () {
-    const loginContainer = document.querySelector("login");
+    const loginContainer = document.getElementById("login");
     const registerContainer = document.getElementById("register");
     const registerBtn = document.getElementById("register-btn");
     const loginBtn = document.getElementById("login-btn");

@@ -86,6 +86,9 @@
 .switch-login-register--text {
     font-size: 1em;
     background-color: transparent;
+    position: relative;
     margin-top: 90px;
+    left: 10%;
+    text-align: center;
     width: 80%;
 }
