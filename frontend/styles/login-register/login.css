@@ -1,22 +1,24 @@
 .login-container {
-    display: block;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     text-align: center;
     left: 25%;
     width: 40%;
-    height: 500px;
+    height: auto;
+    margin-bottom: 100px;
     border-radius: 20px;
     position: relative;
     background-color: rgb(255, 234, 207);
 }
 
 #register {
-    height: 650px;
+    height: auto;
     margin-bottom: 100px;
 }
 
-.login-title, .email-title, .password-title {
+.input-title, .login-title {
     background-color: transparent;
     margin-top: 20px;
     font-size: 1.5em;
@@ -47,20 +49,43 @@
     cursor: pointer;
 }
 
-.register-login-button {
+.register-login-button, .submit-btn {
     background-color:  rgb(52, 50, 50);
     color: white;
-    scale: 1.2;
+    scale: 1;
     border-radius: 20px;
     padding: 10px;
-    position: absolute;
-    top: 25px;
-    right: 30px;
     transition: background-color 0.3s ease;
+}
+
+.register-login-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.submit-btn {
+    position: relative;
+    width: 50%;
+    scale: 1.5;
+    top: 40px;
+}
+
+.submit-btn:hover {
+    background-color: rgb(41, 38, 37);
+    color: black;
+    cursor: pointer;
 }
 
 .register-login-button:hover {
     background-color: rgb(255, 234, 207);
     color: black;
     cursor: pointer;
+}
+
+.switch-login-register--text {
+    font-size: 1em;
+    background-color: transparent;
+    margin-top: 90px;
+    width: 80%;
 }
