@@ -3,6 +3,7 @@ using System;
 using Internship_13_MovieRadar.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Internship_13_MovieRadar.Data.Migrations
 {
     [DbContext(typeof(MovieRadarDbContext))]
-    partial class MovieRadarDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250210111918_AddConstraintInTitle")]
+    partial class AddConstraintInTitle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

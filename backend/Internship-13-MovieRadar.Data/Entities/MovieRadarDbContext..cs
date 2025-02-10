@@ -39,6 +39,7 @@ namespace Internship_13_MovieRadar.Data.Entities
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Title).IsRequired();
+                entity.HasIndex(e => e.Title).IsUnique();
                 entity.Property(e => e.Description).IsRequired();
                 entity.Property(e => e.Genre).IsRequired();
                 entity.Property(e => e.ReleaseYear).IsRequired();
