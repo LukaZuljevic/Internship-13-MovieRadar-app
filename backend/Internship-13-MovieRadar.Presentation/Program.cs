@@ -17,11 +17,15 @@ class Program
         builder.Services.AddScoped<DbConnectionFactory>(provider => new DbConnectionFactory(configuration));
 
         builder.Services.AddScoped<IUserRepository, UserRepository>();
-
         builder.Services.AddScoped<UserService>();
 
-        builder.Services.AddControllers();
+        builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+        builder.Services.AddScoped<MovieService>();
 
+        builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+        builder.Services.AddScoped<ReviewService>();
+
+        builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
 
         var app = builder.Build();

@@ -4,7 +4,7 @@ namespace Internship_13_MovieRadar.Data.Interfaces
 {
     public interface IMovieRepository
     {
-        Task<Movie> GetByIdAsync(int movieId);
+        Task<List<Movie>> GetAllAsync();
 
     }
 }

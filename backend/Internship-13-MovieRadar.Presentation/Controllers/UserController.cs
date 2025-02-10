@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Internship_13_MovieRadar.Presentation.Controllers
 {
-    [Route("api/movie-radar")]
+    [Route("api/users")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -17,16 +17,12 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetAllUsers()
-        {
-            try
-            {
-                var users = await _userService.GetAllAsync();
-                return Ok(users);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Internal server error: " + ex.Message);
-            }
+        {         
+            var users = await _userService.GetAllAsync();
+
+            if(users == null) return NotFound();
+
+            return Ok(users);      
         }
     }
 }
