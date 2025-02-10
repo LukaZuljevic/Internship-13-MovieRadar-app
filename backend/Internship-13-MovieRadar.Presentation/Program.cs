@@ -1,30 +1,35 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Internship_13_MovieRadar.Data;
+﻿using Internship_13_MovieRadar.Data;
+using Internship_13_MovieRadar.Data.Interfaces;
+using Internship_13_MovieRadar.Data.Repositories;
+using Internship_13_MovieRadar.Domain.Services;
 
 class Program
 {
     static void Main(string[] args)
     {
-        var serviceProvider = new ServiceCollection()
-            .AddSingleton<IConfiguration>(new ConfigurationBuilder()
-                .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .Build())
-            .AddSingleton<DbConnectionFactory>()
-            .BuildServiceProvider();
+        var builder = WebApplication.CreateBuilder(args);
 
-        var dbConnectionFactory = serviceProvider.GetService<DbConnectionFactory>();
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(AppContext.BaseDirectory)
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .Build();
 
-        try
-        {
-            using var connection = dbConnectionFactory.CreateConnection();
-            connection.Open();
-            Console.WriteLine("Database Connection Successful!");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($" Database Connection Failed: {ex.Message}");
-        }
+        builder.Services.AddScoped<DbConnectionFactory>(provider => new DbConnectionFactory(configuration));
+
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+        builder.Services.AddScoped<UserService>();
+
+        builder.Services.AddControllers();
+
+        builder.Services.AddEndpointsApiExplorer();
+
+        var app = builder.Build();
+
+        app.UseHttpsRedirection();
+        app.UseAuthorization();
+        app.MapControllers(); 
+
+        app.Run();
     }
 }
