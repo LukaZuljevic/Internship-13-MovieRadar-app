@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Internship-13-MovieRadar.Data\Internship-13-MovieRadar.Data.csproj" />
+  </ItemGroup>
+
 </Project>
