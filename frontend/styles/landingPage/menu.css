@@ -10,6 +10,7 @@
   width: 100%;
   box-shadow: 0px 0px 5px rgb(100, 100, 100);
   z-index: 1;
+  position: relative;
 }
 
 .landingPageMenu .logo {
@@ -72,30 +73,47 @@
 
 .landingPageMenu .genre-menu-parent,
 .landingPageMenu .ratings-menu-parent {
-  position: relative;
 }
 
 .landingPageMenu .genre-dropdown-menu,
 .landingPageMenu .ratings-dropdown-menu {
   list-style-type: none;
-  min-width: 120px;
+  justify-content: center;
+  width: 100%;
   display: none;
-  flex-direction: column;
   position: absolute;
   top: 70px;
   left: 0;
-  background-color: lightgray;
+  background-color: white;
   text-align: center;
-  box-shadow: 0px 0px 5px rgb(179, 179, 179);
-  border-radius: 0 0 10px 10px;
+  box-shadow: 0px 0px 5px rgb(205, 205, 205);
+  border-radius: 0 0 20px 20px;
   overflow: hidden;
 }
 
 .landingPageMenu .genre-dropdown-menu > li,
 .landingPageMenu .ratings-dropdown-menu > li {
-  padding: 10px;
+  position: relative;
+  min-width: 100px;
+  padding: 20px 10px;
   cursor: pointer;
-  border-bottom: 1px solid rgb(190, 190, 190);
+}
+
+.landingPageMenu .genre-dropdown-menu > li::after,
+.landingPageMenu .ratings-dropdown-menu > li::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 1px;
+  height: 50%;
+  transform: translateY(-50%);
+  background-color: rgb(220, 220, 220);
+}
+
+.landingPageMenu .genre-dropdown-menu > li:last-child::after,
+.landingPageMenu .ratings-dropdown-menu > li:last-child::after {
+  display: none;
 }
 
 .landingPageMenu .genre-dropdown-menu > li:last-of-type,
@@ -105,13 +123,13 @@
 
 .landingPageMenu .genre-dropdown-menu > li:hover,
 .landingPageMenu .ratings-dropdown-menu > li:hover {
-  background-color: rgb(190, 190, 190);
+  background-color: rgb(240, 240, 240);
 }
 
 .landingPageMenu .genre-dropdown-menu > li > a,
 .landingPageMenu .ratings-dropdown-menu > li > a {
-  color: black;
   text-decoration: none;
+  color: black;
 }
 
 .genre-menu-parent:hover .genre-dropdown-menu,
