@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Internship-13-MovieRadar.Presentation": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:51140;http://localhost:51141"
+    }
+  }
+}
