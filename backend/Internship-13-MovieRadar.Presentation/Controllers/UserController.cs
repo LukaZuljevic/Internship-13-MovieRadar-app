@@ -29,12 +29,8 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDto request)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
             var result = await _userService.RegisterAsync(request);
-            if (result == null)
-                return BadRequest("Email already exists");
+            if (result == null) return BadRequest("Email already exists");
 
             return Ok(result);
         }
@@ -42,12 +38,8 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
             var result = await _userService.LoginAsync(request);
-            if (result == null)
-                return Unauthorized();
+            if (result == null) return Unauthorized();
 
             Response.Cookies.Append("secretKey", result.SecretKey, new CookieOptions
             {

@@ -38,12 +38,10 @@ namespace Internship_13_MovieRadar.Data.Repositories
 
         public async Task<User> CreateAsync(User user)
         {
-            var insertSql = @"INSERT INTO users (id, firstname, lastname, email, password, isadmin) 
-                      VALUES (@Id, @FirstName, @LastName, @Email, @Password, @IsAdmin)";
-            await _connection.ExecuteAsync(insertSql, user);
-
-            var selectSql = "SELECT * FROM users WHERE email = @Email";
-            return await _connection.QueryFirstAsync<User>(selectSql, new { user.Email });
+            var sql = @"INSERT INTO users (id, firstname, lastname, email, password, isadmin) 
+                      VALUES (@Id, @FirstName, @LastName, @Email, @Password, @IsAdmin)
+                    RETURNING *";
+            return await _connection.QueryFirstAsync<User>(sql, user);
         }
     }
 }
