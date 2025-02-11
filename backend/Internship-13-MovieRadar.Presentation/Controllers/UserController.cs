@@ -1,4 +1,5 @@
 ﻿using Internship_13_MovieRadar.Domain.Services;
+using Internship_13_MovieRadar_Domain.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -23,6 +24,45 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
             if(users == null) return NotFound();
 
             return Ok(users);      
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterRequestDto request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _userService.RegisterAsync(request);
+            if (result == null)
+                return BadRequest("Email already exists");
+
+            return Ok(result);
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _userService.LoginAsync(request);
+            if (result == null)
+                return Unauthorized();
+
+            Response.Cookies.Append("secretKey", result.SecretKey, new CookieOptions
+            {
+                HttpOnly = true,
+                Expires = DateTime.UtcNow.AddMinutes(30)
+            });
+
+            return Ok(result);
+        }
+
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            Response.Cookies.Delete("secretKey");
+            return Ok();
         }
     }
 }
