@@ -39,15 +39,10 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
         public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
             var result = await _userService.LoginAsync(request);
-            if (result == null) return Unauthorized();
 
-            Response.Cookies.Append("secretKey", result.SecretKey, new CookieOptions
-            {
-                HttpOnly = true,
-                Expires = DateTime.UtcNow.AddMinutes(30)
-            });
+            if (result == null) return Unauthorized("Invalid credentials");
 
-            return Ok(result);
+            return Ok(new { token = result.JwtToken });
         }
 
         [HttpPost("logout")]

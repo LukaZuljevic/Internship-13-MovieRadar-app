@@ -10,5 +10,6 @@ namespace Internship_13_MovieRadar_Domain.DTOs
 
         [Required]
         public string Password { get; set; } = string.Empty;
+
     }
 }
