@@ -71,10 +71,6 @@
   transform: scale(1.15);
 }
 
-.landingPageMenu .genre-menu-parent,
-.landingPageMenu .ratings-menu-parent {
-}
-
 .landingPageMenu .genre-dropdown-menu,
 .landingPageMenu .ratings-dropdown-menu {
   list-style-type: none;
