@@ -6,16 +6,58 @@
     <link rel="icon" href="images/landingPage/flavicon.png" type="image/png" />
     <link rel="stylesheet" href="styles/index.css" />
     <script src="scripts/landingPage/dialog.js" defer></script>
+    <script src="scripts/landingPage/dropdown-menu.js" defer></script>
     <title>MovieRadar App</title>
   </head>
   <body>
     <menu class="landingPageMenu">
-      <div class="logo">
-        <img src="images/landingPage/flavicon.png" alt="logo slika" />
-        <h2>MovieRadar</h2>
-      </div>
-      <div class="navbar">
+      <nav class="main-nav">
+        <div class="logo">
+          <img src="images/landingPage/flavicon.png" alt="logo slika" />
+          <h2>MovieRadar</h2>
+        </div>
+        <div class="nav-bar">
+          <ul>
+            <li class="active">Svi filmovi</li>
+            <li>Filtriraj</li>
+            <li>Moje recenzije</li>
+          </ul>
+          <button>Odjava</button>
+        </div>
+      </nav>
+      <nav class="movie-filter-nav">
+        <div class="filters">
+          <div class="filter">
+            <h3>Žanr</h3>
+            <ul>
+              <li><input name="genre" type="radio" />Akcija</li>
+              <li><input name="genre" type="radio" />Avantura</li>
+              <li><input name="genre" type="radio" />Komedija</li>
+              <li><input name="genre" type="radio" />Drama</li>
+              <li><input name="genre" type="radio" />Horor</li>
+            </ul>
+          </div>
+
+          <div class="filter">
+            <h3>Ocjena</h3>
+            <ul>
+              <li><input name="rating" type="radio" />1</li>
+              <li><input name="rating" type="radio" />2</li>
+              <li><input name="rating" type="radio" />3</li>
+              <li><input name="rating" type="radio" />4</li>
+              <li><input name="rating" type="radio" />5</li>
+            </ul>
+          </div>
+
+          <div class="filter">
+            <label for="">Godina izdanja: <input type="number" /></label>
+          </div>
+        </div>
+        <button>Potvrdi</button>
+      </nav>
+      <!--<div class="navbar">
         <ul>
+          <li><a href="">Sve</a></li>
           <li class="genre-menu-parent">
             <a href="">Zanr</a>
             <ul class="genre-dropdown-menu">
@@ -36,16 +78,20 @@
               <li><a href="">5</a></li>
             </ul>
           </li>
-          <li>
-            <a href="">Godina izdanja</a>
-          </li>
         </ul>
-        <img
-          src="images/landingPage/search-icon.png"
-          alt="slika ikone za pretrazivanje"
-        />
-      </div>
+        <label for="release-year-input"
+          >Godina izdanja: <input type="number" id="release-year-input"
+        /></label>
+        <div class="search-bar">
+          <img
+            src="images/landingPage/search-icon.png"
+            alt="slika ikone za pretrazivanje"
+          />
+          <input type="search" />
+        </div>
+      </div>-->
     </menu>
+
     <section class="movies-section">
       <div class="movies-container">
         <div class="movie-card">

@@ -109,6 +109,7 @@
   border-radius: 20px;
   padding: 20px;
   background-color: black;
+  color: white;
 }
 
 .movie-info-container {
@@ -152,7 +153,7 @@
   width: 100%;
   height: 2px;
   border-radius: 2px;
-  background-color: white;
+  background-color: #275e7c;
 }
 
 .movie-details {
