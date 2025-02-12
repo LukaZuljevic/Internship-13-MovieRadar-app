@@ -1,20 +1,18 @@
 ﻿using Internship_13_MovieRadar.Data.Interfaces;
 using Internship_13_MovieRadar.Data.Entities.Models;
 using Internship_13_MovieRadar_Domain.DTOs;
-using System.Text;
-using System.Security.Cryptography;
+using BCrypt.Net;
 
 namespace Internship_13_MovieRadar.Domain.Services
 {
     public class UserService
     {
-
         private readonly IUserRepository _userRepository;
-        public UserService(IUserRepository userRepository) 
+
+        public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
-
 
         public async Task<List<User>> GetAllAsync()
         {
@@ -27,13 +25,13 @@ namespace Internship_13_MovieRadar.Domain.Services
                 LastName = user.LastName,
                 Email = user.Email,
             }).ToList();
-
         }
 
         public async Task<LoginResponseDto?> LoginAsync(LoginRequestDto request)
         {
-            var user = await _userRepository.ValidateCredentialsAsync(request.Email, HashPassword(request.Password));
-            if (user == null) return null;
+            var user = await _userRepository.GetByEmailAsync(request.Email);
+            if (user == null || !VerifyPassword(request.Password, user.Password))
+                return null;
 
             var secretKey = GenerateSecretKey();
 
@@ -47,6 +45,7 @@ namespace Internship_13_MovieRadar.Domain.Services
         public async Task<RegisterResponseDto?> RegisterAsync(RegisterRequestDto request)
         {
             if (await _userRepository.GetByEmailAsync(request.Email) != null) return null;
+
             var passwordHash = HashPassword(request.Password);
 
             var user = new User
@@ -73,10 +72,12 @@ namespace Internship_13_MovieRadar.Domain.Services
 
         private string HashPassword(string password)
         {
-            using var sha256 = SHA256.Create();
-            var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-            return Convert.ToBase64String(hashedBytes);
+            return BCrypt.Net.BCrypt.HashPassword(password);
         }
 
+        private bool VerifyPassword(string enteredPassword, string storedHash)
+        {
+            return BCrypt.Net.BCrypt.Verify(enteredPassword, storedHash);
+        }
     }
 }

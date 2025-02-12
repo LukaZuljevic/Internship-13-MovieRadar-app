@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Internship-13-MovieRadar.Data\Internship-13-MovieRadar.Data.csproj" />
   </ItemGroup>
 
