@@ -42,7 +42,17 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
 
             if (result == null) return Unauthorized("Invalid credentials");
 
-            return Ok(new { token = result.JwtToken });
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Strict,
+                Expires = DateTime.UtcNow.AddMinutes(30)
+            };
+
+            Response.Cookies.Append("secretKey", result.JwtToken, cookieOptions);
+
+            return Ok();
         }
 
         [HttpPost("logout")]
