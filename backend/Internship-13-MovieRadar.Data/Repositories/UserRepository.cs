@@ -40,7 +40,7 @@ namespace Internship_13_MovieRadar.Data.Repositories
         {
             var sql = @"INSERT INTO users (id, firstname, lastname, email, password, isadmin) 
                       VALUES (@Id, @FirstName, @LastName, @Email, @Password, @IsAdmin)
-                    RETURNING *";
+                    RETURNING id, firstname, lastname, email, isadmin";
             return await _connection.QueryFirstAsync<User>(sql, user);
         }
     }

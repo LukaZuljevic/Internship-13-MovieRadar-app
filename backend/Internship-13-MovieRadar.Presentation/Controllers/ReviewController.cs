@@ -41,7 +41,7 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
             var deleted = await _reviewService.DeleteReviewAsync(id);
             if (!deleted) return NotFound($"Movie with ID {id} not found");
 
-            return Ok();
+            return NoContent();
 
         }
     }
