@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="images/landingPage/flavicon.png" type="image/png" />
     <link rel="stylesheet" href="styles/index.css" />
-    <script src="scripts/landingPage/dialog.js" defer></script>
-    <script src="scripts/landingPage/dropdown-menu.js" defer></script>
     <script src="scripts/login-registration/logout.js" type="module"></script>
+    <script src="scripts/landingPage/dropdown-menu.js" defer></script>
+    <script src="scripts/landingPage/dialog.js" defer></script>
+    <script
+      src="scripts/landingPage/movie-cards.js"
+      type="module"
+      defer
+    ></script>
     <title>MovieRadar App</title>
   </head>
   <body>
@@ -56,41 +61,6 @@
         </div>
         <button>Potvrdi</button>
       </nav>
-      <!--<div class="navbar">
-        <ul>
-          <li><a href="">Sve</a></li>
-          <li class="genre-menu-parent">
-            <a href="">Zanr</a>
-            <ul class="genre-dropdown-menu">
-              <li><a href="">Akcija</a></li>
-              <li><a href="">Avantura</a></li>
-              <li><a href="">Komedija</a></li>
-              <li><a href="">Drama</a></li>
-              <li><a href="">Horor</a></li>
-            </ul>
-          </li>
-          <li class="ratings-menu-parent">
-            <a href="">Ocjena</a>
-            <ul class="ratings-dropdown-menu">
-              <li><a href="">1</a></li>
-              <li><a href="">2</a></li>
-              <li><a href="">3</a></li>
-              <li><a href="">4</a></li>
-              <li><a href="">5</a></li>
-            </ul>
-          </li>
-        </ul>
-        <label for="release-year-input"
-          >Godina izdanja: <input type="number" id="release-year-input"
-        /></label>
-        <div class="search-bar">
-          <img
-            src="images/landingPage/search-icon.png"
-            alt="slika ikone za pretrazivanje"
-          />
-          <input type="search" />
-        </div>
-      </div>-->
     </menu>
 
     <section class="movies-section">
@@ -218,26 +188,38 @@
       </div>
       <button class="previous-page">&lt;&lt;</button>
       <button class="next-page">>></button>
+    </menu>
+
+    <section class="movies-section">
+      <div class="movies-container"></div>
+
+      <button class="previous-page">&lt;&lt;</button>
+      <button class="next-page">>></button>
+
       <dialog class="movie-info-dialog">
         <div class="x-icon">
           <div></div>
         </div>
         <div class="movie-info-container">
-          <h2>Titanic&nbsp;<span>4/5</span></h2>
+          <h2></h2>
           <ul class="movie-info-nav">
             <li class="active">Informacije</li>
             <li>Recenzije</li>
+            <li>Ostavi recenziju</li>
           </ul>
           <div class="movie-details">
-            <p><span>Godina izdanja:&nbsp;</span><span>1997</span></p>
-            <p><span>Zanr:&nbsp;</span><span>Drama</span></p>
+            <p>
+              <span>Godina izdanja:&nbsp;</span
+              ><span class="release-year"></span>
+            </p>
+            <p><span>Žanr:&nbsp;</span><span class="movie-genre"></span></p>
             <p>
               <span>Opis:&nbsp;</span
               ><span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-                minus quod veniam eligendi nam dolore quos qui nemo cumque velit
-                neque vitae maiores autem officiis voluptatum labore ipsa,
-                assumenda libero.
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore
+                sed eaque deleniti voluptatibus assumenda fugiat accusantium
+                possimus id qui in ut consequatur tempore recusandae, aut
+                molestiae! Aliquam sed eveniet ratione.
               </span>
             </p>
           </div>
@@ -324,11 +306,25 @@
               </p>
             </div>
           </div>
+
+          <div class="leave-review">
+            <ul class="choose-rating">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+            </ul>
+            <textarea
+              name=""
+              id=""
+              placeholder="Napisi recenziju..."
+            ></textarea>
+            <button>Potvrdi</button>
+          </div>
         </div>
-        <img
-          src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-          alt=""
-        />
+
+        <img class="movie-image" alt="" />
       </dialog>
     </section>
   </body>
