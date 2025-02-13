@@ -1,12 +1,14 @@
 using Internship_13_MovieRadar.Data.Entities.Models;
 using Internship_13_MovieRadar.Domain.Services;
 using Internship_13_MovieRadar_Domain.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace Internship_13_MovieRadar.Presentation.Controllers
 {
     [Route("api/movies")]
+    [Authorize]
     [ApiController]
     public class MovieController : ControllerBase
     {
@@ -37,6 +39,7 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Movie>> CreateMovie([FromBody] MovieCreateDto movie)
         {
             var createdMovie = await _movieService.CreateMovieAsync(movie);
@@ -45,6 +48,7 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
         }
 
         [HttpPatch("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateMovie(Guid id, [FromBody] MovieUpdateDto movie)
         {
             var updated = await _movieService.UpdateMovieAsync(id, movie);
@@ -54,6 +58,7 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteMovie(Guid id)
         {
             var deleted = await _movieService.DeleteMovieAsync(id);
