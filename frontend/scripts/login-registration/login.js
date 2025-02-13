@@ -1,69 +1,70 @@
 import { registerUser, loginUser } from "./api-users.js";
 import { validateLogin, validateRegister } from "./validation.js";
 
-export function setupLoginRegister () {
-    const loginContainer = document.getElementById("login");
-    const registerContainer = document.getElementById("register");
-    const registerBtn = document.getElementById("register-btn");
-    const loginBtn = document.getElementById("login-btn");
+export function setupLoginRegister() {
+  const loginContainer = document.getElementById("login");
+  const registerContainer = document.getElementById("register");
+  const registerBtn = document.getElementById("register-btn");
+  const loginBtn = document.getElementById("login-btn");
 
-    const loginEmailInput = document.getElementById("login-email");
-    const loginPasswordInput = document.getElementById("login-password");
+  const loginEmailInput = document.getElementById("login-email");
+  const loginPasswordInput = document.getElementById("login-password");
 
-    const registerEmailInput = document.getElementById("register-email");
-    const registerPasswordInput = document.getElementById("register-password");
-    const confirmPasswordInput = document.getElementById("register-confirm-password");
-    const firstNameInput = document.getElementById("firstName-register");
-    const lastNameInput = document.getElementById("lastName-register");
+  const registerEmailInput = document.getElementById("register-email");
+  const registerPasswordInput = document.getElementById("register-password");
+  const confirmPasswordInput = document.getElementById(
+    "register-confirm-password"
+  );
+  const firstNameInput = document.getElementById("firstName-register");
+  const lastNameInput = document.getElementById("lastName-register");
 
-    const loginSubmitBtn = document.getElementById("login-submit");
-    const registerSubmitBtn = document.getElementById("register-submit");
+  const loginSubmitBtn = document.getElementById("login-submit");
+  const registerSubmitBtn = document.getElementById("register-submit");
 
-    registerBtn.addEventListener("click", function () {
-        loginContainer.style.display = "none";
-        registerContainer.style.display = "block";
-    });
+  registerBtn.addEventListener("click", function () {
+    loginContainer.style.display = "none";
+    registerContainer.style.display = "block";
+  });
 
-    loginBtn.addEventListener("click", function () {
-        registerContainer.style.display = "none";
-        loginContainer.style.display = "block";
-    });
+  loginBtn.addEventListener("click", function () {
+    registerContainer.style.display = "none";
+    loginContainer.style.display = "block";
+  });
 
-    loginSubmitBtn.addEventListener("click", async function () {
-        const email = loginEmailInput.value.trim();
-        const password = loginPasswordInput.value.trim();
+  loginSubmitBtn.addEventListener("click", async function () {
+    const email = loginEmailInput.value.trim();
+    const password = loginPasswordInput.value.trim();
 
-        if (!validateLogin(email, password)) {
-            return;
-        }
+    if (!validateLogin(email, password)) return;
 
-        try {
-            const result = await loginUser(email, password);
-            alert("Login successful!");
-            window.location.href = "landingPage.html"
-        } catch (error) {
-            alert("Login failed: " + error.message);
-        }
-    });
+    try {
+      alert("Login successful!");
+      window.location.href = "landingPage.html";
+    } catch (error) {
+      alert("Login failed: " + error.message);
+    }
+  });
 
-    registerSubmitBtn.addEventListener("click", async function () {
-        const email = registerEmailInput.value.trim();
-        const password = registerPasswordInput.value.trim();
-        const confirmPassword = confirmPasswordInput.value.trim();
-        const firstName = firstNameInput.value.trim();
-        const lastName = lastNameInput.value.trim();
+  registerSubmitBtn.addEventListener("click", async function () {
+    const email = registerEmailInput.value.trim();
+    const password = registerPasswordInput.value.trim();
+    const confirmPassword = confirmPasswordInput.value.trim();
+    const firstName = firstNameInput.value.trim();
+    const lastName = lastNameInput.value.trim();
 
-        if (!validateRegister(firstName, lastName, email, password, confirmPassword)) {
-            return;
-        }
+    if (
+      !validateRegister(firstName, lastName, email, password, confirmPassword)
+    ) {
+      return;
+    }
 
-        try {
-            const result = await registerUser(firstName, lastName, email, password);
-            registerContainer.style.display = "none";
-            alert("Registration successful! You can now log in!");
-            window.location.href = "index.html"
-        } catch (error) {
-            alert("Registration failed: " + error.message);
-        }
-    });
+    try {
+      const result = await registerUser(firstName, lastName, email, password);
+      registerContainer.style.display = "none";
+      alert("Registration successful! You can now log in!");
+      window.location.href = "index.html";
+    } catch (error) {
+      alert("Registration failed: " + error.message);
+    }
+  });
 }

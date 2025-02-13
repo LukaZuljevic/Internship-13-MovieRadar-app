@@ -1,105 +1,108 @@
 #login-register-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    align-self: center;
-    width: 40%;
-    height: auto;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    border-radius: 20px;
-    position: relative;
-    background-color: rgb(255, 234, 207);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-self: center;
+  width: 40%;
+  height: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  position: relative;
+  background-color: rgb(255, 234, 207);
 }
 
 #register {
-    height: auto;
-    margin-bottom: 100px;
+  height: auto;
+  margin-bottom: 100px;
+  display: none;
 }
 
-.input-title, .login-title {
-    background-color: transparent;
-    margin-top: 20px;
-    font-size: 1.5em;
-    padding: 30px;
-    color: black;
+.input-title,
+.login-title {
+  background-color: transparent;
+  margin-top: 20px;
+  font-size: 1.5em;
+  padding: 30px;
+  color: black;
 }
 
 .login-title {
-    padding-top: 50px;
-    font-size: 3em;
+  padding-top: 50px;
+  font-size: 3em;
 }
 
 .password-title {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .input-box {
-    margin-top: 10px;
-    scale: 1.5;
-    background-color: transparent;
-    border-radius: 10px;
-    width: 50%;
-    text-align: center;
-    transition: background-color 0.3s ease;
+  margin-top: 10px;
+  scale: 1.5;
+  background-color: transparent;
+  border-radius: 10px;
+  width: 50%;
+  text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 .input-box:hover {
-    background-color: rgba(181, 169, 153, 0.607);
-    cursor: pointer;
+  background-color: rgba(181, 169, 153, 0.607);
+  cursor: pointer;
 }
 
-.register-login-button, .submit-btn {
-    background-color:  rgb(52, 50, 50);
-    color: white;
-    scale: 1;
-    border-radius: 20px;
-    padding: 10px;
-    transition: background-color 0.3s ease;
+.register-login-button,
+.submit-btn {
+  background-color: rgb(52, 50, 50);
+  color: white;
+  scale: 1;
+  border-radius: 20px;
+  padding: 10px;
+  transition: background-color 0.3s ease;
 }
 
 .register-login-button {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 0.9em;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 0.9em;
 }
 
 .submit-btn {
-    position: relative;
-    width: 50%;
-    scale: 1.5;
-    top: 40px;
+  position: relative;
+  width: 50%;
+  scale: 1.5;
+  top: 40px;
 }
 
 .submit-btn:hover {
-    background-color: rgb(0, 0, 0);
-    cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  cursor: pointer;
 }
 
-.register-login-button:hover{
-    background-color: rgb(255, 234, 207);
-    color: black;
-    cursor: pointer;
+.register-login-button:hover {
+  background-color: rgb(255, 234, 207);
+  color: black;
+  cursor: pointer;
 }
 
 .switch-login-register--text {
-    font-size: 1em;
-    background-color: transparent;
-    position: relative;
-    margin-top: 90px;
-    padding-bottom: 20px;
-    left: 10%;
-    text-align: center;
-    width: 80%;
-    color: black;
+  font-size: 1em;
+  background-color: transparent;
+  position: relative;
+  margin-top: 90px;
+  padding-bottom: 20px;
+  text-align: center;
+  width: 80%;
+  left: 10%;
+  color: black;
 }
