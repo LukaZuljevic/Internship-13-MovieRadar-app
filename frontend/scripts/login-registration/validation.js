@@ -1,13 +1,7 @@
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-
 export function isValidEmail(email) {
     return emailRegex.test(email);
-}
-
-export function isValidPassword(password) {
-    return passwordRegex.test(password);
 }
 
 export function validateLogin(email, password) {
@@ -21,12 +15,6 @@ export function validateLogin(email, password) {
         return false;
     }
 
-    // if (!isValidPassword(password)) {
-    //     alert("Password must contain at least 8 characters, including 1 uppercase letter, 1 lowercase letter, and 1 number.");
-    //     return false;
-    // }
-
-    alert("Login successful!");
     return true;
 }
 
@@ -41,17 +29,11 @@ export function validateRegister(email, password, confirmPassword) {
         return false;
     }
 
-    // if (!isValidPassword(password)) {
-    //     alert("Password must contain at least 8 characters, including 1 uppercase letter, 1 lowercase letter, and 1 number.");
-    //     return false;
-    // }
-
     if (password !== confirmPassword) {
         alert("Passwords do not match!");
         return false;
     }
 
-    alert("Registration successful!");
     return true;
 }
 

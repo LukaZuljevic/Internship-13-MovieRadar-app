@@ -13,6 +13,8 @@ export function setupLoginRegister () {
     const registerEmailInput = document.getElementById("register-email");
     const registerPasswordInput = document.getElementById("register-password");
     const confirmPasswordInput = document.getElementById("register-confirm-password");
+    const firstNameInput = document.getElementById("firstName-register");
+    const lastNameInput = document.getElementById("lastName-register");
 
     const loginSubmitBtn = document.getElementById("login-submit");
     const registerSubmitBtn = document.getElementById("register-submit");
@@ -39,8 +41,8 @@ export function setupLoginRegister () {
 
         try {
             const result = await loginUser(email, password);
-            alert("Login successful!");
             console.log("Login success:", result);
+            alert("Login successful!");
             window.location.href = "landingPage.html"
         } catch (error) {
             alert("Login failed: " + error.message);
@@ -52,17 +54,18 @@ export function setupLoginRegister () {
         const email = registerEmailInput.value.trim();
         const password = registerPasswordInput.value.trim();
         const confirmPassword = confirmPasswordInput.value.trim();
+        const firstName = firstNameInput.value.trim();
+        const lastName = lastNameInput.value.trim();
 
         if (!validateRegister(email, password, confirmPassword)) {
-            alert("Invalid registration details!");
             return;
         }
 
         try {
-            const result = await registerUser(email, password);
-            alert("Registration successful!");
+            const result = await registerUser(firstName, lastName, email, password);
             console.log("Registration success:", result);
             registerContainer.style.display = "none";
+            alert("Registration successful!");
             window.location.href = "landingPage.html"
         } catch (error) {
             alert("Registration failed: " + error.message);
