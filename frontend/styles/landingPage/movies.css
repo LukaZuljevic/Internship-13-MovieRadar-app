@@ -1,0 +1,260 @@
+.movies-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  width: 100%;
+  padding: 50px 80px;
+}
+
+.movies-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.movies-container .movie-card {
+  flex: 1 1 calc((100% - 90px) / 4);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 280px;
+  min-width: 280px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: black;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: ease 0.2s;
+  box-shadow: 0 0 5px gray;
+}
+
+.movies-container .movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movies-container .movie-card img {
+  width: 100%;
+  height: 350px;
+}
+
+.movie-card .movie-heading {
+  border-top: 1px solid gray;
+  padding: 10px;
+  text-align: center;
+}
+
+.movie-card .movie-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgb(224, 190, 0);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 14px;
+  border: 2px solid white;
+}
+
+.previous-page,
+.next-page {
+  position: fixed;
+  top: 50vh;
+  width: 50px;
+  height: 50px;
+  padding: 10px 5px;
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  color: black;
+  font-weight: bold;
+  letter-spacing: 0;
+  font-size: 18px;
+  cursor: pointer;
+  transition: ease 0.2s;
+}
+
+.previous-page:hover,
+.next-page:hover {
+  transform: scale(1.2);
+  box-shadow: 0px 0px 10px 7px black;
+}
+
+.previous-page {
+  left: 20px;
+}
+
+.next-page {
+  right: 20px;
+}
+
+.movie-info-dialog {
+  margin: 0 auto;
+  position: fixed;
+  display: none;
+  justify-content: space-between;
+  gap: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 80%;
+  height: 80%;
+  z-index: 2;
+  border: 1px solid rgb(205, 205, 205);
+  border-radius: 20px;
+  padding: 20px;
+  background-color: black;
+  color: white;
+}
+
+.movie-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.movie-info-container h2 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.movie-info-container > h2 > span {
+  font-size: 20px;
+  padding: 5px 8px;
+  background-color: rgb(224, 190, 0);
+  border-radius: 15%;
+}
+
+.movie-info-nav {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+.movie-info-nav > li {
+  position: relative;
+  padding: 2px 0;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.movie-info-nav .active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #275e7c;
+}
+
+.movie-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px 0 0 5px;
+  margin-top: 10px;
+  overflow-y: auto;
+}
+
+.movie-details p {
+  display: flex;
+  font-size: 14px;
+}
+
+.movie-details > p > span:first-of-type {
+  font-weight: bold;
+}
+
+.movie-reviews {
+  display: none;
+  height: 100%;
+  flex-direction: column;
+  padding: 5px 5px 0 5px;
+  overflow-y: auto;
+}
+
+.movie-reviews .review {
+  gap: 5px;
+  padding: 10px 0;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgb(40, 40, 40);
+}
+
+.movie-reviews > .review:last-of-type {
+  border: none;
+}
+
+.review > .review-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-heading > p:first-of-type {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-heading > p:first-of-type > span:last-of-type {
+  background-color: rgb(224, 190, 0);
+  padding: 3px 5px;
+  font-size: 13px;
+  border-radius: 15%;
+}
+
+.review > p {
+  padding: 0 5px;
+}
+
+.movie-info-dialog .x-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: white;
+  padding: 5px;
+  cursor: pointer;
+  transition: ease 0.1s;
+}
+
+.movie-info-dialog .x-icon:hover {
+  transform: scale(1.1);
+}
+
+.movie-info-dialog .x-icon > div {
+  position: relative;
+  height: 3px;
+  width: 100%;
+  background-color: black;
+  transform: rotate(45deg);
+}
+
+.movie-info-dialog .x-icon > div::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: black;
+  transform: rotate(90deg);
+}
