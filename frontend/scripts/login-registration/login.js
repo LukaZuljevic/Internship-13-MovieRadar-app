@@ -41,6 +41,10 @@ export function setupLoginRegister() {
       const result = await loginUser(email, password);
 
       if (result) {
+        const user = getUserFromToken();
+        if (user) {
+          console.log(`prijavljen: ${user.firstName} ${user.lastName}`);
+        }
         alert("Login successful!");
         window.location.href = "landingPage.html";
       }
@@ -76,7 +80,37 @@ export function setupLoginRegister() {
   });
 }
 
-export function getCurrentUser() {
-  const user = localStorage.getItem("user");
-  return user ? JSON.parse(user) : null;
+export function getUserFromToken() {
+  try {
+    const tokenCookie = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("secretKey="));
+
+    if (!tokenCookie) {
+      console.warn("JWT token not found in cookies.");
+      return null;
+    }
+
+    const token = tokenCookie.split("=")[1];
+
+    if (!token) {
+      console.warn("Token value is empty.");
+      return null;
+    }
+
+    const tokenParts = token.split(".");
+    if (tokenParts.length !== 3) {
+      console.warn("Invalid JWT format.");
+      return null;
+    }
+
+    const payload = atob(tokenParts[1]);
+    const payloadJson = JSON.parse(payload);
+
+    console.log("Decoded JWT payload:", payloadJson);
+    return payloadJson;
+  } catch (error) {
+    console.error("Error decoding JWT:", error);
+    return null;
+  }
 }

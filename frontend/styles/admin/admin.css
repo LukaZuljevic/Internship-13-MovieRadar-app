@@ -1,0 +1,44 @@
+/* Admin Dropdown Container */
+#admin-dropdown-container {
+  display: none; /* Initially hidden */
+  position: relative; /* To position the dropdown below the label */
+}
+
+/* Admin Label styling */
+#admin-label {
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+  padding: 5px;
+  background-color: #f0f0f0; /* Light background for visibility */
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  margin-left: 10px;
+}
+
+#admin-label:hover {
+  background-color: #e0e0e0; /* Slight hover effect */
+}
+
+/* Admin Dropdown styling */
+#admin-dropdown {
+  display: none; /* Initially hidden */
+  position: absolute;
+  top: 30px; /* Adjust depending on label size */
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  min-width: 160px;
+  z-index: 10;
+}
+
+#admin-dropdown option {
+  padding: 8px;
+  cursor: pointer;
+}
+
+#admin-dropdown option:hover {
+  background-color: #f1f1f1;
+}

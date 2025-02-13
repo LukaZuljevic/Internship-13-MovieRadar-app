@@ -3,8 +3,8 @@
 @import url(landingPage/menu.css);
 @import url(landingPage/movies.css);
 
-/*login*/
 @import url(login-register/login.css);
+@import url(admin/admin.css);
 
 * {
   margin: 0;
