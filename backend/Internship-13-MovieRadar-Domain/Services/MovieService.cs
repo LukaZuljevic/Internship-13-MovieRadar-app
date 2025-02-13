@@ -29,6 +29,16 @@ namespace Internship_13_MovieRadar.Domain.Services
             return movie;
         }
 
+        public async Task<List<Movie>> FilterMoviesAsync(
+            string? genre = null,
+            int? releaseYear = null,
+            double? minRating = null,
+            string? sortBy = null,
+            bool ascending = true)
+        {
+            return await _movieRepository.FilterMoviesAsync(genre, releaseYear, minRating, sortBy, ascending);
+        }
+
         public async Task<Movie> CreateMovieAsync(MovieCreateDto movieDto)
         {
             var movie = new Movie
