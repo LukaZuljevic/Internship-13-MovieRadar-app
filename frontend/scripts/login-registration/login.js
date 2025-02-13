@@ -39,12 +39,7 @@ export function setupLoginRegister() {
 
     try {
       const result = await loginUser(email, password);
-
       if (result) {
-        const user = getUserFromToken();
-        if (user) {
-          console.log(`prijavljen: ${user.firstName} ${user.lastName}`);
-        }
         alert("Login successful!");
         window.location.href = "landingPage.html";
       }
@@ -82,33 +77,20 @@ export function setupLoginRegister() {
 
 export function getUserFromToken() {
   try {
-    const tokenCookie = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("secretKey="));
-
-    if (!tokenCookie) {
-      console.warn("JWT token not found in cookies.");
-      return null;
-    }
-
-    const token = tokenCookie.split("=")[1];
+    const token = localStorage.getItem("token");
 
     if (!token) {
-      console.warn("Token value is empty.");
+      console.warn("JWT token not found in localStorage.");
       return null;
     }
 
     const tokenParts = token.split(".");
     if (tokenParts.length !== 3) {
-      console.warn("Invalid JWT format.");
       return null;
     }
 
     const payload = atob(tokenParts[1]);
-    const payloadJson = JSON.parse(payload);
-
-    console.log("Decoded JWT payload:", payloadJson);
-    return payloadJson;
+    return JSON.parse(payload);
   } catch (error) {
     console.error("Error decoding JWT:", error);
     return null;

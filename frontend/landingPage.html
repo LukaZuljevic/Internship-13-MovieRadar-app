@@ -6,7 +6,7 @@
     <link rel="icon" href="images/landingPage/flavicon.png" type="image/png" />
     <link rel="stylesheet" href="styles/index.css" />
     <script src="scripts/login-registration/logout.js" type="module"></script>
-    <script src="scripts/admin/admin.js" type="module"></script>
+    <script src="scripts/admin/admin.js" type="module" defer></script>
     <script src="scripts/landingPage/dropdown-menu.js" defer></script>
     <script src="scripts/landingPage/dialog.js" defer></script>
     <script
@@ -32,13 +32,13 @@
           <button id="logout-btn">Odjava</button>
 
           <div id="admin-dropdown-container">
-            <label for="admin-dropdown" id="admin-label">Admin</label>
-            <select id="admin-dropdown">
-              <option value="option1">Admin Option 1</option>
-              <option value="option2">Admin Option 2</option>
-              <option value="option3">Admin Option 3</option>
+            <label id="admin-label">Admin</label>
+            <select id="admin-dropdown" size="1">
+              <option value="option1">Dodaj film</option>
+              <option value="option2">Obriši film</option>
+              <option value="option3">Upravljaj korisnicima</option>
             </select>
-          </div>
+          </div>          
 
         </div>
       </nav>
