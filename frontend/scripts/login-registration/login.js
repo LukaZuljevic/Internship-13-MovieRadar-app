@@ -14,6 +14,11 @@ export function setupLoginRegister () {
     const registerPasswordInput = document.getElementById("register-password");
     const confirmPasswordInput = document.getElementById("register-confirm-password");
 
+    if (!loginContainer || !registerContainer || !registerBtn || !loginBtn) {
+        console.error("Jedan od elemenata nije pronađen! Provjeri HTML.");
+        return;
+    }
+
     registerBtn.addEventListener("click", function () {
         loginContainer.style.display = "none";
         registerContainer.style.display = "block";
