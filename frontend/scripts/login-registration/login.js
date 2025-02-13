@@ -1,4 +1,4 @@
-import { registerUser, loginUser, logoutUser } from "./api.js";
+import { registerUser, loginUser, logoutUser } from "../api.js";
 import { validateLogin, validateRegister } from "./validation.js";
 
 export function setupLoginRegister () {
@@ -16,7 +16,7 @@ export function setupLoginRegister () {
 
     const loginSubmitBtn = document.getElementById("login-submit");
     const registerSubmitBtn = document.getElementById("register-submit");
-    const logoutBtn = document.getElementById("logout-btn");
+    //const logoutBtn = document.getElementById("logout-btn");
 
     registerBtn.addEventListener("click", function () {
         loginContainer.style.display = "none";
@@ -70,8 +70,14 @@ export function setupLoginRegister () {
         }
     });
 
-    logoutBtn.addEventListener("click", async function () {
-        logoutUser();
-    });
+    // logoutBtn.addEventListener("click", async function () {
+    //     try {
+    //         await logoutUser();
+    //         alert("Logout successful!");
+    //         window.location.href = "index.html";
+    //     } catch (error) {
+    //         alert("Logout failed: " + error.message);
+    //     }
+    // });
     
 }

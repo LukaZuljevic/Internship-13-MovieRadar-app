@@ -1,20 +1,14 @@
-const API_BASE_URL = "http://localhost:5000/api/users";
+const API_BASE_URL = "https://localhost:51140/api/users";
 
 export async function registerUser(email, password) {
     const response = await fetch(`${API_BASE_URL}/register`, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            email: email,
-            password: password,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
     });
 
     if (!response.ok) {
-        const error = await response.text();
-        throw new Error(error);
+        throw new Error("registration failed");
     }
 
     return await response.json();
@@ -23,26 +17,38 @@ export async function registerUser(email, password) {
 export async function loginUser(email, password) {
     const response = await fetch(`${API_BASE_URL}/login`, {
         method: "POST",
-        headers: {
+        headers: { 
             "Content-Type": "application/json",
+            "Accept": "application/json"
         },
-        body: JSON.stringify({
-            email: email,
-            password: password,
-        }),
+        body: JSON.stringify({ email, password }),
         credentials: "include"
     });
 
     if (!response.ok) {
-        throw new Error("Login failed");
+        const errorMessage = await response.text();
+        console.error("Error response:", errorMessage);
+        throw new Error("Login failed " + errorMessage);
+    }
+
+    if (response.status === 204) {
+        console.log("Login successful, no content returned.");
+        return;
     }
 
     return await response.json();
 }
 
 export async function logoutUser() {
-    await fetch(`${API_BASE_URL}/logout`, {
+    const response = await fetch(`${API_BASE_URL}/logout`, {
         method: "POST",
         credentials: "include"
     });
+
+    if (!response.ok) {
+        throw new Error("Logout failed");
+    }
+    else {
+        window.location.href = "index.html";
+    }
 }

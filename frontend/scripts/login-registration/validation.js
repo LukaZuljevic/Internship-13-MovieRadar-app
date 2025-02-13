@@ -21,10 +21,10 @@ export function validateLogin(email, password) {
         return false;
     }
 
-    if (!isValidPassword(password)) {
-        alert("Password must contain at least 8 characters, including 1 uppercase letter, 1 lowercase letter, and 1 number.");
-        return false;
-    }
+    // if (!isValidPassword(password)) {
+    //     alert("Password must contain at least 8 characters, including 1 uppercase letter, 1 lowercase letter, and 1 number.");
+    //     return false;
+    // }
 
     alert("Login successful!");
     return true;
@@ -41,10 +41,10 @@ export function validateRegister(email, password, confirmPassword) {
         return false;
     }
 
-    if (!isValidPassword(password)) {
-        alert("Password must contain at least 8 characters, including 1 uppercase letter, 1 lowercase letter, and 1 number.");
-        return false;
-    }
+    // if (!isValidPassword(password)) {
+    //     alert("Password must contain at least 8 characters, including 1 uppercase letter, 1 lowercase letter, and 1 number.");
+    //     return false;
+    // }
 
     if (password !== confirmPassword) {
         alert("Passwords do not match!");
