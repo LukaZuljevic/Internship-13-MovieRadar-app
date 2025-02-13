@@ -38,6 +38,18 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
             return Ok(movie);
         }
 
+        [HttpGet("filter")]
+        public async Task<IActionResult> FilterMovies(
+            [FromQuery] string? genre = null,
+            [FromQuery] int? releaseYear = null,
+            [FromQuery] double? minRating = null,
+            [FromQuery] string? sortBy = null,
+            [FromQuery] bool ascending = true)
+        {
+            var movies = await _movieService.FilterMoviesAsync(genre, releaseYear, minRating, sortBy, ascending);
+            return Ok(movies);
+        }
+
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Movie>> CreateMovie([FromBody] MovieCreateDto movie)
