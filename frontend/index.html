@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="images/landingPage/flavicon.png" type="image/png" />
     <link rel="stylesheet" href="styles/index.css" />
-    <script src="scripts/landingPage/dialog.js" defer></script>
     <script src="scripts/landingPage/dropdown-menu.js" defer></script>
+    <script src="scripts/landingPage/dialog.js" defer></script>
     <script
       src="scripts/landingPage/movie-cards.js"
       type="module"
@@ -25,7 +25,6 @@
           <ul>
             <li class="active">Svi filmovi</li>
             <li>Filtriraj</li>
-            <li>Moje recenzije</li>
           </ul>
           <button>Odjava</button>
         </div>
@@ -63,139 +62,35 @@
     </menu>
 
     <section class="movies-section">
-      <div class="movies-container">
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-        </div>
-      </div>
+      <div class="movies-container"></div>
+
       <button class="previous-page">&lt;&lt;</button>
       <button class="next-page">>></button>
+
       <dialog class="movie-info-dialog">
         <div class="x-icon">
           <div></div>
         </div>
         <div class="movie-info-container">
-          <h2>Titanic&nbsp;<span>4/5</span></h2>
+          <h2></h2>
           <ul class="movie-info-nav">
             <li class="active">Informacije</li>
             <li>Recenzije</li>
             <li>Ostavi recenziju</li>
           </ul>
           <div class="movie-details">
-            <p><span>Godina izdanja:&nbsp;</span><span>1997</span></p>
-            <p><span>Zanr:&nbsp;</span><span>Drama</span></p>
+            <p>
+              <span>Godina izdanja:&nbsp;</span
+              ><span class="release-year"></span>
+            </p>
+            <p><span>Žanr:&nbsp;</span><span class="movie-genre"></span></p>
             <p>
               <span>Opis:&nbsp;</span
               ><span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-                minus quod veniam eligendi nam dolore quos qui nemo cumque velit
-                neque vitae maiores autem officiis voluptatum labore ipsa,
-                assumenda libero.
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore
+                sed eaque deleniti voluptatibus assumenda fugiat accusantium
+                possimus id qui in ut consequatur tempore recusandae, aut
+                molestiae! Aliquam sed eveniet ratione.
               </span>
             </p>
           </div>
@@ -299,10 +194,8 @@
             <button>Potvrdi</button>
           </div>
         </div>
-        <img
-          src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-          alt=""
-        />
+
+        <img class="movie-image" alt="" />
       </dialog>
     </section>
   </body>
