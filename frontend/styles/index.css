@@ -1,0 +1,19 @@
+@import url(fonts/fonts.css);
+@import url(colors/colors.css);
+@import url(landingPage/menu.css);
+@import url(landingPage/movies.css);
+
+/*login*/
+@import url(login-register/login.css);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  background-color: var(--backgorundColor);
+  color: white;
+}
