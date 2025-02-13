@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="images/landingPage/flavicon.png" type="image/png" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <title>MovieRadar App</title>
+  </head>
+  <body id="login-register-body">
+    <div class="login-container" id="login">
+      <button class="register-login-button" id="register-btn">REGISTER</button>
+      <h1 class="login-title">LOGIN</h1>
+      <h3 class="input-title">Insert email</h3>
+      <input
+        type="text"
+        class="input-box"
+        placeholder="Email"
+        id="login-email"
+      />
+      <h3 class="input-title">Insert password</h3>
+      <input
+        type="password"
+        class="input-box"
+        placeholder="Password"
+        id="login-password"
+      />
+      <button id="login-submit" class="submit-btn">Login</button>
+      <h3 class="switch-login-register--text">
+        Don't have an account? No worries, you can create one pressing the
+        REGISTER button.
+      </h3>
+    </div>
+
+    <div class="login-container" id="register">
+      <button class="register-login-button" id="login-btn">LOGIN</button>
+      <h1 class="login-title">REGISTER</h1>
+      <h3 class="input-title">First name</h3>
+      <input
+        type="text"
+        class="input-box"
+        placeholder="Name"
+        id="firstName-register"
+      />
+      <h3 class="input-title">Last name</h3>
+      <input
+        type="text"
+        class="input-box"
+        placeholder="Surname"
+        id="lastName-register"
+      />
+      <h3 class="input-title">Insert email</h3>
+      <input
+        type="text"
+        class="input-box"
+        placeholder="Email"
+        id="register-email"
+      />
+      <h3 class="input-title">Insert password</h3>
+      <input
+        type="text"
+        class="input-box"
+        placeholder="Password"
+        id="register-password"
+      />
+      <h3 class="input-title">Confirm password</h3>
+      <input
+        type="text"
+        class="input-box"
+        placeholder="Password"
+        id="register-confirm-password"
+      />
+      <button id="register-submit" class="submit-btn">Register</button>
+      <h3 class="switch-login-register--text">
+        Already have an account? If so, click on the LOGIN button.
+      </h3>
+    </div>
+
+    <script
+      src="scripts/login-registration/api-users.js"
+      type="module"
+    ></script>
+    <script src="scripts/main.js" type="module"></script>
+  </body>
+</html>
