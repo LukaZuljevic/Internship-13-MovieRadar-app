@@ -18,8 +18,8 @@ export function validateLogin(email, password) {
     return true;
 }
 
-export function validateRegister(email, password, confirmPassword) {
-    if (email === "" || password === "" || confirmPassword === "") {
+export function validateRegister(firstName, lastName, email, password, confirmPassword) {
+    if (firstName === "" || lastName === "" || email === "" || password === "" || confirmPassword === "") {
         alert("Please fill in all the slots!");
         return false;
     }
