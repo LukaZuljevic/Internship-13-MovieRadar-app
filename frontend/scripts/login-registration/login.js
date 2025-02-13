@@ -60,8 +60,8 @@ export function setupLoginRegister () {
         try {
             const result = await registerUser(firstName, lastName, email, password);
             registerContainer.style.display = "none";
-            alert("Registration successful!");
-            window.location.href = "landingPage.html"
+            alert("Registration successful! You can now log in!");
+            window.location.href = "index.html"
         } catch (error) {
             alert("Registration failed: " + error.message);
         }
