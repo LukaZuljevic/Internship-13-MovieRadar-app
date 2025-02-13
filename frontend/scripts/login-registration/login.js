@@ -1,4 +1,4 @@
-import { registerUser, loginUser } from "../api.js";
+import { registerUser, loginUser } from "./api-users.js";
 import { validateLogin, validateRegister } from "./validation.js";
 
 export function setupLoginRegister () {
@@ -34,18 +34,15 @@ export function setupLoginRegister () {
         const password = loginPasswordInput.value.trim();
 
         if (!validateLogin(email, password)) {
-            alert("Invalid login details!");
             return;
         }
 
         try {
             const result = await loginUser(email, password);
-            console.log("Login success:", result);
             alert("Login successful!");
             window.location.href = "landingPage.html"
         } catch (error) {
             alert("Login failed: " + error.message);
-            console.error("Login error:", error);
         }
     });
 
@@ -62,13 +59,11 @@ export function setupLoginRegister () {
 
         try {
             const result = await registerUser(firstName, lastName, email, password);
-            console.log("Registration success:", result);
             registerContainer.style.display = "none";
             alert("Registration successful!");
             window.location.href = "landingPage.html"
         } catch (error) {
             alert("Registration failed: " + error.message);
-            console.error("Registration error:", error);
         }
     });
 }

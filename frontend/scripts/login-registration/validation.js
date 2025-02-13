@@ -29,6 +29,11 @@ export function validateRegister(firstName, lastName, email, password, confirmPa
         return false;
     }
 
+    if (password.length < 6) {
+        alert("Password must have at least 6 characters!");
+        return false; 
+    }
+
     if (password !== confirmPassword) {
         alert("Passwords do not match!");
         return false;
