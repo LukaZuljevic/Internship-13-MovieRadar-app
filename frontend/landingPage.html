@@ -5,31 +5,330 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="images/landingPage/flavicon.png" type="image/png" />
     <link rel="stylesheet" href="styles/index.css" />
+    <script src="scripts/landingPage/dialog.js" defer></script>
+    <script src="scripts/landingPage/dropdown-menu.js" defer></script>
     <title>MovieRadar App</title>
   </head>
   <body>
-
     <menu class="landingPageMenu">
+      <nav class="main-nav">
         <div class="logo">
           <img src="images/landingPage/flavicon.png" alt="logo slika" />
           <h2>MovieRadar</h2>
         </div>
-        <div class="navbar">
+        <div class="nav-bar">
           <ul>
-            <a href=""></a><li>Zanr</li></a>
-            <a href=""></a><li>Ocjena</li></a>
-            <a href=""></a><li>Godina izdanja</li></a>
+            <li class="active">Svi filmovi</li>
+            <li>Filtriraj</li>
+            <li>Moje recenzije</li>
           </ul>
+          <button>Odjava</button>
+        </div>
+      </nav>
+      <nav class="movie-filter-nav">
+        <div class="filters">
+          <div class="filter">
+            <h3>Žanr</h3>
+            <ul>
+              <li><input name="genre" type="radio" />Akcija</li>
+              <li><input name="genre" type="radio" />Avantura</li>
+              <li><input name="genre" type="radio" />Komedija</li>
+              <li><input name="genre" type="radio" />Drama</li>
+              <li><input name="genre" type="radio" />Horor</li>
+            </ul>
+          </div>
+
+          <div class="filter">
+            <h3>Ocjena</h3>
+            <ul>
+              <li><input name="rating" type="radio" />1</li>
+              <li><input name="rating" type="radio" />2</li>
+              <li><input name="rating" type="radio" />3</li>
+              <li><input name="rating" type="radio" />4</li>
+              <li><input name="rating" type="radio" />5</li>
+            </ul>
+          </div>
+
+          <div class="filter">
+            <label for="">Godina izdanja: <input type="number" /></label>
+          </div>
+        </div>
+        <button>Potvrdi</button>
+      </nav>
+      <!--<div class="navbar">
+        <ul>
+          <li><a href="">Sve</a></li>
+          <li class="genre-menu-parent">
+            <a href="">Zanr</a>
+            <ul class="genre-dropdown-menu">
+              <li><a href="">Akcija</a></li>
+              <li><a href="">Avantura</a></li>
+              <li><a href="">Komedija</a></li>
+              <li><a href="">Drama</a></li>
+              <li><a href="">Horor</a></li>
+            </ul>
+          </li>
+          <li class="ratings-menu-parent">
+            <a href="">Ocjena</a>
+            <ul class="ratings-dropdown-menu">
+              <li><a href="">1</a></li>
+              <li><a href="">2</a></li>
+              <li><a href="">3</a></li>
+              <li><a href="">4</a></li>
+              <li><a href="">5</a></li>
+            </ul>
+          </li>
+        </ul>
+        <label for="release-year-input"
+          >Godina izdanja: <input type="number" id="release-year-input"
+        /></label>
+        <div class="search-bar">
           <img
             src="images/landingPage/search-icon.png"
             alt="slika ikone za pretrazivanje"
           />
+          <input type="search" />
         </div>
-      </menu>
+      </div>-->
+    </menu>
 
+    <section class="movies-section">
+      <div class="movies-container">
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+      </div>
+      <button class="previous-page">&lt;&lt;</button>
+      <button class="next-page">>></button>
+      <dialog class="movie-info-dialog">
+        <div class="x-icon">
+          <div></div>
+        </div>
+        <div class="movie-info-container">
+          <h2>Titanic&nbsp;<span>4/5</span></h2>
+          <ul class="movie-info-nav">
+            <li class="active">Informacije</li>
+            <li>Recenzije</li>
+          </ul>
+          <div class="movie-details">
+            <p><span>Godina izdanja:&nbsp;</span><span>1997</span></p>
+            <p><span>Zanr:&nbsp;</span><span>Drama</span></p>
+            <p>
+              <span>Opis:&nbsp;</span
+              ><span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
+                minus quod veniam eligendi nam dolore quos qui nemo cumque velit
+                neque vitae maiores autem officiis voluptatum labore ipsa,
+                assumenda libero.
+              </span>
+            </p>
+          </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js" async></script>
-    <script src="/frontend/scripts/main.js" type="module"></script>
-    <script src="/frontend/scripts/api.js" type="module"></script>
+          <div class="movie-reviews">
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+          </div>
+        </div>
+        <img
+          src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+          alt=""
+        />
+      </dialog>
+    </section>
   </body>
 </html>

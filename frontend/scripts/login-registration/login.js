@@ -1,4 +1,4 @@
-import { registerUser, loginUser } from "../api.js";
+import { registerUser, loginUser, logoutUser } from "./api.js";
 import { validateLogin, validateRegister } from "./validation.js";
 
 export function setupLoginRegister () {
@@ -14,10 +14,9 @@ export function setupLoginRegister () {
     const registerPasswordInput = document.getElementById("register-password");
     const confirmPasswordInput = document.getElementById("register-confirm-password");
 
-    if (!loginContainer || !registerContainer || !registerBtn || !loginBtn) {
-        console.error("Jedan od elemenata nije pronađen! Provjeri HTML.");
-        return;
-    }
+    const loginSubmitBtn = document.getElementById("login-submit");
+    const registerSubmitBtn = document.getElementById("register-submit");
+    const logoutBtn = document.getElementById("logout-btn");
 
     registerBtn.addEventListener("click", function () {
         loginContainer.style.display = "none";
@@ -29,20 +28,58 @@ export function setupLoginRegister () {
         loginContainer.style.display = "block";
     });
 
-    document.getElementById("login-submit").addEventListener("click", async function () {
+    loginSubmitBtn.addEventListener("click", async function () {
         const email = loginEmailInput.value.trim();
         const password = loginPasswordInput.value.trim();
-        if (validateLogin(email, password)) {
-            await loginUser(email, password); 
+
+        if (!validateLogin(email, password)) {
+            alert("Invalid login details!");
+            return;
+        }
+
+        try {
+            const result = await loginUser(email, password);
+            alert("Login successful!");
+            console.log("Login success:", result);
+        } catch (error) {
+            alert("Login failed: " + error.message);
+            console.error("Login error:", error);
         }
     });
 
-    document.getElementById("register-submit").addEventListener("click", async function () {
+    registerSubmitBtn.addEventListener("click", async function () {
         const email = registerEmailInput.value.trim();
         const password = registerPasswordInput.value.trim();
         const confirmPassword = confirmPasswordInput.value.trim();
-        if (validateRegister(email, password, confirmPassword)) {
-            await registerUser(email, password);  
+
+        if (!validateRegister(email, password, confirmPassword)) {
+            alert("Invalid registration details!");
+            return;
+        }
+
+        try {
+            const result = await registerUser(email, password);
+            alert("Registration successful!");
+            console.log("Registration success:", result);
+            registerContainer.style.display = "none";
+            loginContainer.style.display = "block";
+        } catch (error) {
+            alert("Registration failed: " + error.message);
+            console.error("Registration error:", error);
         }
     });
+
+    logoutBtn.addEventListener("click", async function () {
+        try {
+            await logoutUser();
+            alert("Logout successful!");
+    
+            window.location.href = "index.html";
+    
+        } catch (error) {
+            alert("Logout failed: " + error.message);
+            console.error("Logout error:", error);
+        }
+    });
+    
 }
