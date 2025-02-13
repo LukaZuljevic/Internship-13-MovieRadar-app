@@ -15,6 +15,11 @@ export function validateLogin(email, password) {
     return false;
   }
 
+  if (password.length < 6) {
+    alert("Password must have at least 6 characters!");
+    return false;
+  }
+
   return true;
 }
 
