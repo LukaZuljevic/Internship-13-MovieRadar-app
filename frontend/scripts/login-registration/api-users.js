@@ -43,7 +43,10 @@ export async function loginUser(email, password) {
     return;
   }
 
-  return response.json();
+  const userData = await response.json();
+  localStorage.setItem("user", JSON.stringify(userData)); // ✅ Čuvamo user podatke
+
+  return userData;
 }
 
 export async function logoutUser() {
@@ -55,6 +58,12 @@ export async function logoutUser() {
   if (!response.ok) {
     throw new Error("Logout failed");
   } else {
+    localStorage.removeItem("user");
     window.location.href = "index.html";
   }
+}
+
+export function getCurrentUser() {
+  const user = localStorage.getItem("user");
+  return user ? JSON.parse(user) : null;
 }
