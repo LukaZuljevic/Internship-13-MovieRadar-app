@@ -35,9 +35,7 @@ export async function loginUser(email, password) {
 
   if (!response.ok) {
     const errorMessage = await response.text();
-    throw new Error(
-      `Login failed: ${errorMessage} (status: ${response.status})`
-    );
+    throw new Error(errorMessage);
   }
 
   if (response.status === 204) {

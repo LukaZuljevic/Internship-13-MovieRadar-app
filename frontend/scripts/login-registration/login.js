@@ -38,8 +38,12 @@ export function setupLoginRegister() {
     if (!validateLogin(email, password)) return;
 
     try {
-      alert("Login successful!");
-      window.location.href = "landingPage.html";
+      const result = await loginUser(email, password);
+
+      if (result) {
+        alert("Login successful!");
+        window.location.href = "landingPage.html";
+      }
     } catch (error) {
       alert("Login failed: " + error.message);
     }
@@ -60,11 +64,19 @@ export function setupLoginRegister() {
 
     try {
       const result = await registerUser(firstName, lastName, email, password);
-      registerContainer.style.display = "none";
-      alert("Registration successful! You can now log in!");
-      window.location.href = "index.html";
+
+      if (result) {
+        registerContainer.style.display = "none";
+        alert("Registration successful! You can now log in!");
+        window.location.href = "index.html";
+      }
     } catch (error) {
       alert("Registration failed: " + error.message);
     }
   });
+}
+
+export function getCurrentUser() {
+  const user = localStorage.getItem("user");
+  return user ? JSON.parse(user) : null;
 }
