@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="styles/index.css" />
     <script src="scripts/landingPage/dialog.js" defer></script>
     <script src="scripts/landingPage/dropdown-menu.js" defer></script>
+    <script
+      src="scripts/landingPage/movie-cards.js"
+      type="module"
+      defer
+    ></script>
     <title>MovieRadar App</title>
   </head>
   <body>
@@ -55,41 +60,6 @@
         </div>
         <button>Potvrdi</button>
       </nav>
-      <!--<div class="navbar">
-        <ul>
-          <li><a href="">Sve</a></li>
-          <li class="genre-menu-parent">
-            <a href="">Zanr</a>
-            <ul class="genre-dropdown-menu">
-              <li><a href="">Akcija</a></li>
-              <li><a href="">Avantura</a></li>
-              <li><a href="">Komedija</a></li>
-              <li><a href="">Drama</a></li>
-              <li><a href="">Horor</a></li>
-            </ul>
-          </li>
-          <li class="ratings-menu-parent">
-            <a href="">Ocjena</a>
-            <ul class="ratings-dropdown-menu">
-              <li><a href="">1</a></li>
-              <li><a href="">2</a></li>
-              <li><a href="">3</a></li>
-              <li><a href="">4</a></li>
-              <li><a href="">5</a></li>
-            </ul>
-          </li>
-        </ul>
-        <label for="release-year-input"
-          >Godina izdanja: <input type="number" id="release-year-input"
-        /></label>
-        <div class="search-bar">
-          <img
-            src="images/landingPage/search-icon.png"
-            alt="slika ikone za pretrazivanje"
-          />
-          <input type="search" />
-        </div>
-      </div>-->
     </menu>
 
     <section class="movies-section">
@@ -102,7 +72,6 @@
           <div class="movie-heading">
             <h2>Titanic (1997)</h2>
           </div>
-          <div class="movie-rating">4/5</div>
         </div>
         <div class="movie-card">
           <img
@@ -112,7 +81,6 @@
           <div class="movie-heading">
             <h2>Titanic (1997)</h2>
           </div>
-          <div class="movie-rating">4/5</div>
         </div>
         <div class="movie-card">
           <img
@@ -122,7 +90,6 @@
           <div class="movie-heading">
             <h2>Titanic (1997)</h2>
           </div>
-          <div class="movie-rating">4/5</div>
         </div>
         <div class="movie-card">
           <img
@@ -132,7 +99,6 @@
           <div class="movie-heading">
             <h2>Titanic (1997)</h2>
           </div>
-          <div class="movie-rating">4/5</div>
         </div>
         <div class="movie-card">
           <img
@@ -142,7 +108,6 @@
           <div class="movie-heading">
             <h2>Titanic (1997)</h2>
           </div>
-          <div class="movie-rating">4/5</div>
         </div>
         <div class="movie-card">
           <img
@@ -152,7 +117,6 @@
           <div class="movie-heading">
             <h2>Titanic (1997)</h2>
           </div>
-          <div class="movie-rating">4/5</div>
         </div>
         <div class="movie-card">
           <img
@@ -162,7 +126,6 @@
           <div class="movie-heading">
             <h2>Titanic (1997)</h2>
           </div>
-          <div class="movie-rating">4/5</div>
         </div>
         <div class="movie-card">
           <img
@@ -172,7 +135,6 @@
           <div class="movie-heading">
             <h2>Titanic (1997)</h2>
           </div>
-          <div class="movie-rating">4/5</div>
         </div>
         <div class="movie-card">
           <img
@@ -182,7 +144,6 @@
           <div class="movie-heading">
             <h2>Titanic (1997)</h2>
           </div>
-          <div class="movie-rating">4/5</div>
         </div>
         <div class="movie-card">
           <img
@@ -192,7 +153,6 @@
           <div class="movie-heading">
             <h2>Titanic (1997)</h2>
           </div>
-          <div class="movie-rating">4/5</div>
         </div>
         <div class="movie-card">
           <img
@@ -202,7 +162,6 @@
           <div class="movie-heading">
             <h2>Titanic (1997)</h2>
           </div>
-          <div class="movie-rating">4/5</div>
         </div>
         <div class="movie-card">
           <img
@@ -212,7 +171,6 @@
           <div class="movie-heading">
             <h2>Titanic (1997)</h2>
           </div>
-          <div class="movie-rating">4/5</div>
         </div>
       </div>
       <button class="previous-page">&lt;&lt;</button>
@@ -226,6 +184,7 @@
           <ul class="movie-info-nav">
             <li class="active">Informacije</li>
             <li>Recenzije</li>
+            <li>Ostavi recenziju</li>
           </ul>
           <div class="movie-details">
             <p><span>Godina izdanja:&nbsp;</span><span>1997</span></p>
@@ -322,6 +281,22 @@
                 Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
               </p>
             </div>
+          </div>
+
+          <div class="leave-review">
+            <ul class="choose-rating">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+            </ul>
+            <textarea
+              name=""
+              id=""
+              placeholder="Napisi recenziju..."
+            ></textarea>
+            <button>Potvrdi</button>
           </div>
         </div>
         <img

@@ -13,13 +13,20 @@ function selectActiveBtn(event) {
 
   const infoEl = document.querySelector(".movie-details");
   const reviewsEl = document.querySelector(".movie-reviews");
+  const leaveReviewEl = document.querySelector(".leave-review");
 
   if (event.target.textContent === "Informacije") {
     infoEl.style.display = "flex";
     reviewsEl.style.display = "none";
-  } else {
+    leaveReviewEl.style.display = "none";
+  } else if (event.target.textContent === "Recenzije") {
     infoEl.style.display = "none";
     reviewsEl.style.display = "flex";
+    leaveReviewEl.style.display = "none";
+  } else {
+    infoEl.style.display = "none";
+    reviewsEl.style.display = "none";
+    leaveReviewEl.style.display = "block";
   }
 }
 
