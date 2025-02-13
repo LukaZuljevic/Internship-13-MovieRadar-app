@@ -46,7 +46,7 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
             {
                 HttpOnly = true,
                 Secure = true,
-                SameSite = SameSiteMode.Strict,
+                SameSite = SameSiteMode.Lax, 
                 Expires = DateTime.UtcNow.AddMinutes(30)
             };
 
