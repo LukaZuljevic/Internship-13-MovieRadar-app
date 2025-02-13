@@ -41,6 +41,7 @@ export function setupLoginRegister () {
             const result = await loginUser(email, password);
             alert("Login successful!");
             console.log("Login success:", result);
+            window.location.href = "landingPage.html"
         } catch (error) {
             alert("Login failed: " + error.message);
             console.error("Login error:", error);
@@ -62,7 +63,7 @@ export function setupLoginRegister () {
             alert("Registration successful!");
             console.log("Registration success:", result);
             registerContainer.style.display = "none";
-            loginContainer.style.display = "block";
+            window.location.href = "landingPage.html"
         } catch (error) {
             alert("Registration failed: " + error.message);
             console.error("Registration error:", error);
@@ -70,16 +71,7 @@ export function setupLoginRegister () {
     });
 
     logoutBtn.addEventListener("click", async function () {
-        try {
-            await logoutUser();
-            alert("Logout successful!");
-    
-            window.location.href = "index.html";
-    
-        } catch (error) {
-            alert("Logout failed: " + error.message);
-            console.error("Logout error:", error);
-        }
+        logoutUser();
     });
     
 }
