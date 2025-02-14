@@ -20,3 +20,26 @@
   font-weight: bold;
   border-bottom: 2px solid rgba(0, 0, 0, 0.211);
 }
+
+.details-btn {
+  background-color: rgb(255, 234, 207);
+  color: black;
+  scale: 1;
+  border-radius: 20px;
+  padding: 5px;
+  transition: background-color 0.3s ease;
+}
+.details-btn:hover {
+  background-color: rgb(52, 50, 50);
+  color: white;
+  cursor: pointer;
+}
+
+.user-review {
+  margin-top: 10px;
+}
+
+.review-list {
+  list-style-type: none;
+  padding: 0;
+}
