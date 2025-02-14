@@ -1,4 +1,4 @@
-import { getAllMovies, deleteMovie } from "../admin/movie-api.js";
+import { getAllMovies, deleteMovie } from "../api/movie-api.js";
 
 const overlay = document.getElementById("overlay-delete-movie-form");
 const movieList = document.getElementById("movieList");

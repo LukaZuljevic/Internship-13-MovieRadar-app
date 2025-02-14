@@ -1,6 +1,7 @@
-import { getUserFromToken } from "../login-registration/login.js";
+import { getUserFromToken } from "../../login-registration/login.js";
 import { handleAddMovie } from "./add-movie.js";
 import { handleDeleteMovie } from "./delete-movie.js";
+import { handleManageUsers } from "../manage-users.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const user = getUserFromToken();
@@ -37,12 +38,13 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdownItems.forEach((item) => {
       item.addEventListener("click", function () {
         const action = item.getAttribute("data-action");
-        console.log("Selected option:", action);
 
         if (action === "addFilm") {
           handleAddMovie();
         } else if (action === "deleteFilm") {
           handleDeleteMovie();
+        } else if (action === "editFilm") {
+          handleEditMovie();
         } else if (action === "manageUsers") {
           handleManageUsers();
         }

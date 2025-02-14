@@ -7,6 +7,7 @@
 @import url(admin/admin.css);
 @import url(admin/movie-form.css);
 @import url(admin/delete-movie.css);
+@import url(admin/users.css);
 
 * {
   margin: 0;

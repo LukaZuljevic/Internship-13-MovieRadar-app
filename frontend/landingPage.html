@@ -35,7 +35,8 @@
             <label id="admin-label">Admin</label>
             <div id="admin-dropdown" class="dropdown-content">
               <div class="dropdown-item" data-action="addFilm">Dodaj film</div>
-              <div class="dropdown-item" data-action="deleteFilm">Obriši film</div>
+              <div class="dropdown-item" data-action="deleteFilm">Obrisi film</div>
+              <div class="dropdown-item" data-action="editFilm">Uredi film</div>
               <div class="dropdown-item" data-action="manageUsers">Upravljaj korisnicima</div>
             </div>
           </div>  
@@ -131,6 +132,14 @@
           <button id="editMovie-btn" class="submit-btn">Spremi promjene</button>
       </form>
     </div>    
+
+    <div id="overlay-user-list">
+      <div id="user-list-container" class="login-container admin-container">
+        <button id="close-user-overlay">✖</button>
+        <h2>Popis korisnika</h2>
+        <div id="user-list"></div>
+      </div>    
+    </div>
     <!--admin-->
 
     <section class="movies-section">

@@ -1,0 +1,22 @@
+#user-list-container {
+  padding: 20px;
+  color: black;
+}
+
+.user-box {
+  margin: 0;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.user-box p {
+  margin: 5px 0;
+}
+
+#user-list-container #user-list-title {
+  padding: 20px;
+  margin-bottom: 20px;
+  font-size: 2em;
+  font-weight: bold;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.211);
+}

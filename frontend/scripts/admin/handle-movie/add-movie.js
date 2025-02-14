@@ -1,4 +1,4 @@
-import { addMovie } from "./movie-api.js";
+import { addMovie } from "../api/movie-api.js";
 
 const overlay = document.getElementById("overlay-add-movie-form");
 const addMovieForm = document.getElementById("add-movie-form");
