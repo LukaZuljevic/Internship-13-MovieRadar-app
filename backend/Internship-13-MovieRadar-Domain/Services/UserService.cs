@@ -35,6 +35,21 @@ namespace Internship_13_MovieRadar.Domain.Services
             }).ToList();
         }
 
+        public async Task<User?> GetUserByIdAsync(Guid userId)
+        {
+            var user = await _userRepository.GetUserByIdAsync(userId);
+
+            if (user == null) return null;
+
+            return new User
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                IsAdmin = user.IsAdmin
+            };
+        }
         public async Task<LoginResponseDto?> LoginAsync(LoginRequestDto request)
         {
             var user = await _userRepository.GetByEmailAsync(request.Email);

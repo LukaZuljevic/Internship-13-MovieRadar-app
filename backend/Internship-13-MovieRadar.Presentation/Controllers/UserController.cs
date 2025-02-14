@@ -26,6 +26,16 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
             return Ok(users);      
         }
 
+        [HttpGet("{userId}")]
+
+        public async Task<IActionResult> GetUser(Guid userId)
+        {
+            var user = await _userService.GetUserByIdAsync(userId);
+            if (user == null) return NotFound($"User with ID {userId} not found");
+
+            return Ok(user);
+        }
+
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDto request)
         {
