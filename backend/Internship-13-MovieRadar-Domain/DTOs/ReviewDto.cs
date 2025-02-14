@@ -1,6 +1,6 @@
-﻿namespace Internship_13_MovieRadar.Data.Entities.Models
+﻿namespace Internship_13_MovieRadar_Domain.DTOs
 {
-    public class MovieReview
+    public class ReviewDto
     {
         public Guid Id { get; set; }
         public string Content { get; set; } = string.Empty;

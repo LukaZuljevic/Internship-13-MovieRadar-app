@@ -1,5 +1,6 @@
 ﻿using Internship_13_MovieRadar.Data.Entities.Models;
 using Internship_13_MovieRadar.Data.Interfaces;
+using Internship_13_MovieRadar.Data.Repositories;
 using Internship_13_MovieRadar_Domain.DTOs;
 
 namespace Internship_13_MovieRadar.Domain.Services
@@ -53,16 +54,29 @@ namespace Internship_13_MovieRadar.Domain.Services
             return await _reviewRepository.DeleteAsync(id);
         }
 
-        public async Task<List<MovieReviewDto>> GetMovieReviewsAsync(Guid movieId)
+        public async Task<List<ReviewDto>> GetMovieReviewsAsync(Guid movieId)
         {
             var movieReviews = await _reviewRepository.GetMovieReviewsAsync(movieId);
 
-            return movieReviews.Select(movieReview => new MovieReviewDto
+            return movieReviews.Select(movieReview => new ReviewDto
             {
                 Id = movieReview.Id,
                 Content = movieReview.Content,
                 Rating = movieReview.Rating,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = movieReview.CreatedAt
+            }).ToList();
+        }
+
+        public async Task<List<ReviewDto>> GetUserReviewsAsync(Guid userId)
+        {
+            var userReviews = await _reviewRepository.GetUserReviewsAsync(userId);
+
+            return userReviews.Select(userReviews => new ReviewDto
+            {
+                Id = userReviews.Id,
+                Content = userReviews.Content,
+                Rating = userReviews.Rating,
+                CreatedAt = userReviews.CreatedAt,
             }).ToList();
         }
     }

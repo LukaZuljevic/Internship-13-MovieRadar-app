@@ -54,5 +54,15 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
 
             return Ok(reviews);
         }
+
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetUserReviews(Guid userId)
+        {
+            var reviews = await _reviewService.GetUserReviewsAsync(userId);
+            if (reviews == null || !reviews.Any())
+                return NotFound("No reviews found for this user");
+
+            return Ok(reviews);
+        }
     }
 }
