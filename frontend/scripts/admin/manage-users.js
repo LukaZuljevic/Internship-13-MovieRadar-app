@@ -14,12 +14,22 @@ closeBtn.addEventListener("click", function (event) {
 export async function handleManageUsers() {
   overlay.style.display = "flex";
   document.body.style.overflow = "hidden";
-  userList.innerHTML = "";
+
+  let userListDiv = document.getElementById("user-list");
+
+  if (!userListDiv) {
+    userListDiv = document.createElement("div");
+    userListDiv.id = "user-list";
+    userList.appendChild(userListDiv);
+  }
+
+  userListDiv.innerHTML = "";
 
   const titleElement = document.createElement("h2");
   titleElement.id = "user-list-title";
   titleElement.textContent = "Popis svih korisnika";
   userList.appendChild(titleElement);
+  userList.appendChild(closeBtn);
 
   getAllUsers()
     .then((users) => {
