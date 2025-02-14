@@ -5,7 +5,7 @@ const addMovieForm = document.getElementById("add-movie-form");
 const closeBtn = document.getElementById("close-overlay");
 const addMovieBtn = document.getElementById("addMovie-btn");
 
-export function handleAddFilm() {
+export function handleAddMovie() {
   overlay.style.display = "flex";
   document.body.style.overflow = "hidden";
 }
@@ -26,9 +26,10 @@ addMovieBtn.addEventListener("click", async function (event) {
     document.getElementById("releaseYear").value,
     10
   );
-  const rating = parseFloat(document.getElementById("rating").value);
+  const description = document.getElementById("description").value.trim();
+  const imageURL = document.getElementById("imageURL").value.trim();
 
-  if (!title || !genre || isNaN(releaseYear) || isNaN(rating)) {
+  if (!title || !genre || isNaN(releaseYear) || !description || !imageURL) {
     alert("Molimo vas da popunite sva polja ispravno.");
     return;
   }
@@ -39,11 +40,11 @@ addMovieBtn.addEventListener("click", async function (event) {
     return;
   }
 
-  const movieData = { title, genre, releaseYear, rating };
+  const movieData = { title, description, genre, releaseYear, imageURL };
   const result = await addMovie(movieData, token);
 
   if (result) {
-    alert("Film uspesno dodan!");
+    alert("Movie added successfully!");
     overlay.style.display = "none";
     addMovieForm.reset();
   }

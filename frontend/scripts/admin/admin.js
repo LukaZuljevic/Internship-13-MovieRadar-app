@@ -1,5 +1,6 @@
 import { getUserFromToken } from "../login-registration/login.js";
-import { handleAddFilm } from "./movie-form.js";
+import { handleAddMovie } from "./add-movie.js";
+import { handleDeleteMovie } from "./delete-movie.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const user = getUserFromToken();
@@ -39,9 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Selected option:", action);
 
         if (action === "addFilm") {
-          handleAddFilm();
+          handleAddMovie();
         } else if (action === "deleteFilm") {
-          handleDeleteFilm();
+          handleDeleteMovie();
         } else if (action === "manageUsers") {
           handleManageUsers();
         }

@@ -88,6 +88,7 @@ export function getUserFromToken() {
     if (tokenParts.length !== 3) {
       return null;
     }
+    console.log(token);
 
     const payload = atob(tokenParts[1]);
     return JSON.parse(payload);
