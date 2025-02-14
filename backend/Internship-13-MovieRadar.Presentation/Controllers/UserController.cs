@@ -44,8 +44,8 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
 
             var cookieOptions = new CookieOptions
             {
-                HttpOnly = false,
-                Secure = false,
+                HttpOnly = true,
+                Secure = true,
                 SameSite = SameSiteMode.Lax, 
                 Expires = DateTime.UtcNow.AddMinutes(30)
             };
