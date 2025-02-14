@@ -72,3 +72,25 @@ export async function getAllMovies() {
 
   return response.ok ? response.json() : [];
 }
+
+export async function getMovieById(id) {
+  const token = localStorage.getItem("token");
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      credentials: "include",
+    });
+
+    if (!response.ok) throw new Error(`Error fetching movie with ID ${id}`);
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error:", error);
+    return null;
+  }
+}

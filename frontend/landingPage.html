@@ -101,10 +101,10 @@
     <div id="overlay-delete-movie-form">
       <div id="delete-movie-container" class="login-container admin-container">
         <h3 class="input-title">Svi filmovi</h3>
+        <button id="close-delete-overlay">✖</button>
         <div class="delete-movies-squares-div" id="movieList"></div>
     
         <div class="delete-confirm-box">
-          <button id="close-delete-overlay">✖</button>
           <h3 class="input-title"></h3>
           <button id="deleteMovie-btn" class="submit-btn">Obriši film</button>
         </div>
@@ -112,8 +112,13 @@
     </div>    
 
     <div id="overlay-edit-movie-form" style="display: none;">
+      <div id="edit-movie-container" class="login-container admin-container">
+        <h3 class="input-title">Svi filmovi</h3>
+        <button id="close-edit-overlay">✖</button>
+        <div id="edit-movieList"></div>
+      </div>
       <form id="edit-movie-form" class="login-container admin-container">
-          <button id="close-edit-overlay">✖</button>
+          <button id="close-edit-form-overlay">✖</button>
           <h3 class="input-title">Novi naziv filma</h3>
           <input type="text" id="edit-title" class="input-box" placeholder="Title" required />
           
@@ -136,7 +141,6 @@
     <div id="overlay-user-list">
       <div id="user-list-container" class="login-container admin-container">
         <button id="close-user-overlay">✖</button>
-        <h2>Popis korisnika</h2>
         <div id="user-list"></div>
       </div>    
     </div>

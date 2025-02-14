@@ -1,7 +1,8 @@
-import { getUserFromToken } from "../../login-registration/login.js";
-import { handleAddMovie } from "./add-movie.js";
-import { handleDeleteMovie } from "./delete-movie.js";
-import { handleManageUsers } from "../manage-users.js";
+import { getUserFromToken } from "../login-registration/login.js";
+import { handleAddMovie } from "./handle-movie/add-movie.js";
+import { handleDeleteMovie } from "./handle-movie/delete-movie.js";
+import { handleEditMovie } from "./handle-movie/edit-movie.js";
+import { handleManageUsers } from "./manage-users.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const user = getUserFromToken();

@@ -24,6 +24,7 @@ export function handleDeleteMovie() {
 
   movieList.innerHTML = "";
   confirmBox.style.display = "none";
+  closeBtn.style.display = "block";
 
   getAllMovies()
     .then((movies) => {
