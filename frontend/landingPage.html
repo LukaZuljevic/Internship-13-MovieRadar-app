@@ -33,12 +33,12 @@
 
           <div id="admin-dropdown-container">
             <label id="admin-label">Admin</label>
-            <select id="admin-dropdown" size="1">
-              <option value="option1">Dodaj film</option>
-              <option value="option2">Obriši film</option>
-              <option value="option3">Upravljaj korisnicima</option>
-            </select>
-          </div>          
+            <div id="admin-dropdown" class="dropdown-content">
+              <div class="dropdown-item" data-action="addFilm">Dodaj film</div>
+              <div class="dropdown-item" data-action="deleteFilm">Obriši film</div>
+              <div class="dropdown-item" data-action="manageUsers">Upravljaj korisnicima</div>
+            </div>
+          </div>  
 
         </div>
       </nav>
@@ -73,6 +73,14 @@
         <button>Potvrdi</button>
       </nav>
     </menu>
+
+    <form id="movie-form" class="admin-movie-form-container">
+      <input type="text" id="title" placeholder="Title" required />
+      <input type="text" id="genre" placeholder="Genre" required />
+      <input type="number" id="releaseYear" placeholder="Release year" required />
+      <input type="number" step="0.1" id="rating" placeholder="Rating" required />
+      <button type="submit">Dodaj film</button>
+    </form>
 
     <section class="movies-section">
       <div class="movies-container">
