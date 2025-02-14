@@ -2,6 +2,7 @@
 @import url(colors/colors.css);
 @import url(landingPage/menu.css);
 @import url(landingPage/movies.css);
+@import url(landingPage/user-reviews.css);
 
 /*login*/
 @import url(login-register/login.css);

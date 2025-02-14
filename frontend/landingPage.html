@@ -6,16 +6,12 @@
     <link rel="icon" href="images/landingPage/flavicon.png" type="image/png" />
     <link rel="stylesheet" href="styles/index.css" />
     <script src="scripts/login-registration/logout.js" type="module"></script>
-    <script src="scripts/landingPage/dropdown-menu.js" defer></script>
-    <script src="scripts/landingPage/dialog.js" defer></script>
-    <script
-      src="scripts/landingPage/movie-cards.js"
-      type="module"
-      defer
-    ></script>
+    <script src="scripts/landingPage/main.js" type="module" defer></script>
+    <script src="scripts/landingPage/api.js" type="module" defer></script>
     <title>MovieRadar App</title>
   </head>
   <body>
+    <!-- Navigations section -->
     <menu class="landingPageMenu">
       <nav class="main-nav">
         <div class="logo">
@@ -62,140 +58,13 @@
         <button>Potvrdi</button>
       </nav>
     </menu>
+    <!-- Endline of navigations section -->
 
-    <section class="movies-section">
-      <div class="movies-container">
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-          <div class="movie-rating">4/5</div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-          <div class="movie-rating">4/5</div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-          <div class="movie-rating">4/5</div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-          <div class="movie-rating">4/5</div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-          <div class="movie-rating">4/5</div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-          <div class="movie-rating">4/5</div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-          <div class="movie-rating">4/5</div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-          <div class="movie-rating">4/5</div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-          <div class="movie-rating">4/5</div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-          <div class="movie-rating">4/5</div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-          <div class="movie-rating">4/5</div>
-        </div>
-        <div class="movie-card">
-          <img
-            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <div class="movie-heading">
-            <h2>Titanic (1997)</h2>
-          </div>
-          <div class="movie-rating">4/5</div>
-        </div>
-      </div>
-      <button class="previous-page">&lt;&lt;</button>
-      <button class="next-page">>></button>
-    </menu>
-
+    <!-- List of movies section -->
     <section class="movies-section">
       <div class="movies-container"></div>
 
-      <button class="previous-page">&lt;&lt;</button>
-      <button class="next-page">>></button>
-
+      <!-- Choosen movie section -->
       <dialog class="movie-info-dialog">
         <div class="x-icon">
           <div></div>
@@ -214,13 +83,7 @@
             </p>
             <p><span>Žanr:&nbsp;</span><span class="movie-genre"></span></p>
             <p>
-              <span>Opis:&nbsp;</span
-              ><span>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore
-                sed eaque deleniti voluptatibus assumenda fugiat accusantium
-                possimus id qui in ut consequatur tempore recusandae, aut
-                molestiae! Aliquam sed eveniet ratione.
-              </span>
+              <span>Opis:&nbsp;</span><span class="movie-description"></span>
             </p>
           </div>
 
@@ -326,6 +189,72 @@
 
         <img class="movie-image" alt="" />
       </dialog>
+      <!-- Endline of choosen movies section -->
+    </section>
+    <!-- Endline of list of movies section -->
+
+    <!-- User reviews section -->
+    <section class="user-reviews">
+      <div class="user-review-card">
+        <div class="user-review-heading">
+          <h3><span>Josip Vojkovic</span><span>4/5</span></h3>
+          <h3>10.11.2024</h3>
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta
+          numquam laborum cum fugit saepe nostrum ipsa ipsam natus, minus at
+          fuga in doloribus porro sint. Sequi debitis necessitatibus alias
+          perspiciatis.
+        </p>
+      </div>
+      <div class="user-review-card">
+        <div class="user-review-heading">
+          <h3><span>Josip Vojkovic</span><span>4/5</span></h3>
+          <h3>10.11.2024</h3>
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta
+          numquam laborum cum fugit saepe nostrum ipsa ipsam natus, minus at
+          fuga in doloribus porro sint. Sequi debitis necessitatibus alias
+          perspiciatis.
+        </p>
+      </div>
+      <div class="user-review-card">
+        <div class="user-review-heading">
+          <h3><span>Josip Vojkovic</span><span>4/5</span></h3>
+          <h3>10.11.2024</h3>
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta
+          numquam laborum cum fugit saepe nostrum ipsa ipsam natus, minus at
+          fuga in doloribus porro sint. Sequi debitis necessitatibus alias
+          perspiciatis.
+        </p>
+      </div>
+      <div class="user-review-card">
+        <div class="user-review-heading">
+          <h3><span>Josip Vojkovic</span><span>4/5</span></h3>
+          <h3>10.11.2024</h3>
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta
+          numquam laborum cum fugit saepe nostrum ipsa ipsam natus, minus at
+          fuga in doloribus porro sint. Sequi debitis necessitatibus alias
+          perspiciatis.
+        </p>
+      </div>
+      <div class="user-review-card">
+        <div class="user-review-heading">
+          <h3><span>Josip Vojkovic</span><span>4/5</span></h3>
+          <h3>10.11.2024</h3>
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta
+          numquam laborum cum fugit saepe nostrum ipsa ipsam natus, minus at
+          fuga in doloribus porro sint. Sequi debitis necessitatibus alias
+          perspiciatis.
+        </p>
+      </div>
     </section>
   </body>
 </html>

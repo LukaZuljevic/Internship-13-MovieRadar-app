@@ -1,7 +1,5 @@
-const mainNavList = document.querySelectorAll(".nav-bar ul li");
-
 function selectActiveLi(event) {
-  mainNavList.forEach((li) => {
+  document.querySelectorAll(".nav-bar ul li").forEach((li) => {
     li.classList.remove("active");
   });
 
@@ -11,11 +9,16 @@ function selectActiveLi(event) {
 
   if (event.target.textContent === "Filtriraj") {
     dropdownMenu.style.display = "flex";
+    document.querySelector(".movies-section").style.display = "flex";
+  } else if (event.target.textContent === "Moje recenzije") {
+    dropdownMenu.style.display = "none";
+    document.querySelector(".movies-section").style.display = "none";
+    document.querySelector(".user-reviews").style.display = "flex";
   } else {
     dropdownMenu.style.display = "none";
+    document.querySelector(".movies-section").style.display = "flex";
+    document.querySelector(".user-reviews").style.display = "none";
   }
 }
 
-mainNavList.forEach((li) => {
-  li.addEventListener("click", (event) => selectActiveLi(event));
-});
+export { selectActiveLi };

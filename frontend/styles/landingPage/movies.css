@@ -45,54 +45,6 @@
   text-align: center;
 }
 
-.movie-card .movie-rating {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgb(224, 190, 0);
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  font-weight: bold;
-  font-size: 14px;
-  border: 2px solid white;
-}
-
-.previous-page,
-.next-page {
-  position: fixed;
-  top: 50vh;
-  width: 50px;
-  height: 50px;
-  padding: 10px 5px;
-  background-color: white;
-  border: none;
-  border-radius: 50%;
-  color: black;
-  font-weight: bold;
-  letter-spacing: 0;
-  font-size: 18px;
-  cursor: pointer;
-  transition: ease 0.2s;
-}
-
-.previous-page:hover,
-.next-page:hover {
-  transform: scale(1.2);
-  box-shadow: 0px 0px 10px 7px black;
-}
-
-.previous-page {
-  left: 20px;
-}
-
-.next-page {
-  right: 20px;
-}
-
 .movie-info-dialog {
   margin: 0 auto;
   position: fixed;
@@ -118,6 +70,9 @@
   gap: 10px;
 }
 
+.movie-image {
+  height: 500px;
+}
 .movie-info-container h2 {
   display: flex;
   align-items: center;
@@ -309,4 +264,100 @@
 
 .leave-review > button:hover {
   background-color: rgb(39, 94, 124, 0.7);
+}
+
+@media screen and (max-width: 1150px) {
+  .movie-image {
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 910px) {
+  .movie-image {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .movies-section {
+    padding: 50px 20px;
+  }
+
+  .movies-container {
+    gap: 20px;
+  }
+
+  .movies-container .movie-card {
+    max-width: 200px;
+    min-width: 200px;
+  }
+
+  .movies-container .movie-card img {
+    width: 100%;
+    height: 250px;
+  }
+
+  .movies-container .movie-card h2 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  .movie-info-dialog {
+    width: 95%;
+  }
+
+  .movie-info-dialog .x-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .movie-info-container h2 {
+    font-size: 24px;
+  }
+
+  .movie-info-container > h2 > span {
+    font-size: 16px;
+    padding: 5px 8px;
+  }
+
+  .movie-info-nav {
+    gap: 15px;
+  }
+
+  .movie-info-nav > li {
+    font-size: 14px;
+  }
+
+  .review-heading > p:first-of-type > span:last-of-type {
+    font-size: 12px;
+  }
+
+  .leave-review > .choose-rating > li {
+    padding: 5px 15px;
+  }
+}
+
+@media screen and (max-width: 476px) {
+  .movies-section {
+    padding: 50px 20px;
+  }
+
+  .movies-container {
+    gap: 15px;
+  }
+
+  .movies-container .movie-card {
+    max-width: 150px;
+    min-width: 150px;
+  }
+
+  .movies-container .movie-card img {
+    width: 100%;
+    height: 200px;
+  }
+
+  .movies-container .movie-card h2 {
+    font-size: 14px;
+  }
 }

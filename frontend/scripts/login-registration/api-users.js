@@ -38,12 +38,15 @@ export async function loginUser(email, password) {
     throw new Error(errorMessage);
   }
 
-  if (response.status === 204) {
-    console.log("Login successful, no content returned.");
-    return;
+  const data = await response.json();
+
+  if (data.jwtToken) {
+    localStorage.setItem("token", data.jwtToken);
+  } else {
+    throw new Error("Token not returned from backend");
   }
 
-  return response.json();
+  return data;
 }
 
 export async function logoutUser() {
