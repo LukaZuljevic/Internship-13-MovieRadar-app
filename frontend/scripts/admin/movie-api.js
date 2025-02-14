@@ -53,3 +53,22 @@ export async function deleteMovie(id, token) {
     return false;
   }
 }
+
+export async function getAllMovies() {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch("https://localhost:51140/api/movies", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    credentials: "include",
+  });
+
+  if (response.status === 401) {
+    return null;
+  }
+
+  return response.ok ? response.json() : [];
+}

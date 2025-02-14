@@ -1,54 +1,80 @@
-import { getAllMovies } from "../landingPage/api.js";
+import { getAllMovies, deleteMovie } from "../admin/movie-api.js";
+
+const overlay = document.getElementById("overlay-delete-movie-form");
+const movieList = document.getElementById("movieList");
+const closeBtn = document.getElementById("close-delete-overlay");
+const deleteMovieBtn = document.getElementById("deleteMovie-btn");
+const confirmBox = document.querySelector(".delete-confirm-box");
+const titleElement = document.querySelector(".delete-confirm-box .input-title");
+
+let selectedMovieId = null;
+let selectedMovieBox = null;
+
+closeBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  overlay.style.display = "none";
+  document.body.style.overflow = "auto";
+  movieList.innerHTML = "";
+  confirmBox.style.display = "none";
+});
 
 export function handleDeleteMovie() {
-  const overlay = document.getElementById("overlay-movie-form");
-  const movieList = document.getElementById("movieList");
-  const confirmBox = document.querySelector(".confirm-box");
-  const deleteMovieBtn = document.getElementById("deleteMovie-btn");
-  const closeOverlay = document.getElementById("close-overlay");
-  let selectedMovieId = null;
+  overlay.style.display = "flex";
+  document.body.style.overflow = "hidden";
 
-  overlay.style.display = "block";
+  movieList.innerHTML = "";
   confirmBox.style.display = "none";
 
-  getAllMovies().then((movies) => {
-    movieList.innerHTML = "";
+  getAllMovies()
+    .then((movies) => {
+      movies.forEach((movie) => {
+        const movieBox = document.createElement("div");
+        movieBox.className = "movie-box";
+        movieBox.innerHTML = `<strong>${movie.title}</strong> <br> (${movie.releaseYear})`;
+        movieBox.dataset.id = movie.id;
 
-    movies.forEach((movie) => {
-      const movieBox = document.createElement("div");
-      movieBox.className = "movie-box";
-      movieBox.innerHTML = `<strong>${movie.title}</strong> <br> (${movie.releaseYear})`;
-      movieBox.dataset.id = movie.id;
+        movieBox.addEventListener("click", function () {
+          if (selectedMovieBox) {
+            selectedMovieBox.classList.remove("focused");
+          }
+          selectedMovieBox = movieBox;
+          selectedMovieBox.classList.add("focused");
+          selectedMovieId = movie.id;
+          showConfirmBox(movie.title);
+        });
 
-      movieBox.addEventListener("click", function () {
-        selectedMovieId = movie.id;
-        showConfirmBox(movie.title);
+        movieList.appendChild(movieBox);
       });
-
-      movieList.appendChild(movieBox);
+    })
+    .catch((error) => {
+      console.error("Error fetching movies:", error);
     });
-  });
-
-  function showConfirmBox(movieTitle) {
-    confirmBox.style.display = "block";
-    document.querySelector(
-      ".input-title"
-    ).innerText = `Jeste li sigurni da zelite obrisati film: "${movieTitle}"?`;
-  }
-
-  deleteMovieBtn.addEventListener("click", function () {
-    if (selectedMovieId) {
-      deleteMovie(selectedMovieId)
-        .then(() => {
-          alert("Movie successfully deleted!");
-          handleDeleteMovie();
-        })
-        .catch(() => alert("Greška prilikom brisanja filma!"));
-    }
-  });
-
-  closeOverlay.addEventListener("click", function (event) {
-    event.preventDefault();
-    overlay.style.display = "none";
-  });
 }
+
+function showConfirmBox(movieTitle) {
+  confirmBox.style.display = "block";
+  titleElement.style.display = "block";
+  titleElement.innerText = `Jeste li sigurni da zelite obrisati film: "${movieTitle}"?`;
+}
+
+deleteMovieBtn.addEventListener("click", async function () {
+  if (selectedMovieId) {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("You are not authorized to delete a movie.");
+      return;
+    }
+
+    try {
+      const result = await deleteMovie(selectedMovieId, token);
+
+      if (result) {
+        alert("Movie deleted successfully!");
+        overlay.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+    } catch (error) {
+      alert("Error deleting movie!");
+    }
+  }
+});

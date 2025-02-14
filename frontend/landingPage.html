@@ -75,9 +75,9 @@
     </menu>
 
     <!--admin-->
-    <div id="overlay-movie-form">
+    <div id="overlay-add-movie-form">
       <form id="add-movie-form" class="login-container admin-container">
-          <button id="close-overlay">✖</button>
+          <button id="close-add-overlay">✖</button>
           <h3 class="input-title">Unesite naziv filma</h3>
           <input type="text" id="title" class="input-box" placeholder="Title" required />
           
@@ -97,23 +97,22 @@
       </form>
     </div>
 
-    <div id="overlay-movie-form" style="display: none;">
-      <form id="edit-movie-form" class="login-container admin-container">
-        <h3>Svi filmovi</h3>
-        <div class="container" id="movieList"></div>
+    <div id="overlay-delete-movie-form">
+      <div id="delete-movie-container" class="login-container admin-container">
+        <h3 class="input-title">Svi filmovi</h3>
+        <div class="delete-movies-squares-div" id="movieList"></div>
     
-        <div class="confirm-box" style="display: none;">
-          <button id="close-overlay">✖</button>
-          <h3 class="input-title">Jeste li sigurni da želite obrisati film?</h3>
+        <div class="delete-confirm-box">
+          <button id="close-delete-overlay">✖</button>
+          <h3 class="input-title"></h3>
           <button id="deleteMovie-btn" class="submit-btn">Obriši film</button>
         </div>
-      </form>
-    </div>
-    
+      </div>
+    </div>    
 
-    <div id="overlay-movie-form">
+    <div id="overlay-edit-movie-form" style="display: none;">
       <form id="edit-movie-form" class="login-container admin-container">
-          <button id="close-overlay">✖</button>
+          <button id="close-edit-overlay">✖</button>
           <h3 class="input-title">Novi naziv filma</h3>
           <input type="text" id="edit-title" class="input-box" placeholder="Title" required />
           

@@ -1,4 +1,6 @@
-#overlay-movie-form {
+#overlay-add-movie-form,
+#overlay-delete-movie-form,
+#overlay-edit-movie-form {
   display: none;
   position: fixed;
   top: 0;
@@ -47,7 +49,8 @@
   margin-top: 0px;
 }
 
-#close-overlay {
+#close-add-overlay,
+#close-delete-overlay {
   position: absolute;
   top: 10px;
   right: 15px;

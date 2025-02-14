@@ -1,8 +1,8 @@
 import { addMovie } from "./movie-api.js";
 
-const overlay = document.getElementById("overlay-movie-form");
+const overlay = document.getElementById("overlay-add-movie-form");
 const addMovieForm = document.getElementById("add-movie-form");
-const closeBtn = document.getElementById("close-overlay");
+const closeBtn = document.getElementById("close-add-overlay");
 const addMovieBtn = document.getElementById("addMovie-btn");
 
 export function handleAddMovie() {
