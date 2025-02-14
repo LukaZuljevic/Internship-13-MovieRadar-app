@@ -21,4 +21,19 @@ function selectActiveLi(event) {
   }
 }
 
-export { selectActiveLi };
+function toggleHamburgerNav() {
+  const hamburgerIcon = document.querySelector(".hamburger-icon");
+  const hamburgerNav = document.querySelector(".hamburger-nav");
+
+  const isActive = hamburgerIcon.classList.contains("hamburger-icon-active");
+
+  if (isActive) {
+    hamburgerNav.style.display = "none";
+    hamburgerIcon.classList.remove("hamburger-icon-active");
+  } else {
+    hamburgerNav.style.display = "flex";
+    hamburgerIcon.classList.add("hamburger-icon-active");
+  }
+}
+
+export { selectActiveLi, toggleHamburgerNav };

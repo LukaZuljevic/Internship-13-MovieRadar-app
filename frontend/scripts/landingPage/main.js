@@ -1,4 +1,4 @@
-import { selectActiveLi } from "./dropdown-menu.js";
+import { selectActiveLi, toggleHamburgerNav } from "./dropdown-menu.js";
 import { openDialog, closeDialog, selectActiveBtn } from "./dialog.js";
 import { getAllMovies } from "./api.js";
 
@@ -36,3 +36,7 @@ dialogCloseIcon.addEventListener("click", closeDialog);
 dialogMenuBtns.forEach((btn) => {
   btn.addEventListener("click", (event) => selectActiveBtn(event));
 });
+
+document
+  .querySelector(".hamburger-icon")
+  .addEventListener("click", toggleHamburgerNav);
