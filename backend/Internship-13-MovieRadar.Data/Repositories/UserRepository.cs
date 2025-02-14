@@ -43,5 +43,21 @@ namespace Internship_13_MovieRadar.Data.Repositories
                     RETURNING id, firstname, lastname, email, isadmin";
             return await _connection.QueryFirstAsync<User>(sql, user);
         }
+
+        public async Task<List<UserWithStats>> GetUsersReviewStatsAsync()
+        {
+            var sql = @"SELECT 
+                        u.Id,
+                        u.FirstName,
+                        u.LastName,
+                        COUNT(r.Id) AS ReviewCount,
+                        COALESCE(AVG(r.Rating), 0) AS AverageRating
+                        FROM Users u
+                        LEFT JOIN Reviews r ON u.Id = r.UserId
+                        GROUP BY u.Id, u.FirstName, u.LastName";
+
+            var usersWithStats = await _connection.QueryAsync<UserWithStats>(sql);
+            return usersWithStats.ToList();
+        }
     }
 }

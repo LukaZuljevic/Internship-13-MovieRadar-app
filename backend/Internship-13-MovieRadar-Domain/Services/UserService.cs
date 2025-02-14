@@ -73,6 +73,18 @@ namespace Internship_13_MovieRadar.Domain.Services
             };
         }
 
+        public async Task<List<UserReviewStatsDto>> GetUsersReviewStatsAsync()
+        {
+            var usersWithStats = await _userRepository.GetUsersReviewStatsAsync();
+            return usersWithStats.Select(stats => new UserReviewStatsDto
+            {
+                FirstName = stats.FirstName,
+                LastName = stats.LastName,
+                ReviewCount = stats.ReviewCount,
+                AverageRating = stats.AverageRating
+            }).ToList();
+        }
+
         private string GenerateJwtToken(User user)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"]));
