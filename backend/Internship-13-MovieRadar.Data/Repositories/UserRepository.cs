@@ -62,7 +62,7 @@ namespace Internship_13_MovieRadar.Data.Repositories
 
         public async Task<User?> GetUserByIdAsync(Guid userId)
         {
-            var sql = "SELECT * FROM users WHERE id = @UserId";
+            var sql = "SELECT id, firstName, lastName, email, isAdmin FROM users WHERE id = @UserId";
             return await _connection.QueryFirstOrDefaultAsync<User>(sql, new { UserId = userId });
         }
     }
