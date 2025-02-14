@@ -5,7 +5,7 @@
 
 @import url(login-register/login.css);
 @import url(admin/admin.css);
-@import url(admin/movies.css);
+@import url(admin/movie-form.css);
 
 * {
   margin: 0;

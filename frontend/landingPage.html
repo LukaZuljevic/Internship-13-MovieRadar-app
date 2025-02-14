@@ -74,13 +74,33 @@
       </nav>
     </menu>
 
-    <form id="movie-form" class="admin-movie-form-container">
-      <input type="text" id="title" placeholder="Title" required />
-      <input type="text" id="genre" placeholder="Genre" required />
-      <input type="number" id="releaseYear" placeholder="Release year" required />
-      <input type="number" step="0.1" id="rating" placeholder="Rating" required />
-      <button type="submit">Dodaj film</button>
-    </form>
+    <!--admin-->
+    <div id="overlay-movie-form">
+      <form id="add-movie-form" class="login-container admin-container">
+          <button id="close-overlay">✖</button>
+          <h3 class="input-title">Unesite naziv filma</h3>
+          <input type="text" id="title" class="input-box" placeholder="Title" required />
+          
+          <h3 class="input-title">Unesite žanr filma</h3>
+          <input type="text" id="genre" class="input-box" placeholder="Genre" required />
+
+          <h3 class="input-title">Unesite opis</h3>
+          <input type="text" id="description" class="input-box" placeholder="Description" required />
+          
+          <h3 class="input-title">Unesite godinu izdanja</h3>
+          <input type="number" id="releaseYear" class="input-box" placeholder="Release year" required />
+          
+          <h3 class="input-title">Unesite ocjenu</h3>
+          <input type="number" step="0.1" id="rating" class="input-box" placeholder="Rating" required />
+
+          <h3 class="input-title">Unesite URL slike</h3>
+          <input type="text" id="imageURL" class="input-box" placeholder="Image URL" required />
+          
+          <button id="addMovie-btn" class="submit-btn">Dodaj film</button>
+      </form>
+    </div>
+
+    <!--admin-->
 
     <section class="movies-section">
       <div class="movies-container">
