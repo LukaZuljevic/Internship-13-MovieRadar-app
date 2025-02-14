@@ -53,5 +53,17 @@ namespace Internship_13_MovieRadar.Domain.Services
             return await _reviewRepository.DeleteAsync(id);
         }
 
+        public async Task<List<MovieReviewDto>> GetMovieReviewsAsync(Guid movieId)
+        {
+            var movieReviews = await _reviewRepository.GetMovieReviewsAsync(movieId);
+
+            return movieReviews.Select(movieReview => new MovieReviewDto
+            {
+                Id = movieReview.Id,
+                Content = movieReview.Content,
+                Rating = movieReview.Rating,
+                CreatedAt = DateTime.UtcNow
+            }).ToList();
+        }
     }
 }
