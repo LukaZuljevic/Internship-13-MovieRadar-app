@@ -35,6 +35,21 @@ namespace Internship_13_MovieRadar.Domain.Services
             }).ToList();
         }
 
+        public async Task<User?> GetUserByIdAsync(Guid userId)
+        {
+            var user = await _userRepository.GetUserByIdAsync(userId);
+
+            if (user == null) return null;
+
+            return new User
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                IsAdmin = user.IsAdmin
+            };
+        }
         public async Task<LoginResponseDto?> LoginAsync(LoginRequestDto request)
         {
             var user = await _userRepository.GetByEmailAsync(request.Email);
@@ -71,6 +86,18 @@ namespace Internship_13_MovieRadar.Domain.Services
             {
                 UserId = createdUser.Id
             };
+        }
+
+        public async Task<List<UserReviewStatsDto>> GetUsersReviewStatsAsync()
+        {
+            var usersWithStats = await _userRepository.GetUsersReviewStatsAsync();
+            return usersWithStats.Select(stats => new UserReviewStatsDto
+            {
+                FirstName = stats.FirstName,
+                LastName = stats.LastName,
+                ReviewCount = stats.ReviewCount,
+                AverageRating = stats.AverageRating
+            }).ToList();
         }
 
         private string GenerateJwtToken(User user)
