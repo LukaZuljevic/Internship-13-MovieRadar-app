@@ -26,6 +26,16 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
             return Ok(users);      
         }
 
+        [HttpGet("{userId}")]
+
+        public async Task<IActionResult> GetUser(Guid userId)
+        {
+            var user = await _userService.GetUserByIdAsync(userId);
+            if (user == null) return NotFound($"User with ID {userId} not found");
+
+            return Ok(user);
+        }
+
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDto request)
         {
@@ -60,6 +70,15 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
         {
             Response.Cookies.Delete("secretKey");
             return Ok();
+        }
+
+        [HttpGet("review-stats")]
+        public async Task<IActionResult> GetUsersReviewStats()
+        {
+            var usersStats = await _userService.GetUsersReviewStatsAsync();
+
+            if (usersStats == null) return NotFound();
+            return Ok(usersStats);
         }
     }
 }
