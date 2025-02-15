@@ -101,6 +101,11 @@ editMovieForm.addEventListener("submit", async function (event) {
     return;
   }
 
+  if (releaseYear < 1888 || releaseYear > 2030) {
+    alert("Godina izlaska mora biti između 1888 i 2030.");
+    return;
+  }
+
   const token = localStorage.getItem("token");
   if (!token) {
     alert("You are not authorized to edit a movie.");

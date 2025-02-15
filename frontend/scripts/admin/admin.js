@@ -64,7 +64,7 @@ export function populateGenreDropdown(selectedGenre = null) {
   genreSelects.forEach((select) => {
     select.innerHTML = "";
 
-    availableGenres.forEach((genre, index) => {
+    availableGenres.forEach((genre) => {
       const option = document.createElement("option");
       option.value = genre;
       option.textContent = genre;

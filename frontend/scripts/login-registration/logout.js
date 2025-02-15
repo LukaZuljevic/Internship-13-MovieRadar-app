@@ -3,6 +3,28 @@ import { logoutUser } from "./api-auth.js";
 const logoutBtn = document.getElementById("logout-btn");
 let isLoggingOut = false;
 
+const token = localStorage.getItem("token");
+if (token) {
+  if (!localStorage.getItem("loginTimestamp")) {
+    localStorage.setItem("loginTimestamp", Date.now().toString());
+  }
+  setInterval(checkSessionTimeout, 60 * 1000);
+}
+
+function checkSessionTimeout() {
+  const loginTimestamp = localStorage.getItem("loginTimestamp");
+  if (!loginTimestamp) return;
+
+  const now = Date.now();
+  const timeElapsed = now - parseInt(loginTimestamp, 10);
+  const sessionDuration = 30 * 60 * 1000;
+
+  if (timeElapsed >= sessionDuration) {
+    alert("Vaša sesija je istekla! Molimo vas da se ponovo prijavite.");
+    logoutUser();
+  }
+}
+
 logoutBtn.addEventListener("click", async function () {
   if (isLoggingOut) return;
   isLoggingOut = true;
@@ -24,26 +46,3 @@ logoutBtn.addEventListener("click", async function () {
     isLoggingOut = false;
   }
 });
-
-if (!localStorage.getItem("loginTimestamp")) {
-  localStorage.setItem("loginTimestamp", Date.now());
-}
-
-setInterval(checkSessionTimeout, 60 * 1000);
-
-function checkSessionTimeout() {
-  const loginTimestamp = localStorage.getItem("loginTimestamp");
-  if (!loginTimestamp) return;
-
-  const now = Date.now();
-  const timeElapsed = now - parseInt(loginTimestamp, 10);
-  const sessionDuration = 30 * 60 * 1000;
-
-  if (timeElapsed >= sessionDuration) {
-    if (isLoggingOut) return;
-    isLoggingOut = true;
-
-    alert("Vasa sesija je istekla! Molimo vas da se ponovo prijavite.");
-    logoutUser().finally(() => (isLoggingOut = false));
-  }
-}

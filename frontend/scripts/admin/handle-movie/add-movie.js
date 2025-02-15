@@ -34,6 +34,11 @@ addMovieBtn.addEventListener("click", async function (event) {
     return;
   }
 
+  if (releaseYear < 1888 || releaseYear > 2030) {
+    alert("Godina izlaska mora biti izmedjuu 1888 i 2030.");
+    return;
+  }
+
   const token = localStorage.getItem("token");
   if (!token) {
     alert("Nemate autorizaciju.");
