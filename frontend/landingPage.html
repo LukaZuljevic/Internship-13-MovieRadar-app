@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="images/landingPage/flavicon.png" type="image/png" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <script src="scripts/login-registration/logout.js" type="module"></script>
+    <script src="scripts/admin/admin.js" type="module" defer></script>
+    <script src="scripts/landingPage/dropdown-menu.js" defer></script>
+    <script src="scripts/landingPage/dialog.js" defer></script>
+    <script
+      src="scripts/landingPage/movie-cards.js"
+      type="module"
+      defer
+    ></script>
+    <title>MovieRadar App</title>
+  </head>
+  <body>
+    <menu class="landingPageMenu">
+      <nav class="main-nav">
+        <div class="logo">
+          <img src="images/landingPage/flavicon.png" alt="logo slika" />
+          <h2>MovieRadar</h2>
+        </div>
+        <div class="nav-bar">
+          <ul>
+            <li class="active">Svi filmovi</li>
+            <li>Filtriraj</li>
+            <li>Moje recenzije</li>
+          </ul>
+          <button id="logout-btn">Odjava</button>
+
+          <div id="admin-dropdown-container">
+            <label id="admin-label">Admin</label>
+            <div id="admin-dropdown" class="dropdown-content">
+              <div class="dropdown-item" data-action="addFilm">Dodaj film</div>
+              <div class="dropdown-item" data-action="deleteFilm">Obrisi film</div>
+              <div class="dropdown-item" data-action="editFilm">Uredi film</div>
+              <div class="dropdown-item" data-action="manageUsers">Upravljaj korisnicima</div>
+            </div>
+          </div>  
+
+        </div>
+      </nav>
+      <nav class="movie-filter-nav">
+        <div class="filters">
+          <div class="filter">
+            <h3>Žanr</h3>
+            <ul>
+              <li><input name="genre" type="radio" />Akcija</li>
+              <li><input name="genre" type="radio" />Avantura</li>
+              <li><input name="genre" type="radio" />Komedija</li>
+              <li><input name="genre" type="radio" />Drama</li>
+              <li><input name="genre" type="radio" />Horor</li>
+            </ul>
+          </div>
+
+          <div class="filter">
+            <h3>Ocjena</h3>
+            <ul>
+              <li><input name="rating" type="radio" />1</li>
+              <li><input name="rating" type="radio" />2</li>
+              <li><input name="rating" type="radio" />3</li>
+              <li><input name="rating" type="radio" />4</li>
+              <li><input name="rating" type="radio" />5</li>
+            </ul>
+          </div>
+
+          <div class="filter">
+            <label for="">Godina izdanja: <input type="number" /></label>
+          </div>
+        </div>
+        <button>Potvrdi</button>
+      </nav>
+    </menu>
+
+    <!--admin-->
+    <div id="overlay-add-movie-form">
+      <form id="add-movie-form" class="login-container admin-container">
+          <button id="close-add-overlay">✖</button>
+          <h3 class="input-title">Unesite naziv filma</h3>
+          <input type="text" id="title" class="input-box" placeholder="Title" required />
+          
+          <h3 class="input-title">Unesite žanr filma</h3>
+          <select id="genre" class="input-box" required></select>
+
+          <h3 class="input-title">Unesite opis</h3>
+          <input type="text" id="description" class="input-box" placeholder="Description" required />
+          
+          <h3 class="input-title">Unesite godinu izdanja</h3>
+          <input type="number" id="releaseYear" class="input-box" placeholder="Release year" required />
+          
+          <h3 class="input-title">Unesite URL slike</h3>
+          <input type="text" id="imageURL" class="input-box" placeholder="Image URL" required />
+          
+          <button id="addMovie-btn" class="submit-btn">Dodaj film</button>
+      </form>
+    </div>
+
+    <div id="overlay-delete-movie-form">
+      <div id="delete-movie-container" class="login-container admin-container">
+        <h3 class="input-title">Svi filmovi</h3>
+        <button id="close-delete-overlay">✖</button>
+        <div class="delete-movies-squares-div" id="movieList"></div>
+    
+        <div class="delete-confirm-box">
+          <h3 class="input-title"></h3>
+          <button id="deleteMovie-btn" class="submit-btn">Obrisi film</button>
+        </div>
+      </div>
+    </div>    
+
+    <div id="overlay-edit-movie-form" style="display: none;">
+      <div id="edit-movie-container" class="login-container admin-container">
+        <h3 class="input-title">Svi filmovi</h3>
+        <button id="close-edit-overlay">✖</button>
+        <div id="edit-movieList"></div>
+      </div>
+      <form id="edit-movie-form" class="login-container admin-container">
+          <button id="close-edit-form-overlay">✖</button>
+          <h3 class="input-title">Novi naziv filma</h3>
+          <input type="text" id="edit-title" class="input-box" placeholder="Title" required />
+          
+          <h3 class="input-title">Novi žanr filma</h3>
+          <select id="edit-genre" class="input-box"></select>
+
+          <h3 class="input-title">Novi opis</h3>
+          <input type="text" id="edit-description" class="input-box" placeholder="Description" required />
+          
+          <h3 class="input-title">Novi godinu izdanja</h3>
+          <input type="number" id="edit-releaseYear" class="input-box" placeholder="Release year" required />
+          
+          <h3 class="input-title">Novi URL slike</h3>
+          <input type="text" id="edit-imageURL" class="input-box" placeholder="Image URL" required />
+          
+          <button id="editMovie-btn" class="submit-btn">Spremi promjene</button>
+      </form>
+    </div>    
+
+    <div id="overlay-user-list">
+      <div id="user-list-container" class="login-container admin-container">
+        <button id="close-user-overlay">✖</button>
+        <div id="user-list"></div>
+      </div>    
+    </div>
+    <!--admin-->
+
+    <section class="movies-section">
+      <div class="movies-container">
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+        <div class="movie-card">
+          <img
+            src="https://m.media-amazon.com/images/I/717KH+f1fkL._AC_UF894,1000_QL80_.jpg"
+            alt=""
+          />
+          <div class="movie-heading">
+            <h2>Titanic (1997)</h2>
+          </div>
+          <div class="movie-rating">4/5</div>
+        </div>
+      </div>
+      <button class="previous-page">&lt;&lt;</button>
+      <button class="next-page">>></button>
+    </menu>
+
+    <section class="movies-section">
+      <div class="movies-container"></div>
+
+      <button class="previous-page">&lt;&lt;</button>
+      <button class="next-page">>></button>
+
+      <dialog class="movie-info-dialog">
+        <div class="x-icon">
+          <div></div>
+        </div>
+        <div class="movie-info-container">
+          <h2></h2>
+          <ul class="movie-info-nav">
+            <li class="active">Informacije</li>
+            <li>Recenzije</li>
+            <li>Ostavi recenziju</li>
+          </ul>
+          <div class="movie-details">
+            <p>
+              <span>Godina izdanja:&nbsp;</span
+              ><span class="release-year"></span>
+            </p>
+            <p><span>Žanr:&nbsp;</span><span class="movie-genre"></span></p>
+            <p>
+              <span>Opis:&nbsp;</span
+              ><span>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore
+                sed eaque deleniti voluptatibus assumenda fugiat accusantium
+                possimus id qui in ut consequatur tempore recusandae, aut
+                molestiae! Aliquam sed eveniet ratione.
+              </span>
+            </p>
+          </div>
+
+          <div class="movie-reviews">
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+
+            <div class="review">
+              <div class="review-heading">
+                <p><span>Josip Vojkovic</span><span>4/5</span></p>
+                <p>21.12.2024</p>
+              </div>
+              <p>
+                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
+              </p>
+            </div>
+          </div>
+
+          <div class="leave-review">
+            <ul class="choose-rating">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+            </ul>
+            <textarea
+              name=""
+              id=""
+              placeholder="Napisi recenziju..."
+            ></textarea>
+            <button>Potvrdi</button>
+          </div>
+        </div>
+
+        <img class="movie-image" alt="" />
+      </dialog>
+    </section>
+  </body>
+</html>

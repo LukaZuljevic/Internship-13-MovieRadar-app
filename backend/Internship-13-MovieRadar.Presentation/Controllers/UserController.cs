@@ -62,7 +62,7 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
 
             Response.Cookies.Append("secretKey", result.JwtToken, cookieOptions);
 
-            return Ok();
+            return Ok(result);
         }
 
         [HttpPost("logout")]

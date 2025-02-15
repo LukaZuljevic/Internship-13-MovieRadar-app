@@ -1,0 +1,110 @@
+#login-register-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-self: center;
+  width: 40%;
+  height: auto;
+  border-radius: 20px;
+  position: relative;
+  background-color: rgb(255, 234, 207);
+}
+
+#register {
+  height: auto;
+  padding-bottom: 1050px;
+  display: none;
+  height: 120vh;
+  margin: 40px;
+}
+
+.input-title,
+.login-title {
+  background-color: transparent;
+  margin-top: 20px;
+  font-size: 1.5em;
+  padding: 30px;
+  color: black;
+}
+
+.login-title {
+  padding-top: 50px;
+  font-size: 3em;
+}
+
+.password-title {
+  margin-top: 50px;
+}
+
+.input-box {
+  margin-top: 10px;
+  scale: 1.5;
+  background-color: transparent;
+  border-radius: 10px;
+  width: 50%;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.input-box:hover {
+  background-color: rgba(181, 169, 153, 0.607);
+  cursor: pointer;
+}
+
+.register-login-button,
+.submit-btn {
+  background-color: rgb(52, 50, 50);
+  color: white;
+  scale: 1;
+  border-radius: 20px;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.register-login-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 0.9em;
+}
+
+.submit-btn {
+  position: relative;
+  width: 50%;
+  scale: 1.5;
+  top: 40px;
+}
+
+.submit-btn:hover {
+  background-color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.register-login-button:hover {
+  background-color: rgb(255, 234, 207);
+  color: black;
+  cursor: pointer;
+}
+
+.switch-login-register--text {
+  font-size: 1em;
+  background-color: transparent;
+  position: relative;
+  margin-top: 70px;
+  padding: 40px;
+  padding-bottom: 20px;
+  text-align: center;
+  align-self: center;
+  color: black;
+}
