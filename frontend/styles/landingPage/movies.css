@@ -5,6 +5,13 @@
   margin-top: 100px;
   width: 100%;
   padding: 50px 80px;
+  gap: 30px;
+}
+
+.movies-section > h1 {
+  display: none;
+  text-align: center;
+  font-size: 34px;
 }
 
 .movies-container {
@@ -319,6 +326,7 @@
   .movies-container .movie-card img {
     width: 100%;
     height: 250px;
+    position: relative;
   }
 
   .movies-container .movie-card h2 {

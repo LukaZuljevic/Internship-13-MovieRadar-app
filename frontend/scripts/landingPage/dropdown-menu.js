@@ -64,6 +64,9 @@ async function showFilteredMovies() {
       "<h1>Nema filmova sa ovim filterom</h1>";
   }
 
+  const movieSectionH1 = document.querySelector(".movies-section > h1");
+  movieSectionH1.textContent = "Filtrirani filmovi";
+  movieSectionH1.style.display = "block";
   const moviesContainerEl = document.querySelector(".movies-container");
   moviesContainerEl.innerHTML = "";
 
@@ -71,7 +74,7 @@ async function showFilteredMovies() {
     moviesContainerEl.innerHTML += `<div class="movie-card" data-id=${m.id}>
             <img
               src=${m.imageUrl}
-              alt=""
+              alt="Slika filma ${m.title}"
             />
             <div class="movie-heading">
               <h2>${m.title} (${m.releaseYear})</h2>

@@ -7,6 +7,11 @@
   padding: 50px 80px;
 }
 
+.user-reviews > h1 {
+  text-align: center;
+  font-size: 30px;
+}
+
 .user-reviews > .user-review-card {
   display: flex;
   flex-direction: column;

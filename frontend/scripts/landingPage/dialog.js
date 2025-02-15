@@ -25,6 +25,9 @@ async function openDialog(event, movies) {
   document
     .querySelector(".movie-info-dialog .movie-image")
     .setAttribute("src", movieData.imageUrl);
+  document
+    .querySelector(".movie-info-dialog .movie-image")
+    .setAttribute("alt", `Slika za film ${movieData.title}`);
 
   addMovieReviews(card.dataset.id);
   leaveMovieReview(card.dataset.id);

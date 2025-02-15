@@ -20,11 +20,16 @@ mainNavList.forEach((li) => {
 const showAllMovies = document.querySelector(".nav-bar ul li:first-of-type");
 
 showAllMovies.addEventListener("click", async () => {
+  const movieSectionH1 = document.querySelector(".movies-section > h1");
+  movieSectionH1.textContent = "Svi filmovi";
+  movieSectionH1.style.display = "block";
+  moviesContainerEl.innerHTML = "";
+
   movies.forEach((m) => {
     moviesContainerEl.innerHTML += `<div class="movie-card" data-id=${m.id}>
               <img
                 src=${m.imageUrl}
-                alt=""
+                alt="Slika filma ${m.title}"
               />
               <div class="movie-heading">
                 <h2>${m.title} (${m.releaseYear})</h2>
@@ -40,10 +45,13 @@ showAllMovies.addEventListener("click", async () => {
 });
 
 movies.forEach((m) => {
+  const movieSectionH1 = document.querySelector(".movies-section > h1");
+  movieSectionH1.textContent = "Svi filmovi";
+  movieSectionH1.style.display = "block";
   moviesContainerEl.innerHTML += `<div class="movie-card" data-id=${m.id}>
             <img
               src=${m.imageUrl}
-              alt=""
+              alt="Slika filma ${m.title}"
             />
             <div class="movie-heading">
               <h2>${m.title} (${m.releaseYear})</h2>
