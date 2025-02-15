@@ -1,14 +1,15 @@
-import { getAllReviews } from "./api.js";
+import { getMovieReviews } from "./api.js";
 import { formatDate } from "./helpers.js";
 
-export async function addMovieReviews() {
+export async function addMovieReviews(movieId) {
   const movieReviewsEl = document.querySelector(
     ".movie-info-container .movie-reviews"
   );
-  const reviews = await getAllReviews();
+  const reviews = await getMovieReviews(movieId);
+  movieReviewsEl.innerHTML = "";
 
   if (reviews.length < 1) {
-    console.log("Nema recenzija");
+    movieReviewsEl.innerHTML += `<p>Nema recenzija</p>`;
     return;
   }
 
@@ -24,3 +25,5 @@ export async function addMovieReviews() {
             </div>`;
   });
 }
+
+export async function leaveMovieReview() {}

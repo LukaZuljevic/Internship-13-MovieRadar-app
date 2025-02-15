@@ -48,29 +48,35 @@
       <nav class="movie-filter-nav">
         <div class="filters">
           <div class="filter">
-            <h3>Žanr</h3>
-            <ul>
-              <li><input name="genre" type="radio" />Akcija</li>
-              <li><input name="genre" type="radio" />Avantura</li>
-              <li><input name="genre" type="radio" />Drama</li>
-              <li><input name="genre" type="radio" />Horor</li>
-              <li><input name="genre" type="radio" />Komedija</li>
-            </ul>
+            <label for="genre"
+              >Žanr:
+              <select name="genre">
+                <option value="Akcija">Akcija</option>
+                <option value="Avantura">Avantura</option>
+                <option value="Drama">Drama</option>
+                <option value="Horor">Horor</option>
+                <option value="Komedija">Komedija</option>
+              </select>
+            </label>
           </div>
 
           <div class="filter">
-            <h3>Ocjena</h3>
-            <ul>
-              <li><input name="rating" type="radio" />1</li>
-              <li><input name="rating" type="radio" />2</li>
-              <li><input name="rating" type="radio" />3</li>
-              <li><input name="rating" type="radio" />4</li>
-              <li><input name="rating" type="radio" />5</li>
-            </ul>
+            <label for="rating"
+              >Ocjena:
+              <select name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </label>
           </div>
 
           <div class="filter">
-            <label for="">Godina izdanja: <input type="number" /></label>
+            <label for=""
+              >Godina izdanja: <input type="number" min="1"
+            /></label>
           </div>
         </div>
         <button>Potvrdi</button>
@@ -105,88 +111,7 @@
             </p>
           </div>
 
-          <div class="movie-reviews">
-            <div class="review">
-              <div class="review-heading">
-                <p><span>Josip Vojkovic</span><span>4/5</span></p>
-                <p>21.12.2024</p>
-              </div>
-              <p>
-                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
-                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
-              </p>
-            </div>
-
-            <div class="review">
-              <div class="review-heading">
-                <p><span>Josip Vojkovic</span><span>4/5</span></p>
-                <p>21.12.2024</p>
-              </div>
-              <p>
-                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
-              </p>
-            </div>
-
-            <div class="review">
-              <div class="review-heading">
-                <p><span>Josip Vojkovic</span><span>4/5</span></p>
-                <p>21.12.2024</p>
-              </div>
-              <p>
-                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
-              </p>
-            </div>
-
-            <div class="review">
-              <div class="review-heading">
-                <p><span>Josip Vojkovic</span><span>4/5</span></p>
-                <p>21.12.2024</p>
-              </div>
-              <p>
-                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
-              </p>
-            </div>
-
-            <div class="review">
-              <div class="review-heading">
-                <p><span>Josip Vojkovic</span><span>4/5</span></p>
-                <p>21.12.2024</p>
-              </div>
-              <p>
-                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
-              </p>
-            </div>
-
-            <div class="review">
-              <div class="review-heading">
-                <p><span>Josip Vojkovic</span><span>4/5</span></p>
-                <p>21.12.2024</p>
-              </div>
-              <p>
-                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
-              </p>
-            </div>
-
-            <div class="review">
-              <div class="review-heading">
-                <p><span>Josip Vojkovic</span><span>4/5</span></p>
-                <p>21.12.2024</p>
-              </div>
-              <p>
-                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
-              </p>
-            </div>
-
-            <div class="review">
-              <div class="review-heading">
-                <p><span>Josip Vojkovic</span><span>4/5</span></p>
-                <p>21.12.2024</p>
-              </div>
-              <p>
-                Jako dobar film. Pogledao bih ga opet i preporucujem ga svima!
-              </p>
-            </div>
-          </div>
+          <div class="movie-reviews"></div>
 
           <div class="leave-review">
             <ul class="choose-rating">

@@ -21,7 +21,7 @@ function openDialog(event, movies) {
     .querySelector(".movie-info-dialog .movie-image")
     .setAttribute("src", movieData.imageUrl);
 
-  addMovieReviews();
+  addMovieReviews(card.dataset.id);
 }
 
 function closeDialog() {
