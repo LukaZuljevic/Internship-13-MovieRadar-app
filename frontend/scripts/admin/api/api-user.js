@@ -37,7 +37,6 @@ export async function getUsersReviewStats(token) {
     }
 
     const responseText = await response.text();
-    console.log("Raw API response:", responseText);
     return JSON.parse(responseText);
   } catch (error) {
     console.error("Error:", error);

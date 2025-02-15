@@ -40,23 +40,12 @@ export async function handleManageUsers(token) {
 
     const usersMap = new Map();
 
-    console.log(usersWithStats);
-
     usersWithStats.forEach((userStat) => {
-      const user = users.find(
-        (u) =>
-          u.firstName === userStat.firstName && u.lastName === userStat.lastName
-      );
+      const user = users.find((u) => u.id === userStat.userId);
 
       if (user) {
-        const userKey = `${user.id}`;
-
-        console.log(
-          `Povezivanje korisnika: ${user.firstName} ${user.lastName}, ID: ${user.id}`
-        );
-
-        if (!usersMap.has(userKey)) {
-          usersMap.set(userKey, {
+        if (!usersMap.has(user.id)) {
+          usersMap.set(user.id, {
             id: user.id,
             firstName: user.firstName,
             lastName: user.lastName,
@@ -68,7 +57,7 @@ export async function handleManageUsers(token) {
     });
 
     if (usersMap.size === 0) {
-      console.log("❌ No users to display");
+      console.log("no users to display");
       return;
     }
 
@@ -79,7 +68,7 @@ export async function handleManageUsers(token) {
         userBox.innerHTML = `
         <h3>${firstName} ${lastName}</h3>
         <p>Broj komentara: ${reviewCount}</p>
-        <p>Prosječna ocjena: ${averageRating.toFixed(2)}</p>
+        <p>Prosjecna ocjena: ${averageRating.toFixed(2)}</p>
         <button class="details-btn">Detalji</button>
         <div id="details-${id}" class="user-details" style="display: none;"></div>
       `;
@@ -93,15 +82,14 @@ export async function handleManageUsers(token) {
       }
     );
   } catch (error) {
-    console.error("❌ Error fetching user data:", error);
+    console.error("Error fetching user data:", error);
     alert("Error fetching user data.");
   }
 }
 
 async function showUserDetails(userId, token) {
-  console.log("📢 User ID in showUserDetails:", userId); // Provjeri ID koji se prima
   if (!userId) {
-    console.error("❌ User ID is missing or invalid");
+    console.error("User ID is missing or invalid");
     return;
   }
 
@@ -139,7 +127,7 @@ async function showUserDetails(userId, token) {
 
     detailsDiv.style.display = "block";
   } catch (error) {
-    console.error("❌ Error fetching user details:", error);
+    console.error("Error fetching user details:", error);
     detailsDiv.innerHTML = "<p>Greska pri ucitavanju detalja.</p>";
   }
 }

@@ -5,6 +5,7 @@
   gap: 15px;
   padding: 20px;
   justify-items: center;
+  overflow-y: auto;
 }
 
 .movie-box {
@@ -31,4 +32,20 @@
 .movie-box.focused {
   border: 2px solid rgb(100, 100, 100);
   background-color: rgba(100, 100, 100, 0.555);
+}
+
+#movieList::-webkit-scrollbar,
+#edit-movieList::-webkit-scrollbar {
+  width: 8px;
+}
+
+#movieList::-webkit-scrollbar-thumb,
+#edit-movieList::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+#movieList::-webkit-scrollbar-thumb:hover,
+#edit-movieList::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

@@ -26,6 +26,11 @@
   font-size: 0.8em;
   align-self: center;
   z-index: 2;
+  border-radius: 10px;
+}
+
+.admin-container .input-title {
+  margin-top: 0px;
 }
 
 .admin-container::-webkit-scrollbar {
@@ -38,15 +43,11 @@
 
 .admin-container::-webkit-scrollbar-thumb {
   background: #888;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .admin-container::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-.admin-container .input-title {
-  margin-top: 0px;
 }
 
 #close-add-overlay,
