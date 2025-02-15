@@ -1,0 +1,20 @@
+select {
+  margin-top: 10px;
+  scale: 1.5;
+  background-color: transparent;
+  border: 0.5px solid black;
+  border-radius: 10px;
+  width: 50%;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+select option {
+  background-color: white;
+  color: black;
+}
+
+select option:hover {
+  background-color: #00000088;
+  color: white;
+}

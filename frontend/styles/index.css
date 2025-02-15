@@ -8,6 +8,7 @@
 @import url(admin/movie-form.css);
 @import url(admin/movie-list.css);
 @import url(admin/users.css);
+@import url(admin/dropdown-genre.css);
 
 * {
   margin: 0;

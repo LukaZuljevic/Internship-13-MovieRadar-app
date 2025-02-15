@@ -32,7 +32,6 @@ if (!localStorage.getItem("loginTimestamp")) {
 setInterval(checkSessionTimeout, 60 * 1000);
 
 function checkSessionTimeout() {
-  console.log("check");
   const loginTimestamp = localStorage.getItem("loginTimestamp");
   if (!loginTimestamp) return;
 
