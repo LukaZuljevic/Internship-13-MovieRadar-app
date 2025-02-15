@@ -20,7 +20,6 @@ closeEditBtn.addEventListener("click", closeOverlay);
 closeEditFormBtn.addEventListener("click", function (event) {
   event.stopPropagation();
   event.preventDefault();
-
   closeOverlay();
 });
 
