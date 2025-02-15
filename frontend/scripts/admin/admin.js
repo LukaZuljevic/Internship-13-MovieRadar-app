@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const dropdownItems = document.querySelectorAll(".dropdown-item");
 
   populateGenreDropdown();
+
   if (adminDropdownContainer) {
     adminDropdownContainer.style.display = "block";
   }

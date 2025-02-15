@@ -115,6 +115,8 @@ editMovieForm.addEventListener("submit", async function (event) {
       alert("Movie updated successfully!");
       closeOverlay();
       editMovieForm.reset();
+    } else {
+      alert("Ime filma vec postoji, unesite neko drugo.");
     }
   } catch (error) {
     alert("Error updating movie!");

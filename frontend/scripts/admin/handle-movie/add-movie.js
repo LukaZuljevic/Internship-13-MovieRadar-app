@@ -41,6 +41,7 @@ addMovieBtn.addEventListener("click", async function (event) {
   }
 
   const movieData = { title, description, genre, releaseYear, imageURL };
+
   const result = await addMovie(movieData, token);
 
   if (result) {
@@ -48,5 +49,7 @@ addMovieBtn.addEventListener("click", async function (event) {
     overlay.style.display = "none";
     document.body.style.overflow = "auto";
     addMovieForm.reset();
+  } else {
+    alert("Ime filma vec postoji, unesite neko drugo.");
   }
 });
