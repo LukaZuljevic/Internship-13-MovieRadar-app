@@ -1,4 +1,5 @@
 import { getAllMovies, getMovieById, updateMovie } from "../api/movie-api.js";
+import { populateGenreDropdown } from "../admin.js";
 
 const overlay = document.getElementById("overlay-edit-movie-form");
 const listBox = document.getElementById("edit-movie-container");
@@ -10,16 +11,17 @@ const closeEditFormBtn = document.getElementById("close-edit-form-overlay");
 let selectedMovieId = null;
 let selectedMovieBox = null;
 
-closeEditBtn.addEventListener("click", function (event) {
-  event.preventDefault();
+function closeOverlay() {
   overlay.style.display = "none";
   document.body.style.overflow = "auto";
-});
+}
 
+closeEditBtn.addEventListener("click", closeOverlay);
 closeEditFormBtn.addEventListener("click", function (event) {
+  event.stopPropagation();
   event.preventDefault();
-  overlay.style.display = "none";
-  document.body.style.overflow = "auto";
+
+  closeOverlay();
 });
 
 export function handleEditMovie() {
@@ -30,7 +32,6 @@ export function handleEditMovie() {
   editMovieForm.style.display = "none";
   movieListEdit.style.visibility = "visible";
 
-  movieListEdit.innerHTML = "";
   selectedMovieBox = null;
   selectedMovieId = null;
 
@@ -67,10 +68,11 @@ function openEditForm(movieId) {
     .then((movie) => {
       if (movie) {
         document.getElementById("edit-title").value = movie.title;
-        document.getElementById("edit-genre").value = movie.genre;
         document.getElementById("edit-description").value = movie.description;
         document.getElementById("edit-releaseYear").value = movie.releaseYear;
         document.getElementById("edit-imageURL").value = movie.imageURL;
+
+        populateGenreDropdown(movie.genre);
 
         movieListEdit.style.visibility = "hidden";
         editMovieForm.style.display = "block";
@@ -112,8 +114,7 @@ editMovieForm.addEventListener("submit", async function (event) {
     const result = await updateMovie(selectedMovieId, movieData, token);
     if (result) {
       alert("Movie updated successfully!");
-      overlay.style.display = "none";
-      document.body.style.overflow = "auto";
+      closeOverlay();
       editMovieForm.reset();
     }
   } catch (error) {

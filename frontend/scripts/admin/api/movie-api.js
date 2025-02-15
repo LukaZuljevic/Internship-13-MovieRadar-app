@@ -1,8 +1,8 @@
-const API_BASE_URL = "https://localhost:51140/api/movies";
+const API_BASE_MOVIE_URL = "https://localhost:51140/api/movies";
 
 export async function addMovie(movieData, token) {
   try {
-    const response = await fetch(`${API_BASE_URL}`, {
+    const response = await fetch(`${API_BASE_MOVIE_URL}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,7 +20,7 @@ export async function addMovie(movieData, token) {
 
 export async function updateMovie(id, movieData, token) {
   try {
-    const response = await fetch(`${API_BASE_URL}/${id}`, {
+    const response = await fetch(`${API_BASE_MOVIE_URL}/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export async function updateMovie(id, movieData, token) {
 
 export async function deleteMovie(id, token) {
   try {
-    const response = await fetch(`${API_BASE_URL}/${id}`, {
+    const response = await fetch(`${API_BASE_MOVIE_URL}/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -57,7 +57,7 @@ export async function deleteMovie(id, token) {
 export async function getAllMovies() {
   const token = localStorage.getItem("token");
 
-  const response = await fetch("https://localhost:51140/api/movies", {
+  const response = await fetch(`${API_BASE_MOVIE_URL}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -77,7 +77,29 @@ export async function getMovieById(id) {
   const token = localStorage.getItem("token");
 
   try {
-    const response = await fetch(`${API_BASE_URL}/${id}`, {
+    const response = await fetch(`${API_BASE_MOVIE_URL}/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      credentials: "include",
+    });
+
+    if (!response.ok) throw new Error(`Error fetching movie with ID ${id}`);
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error:", error);
+    return null;
+  }
+}
+
+export async function getMovieByGenre() {
+  const token = localStorage.getItem("token");
+
+  try {
+    const response = await fetch(`${API_BASE_MOVIE_URL}/filter`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

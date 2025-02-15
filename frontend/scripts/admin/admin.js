@@ -6,7 +6,6 @@ import { handleManageUsers } from "./manage-users.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const user = getUserFromToken();
-  console.log("Role: " + user.role);
 
   if (user.role !== "Admin") return;
 
@@ -17,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const adminDropdown = document.getElementById("admin-dropdown");
   const dropdownItems = document.querySelectorAll(".dropdown-item");
 
+  populateGenreDropdown();
   if (adminDropdownContainer) {
     adminDropdownContainer.style.display = "block";
   }
@@ -55,3 +55,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+export function populateGenreDropdown(selectedGenre = null) {
+  const availableGenres = ["Drama", "Akcija", "Komedija", "Horor", "Avantura"];
+  const genreSelects = document.querySelectorAll("#genre, #edit-genre");
+
+  genreSelects.forEach((select) => {
+    select.innerHTML = "";
+
+    availableGenres.forEach((genre, index) => {
+      const option = document.createElement("option");
+      option.value = genre;
+      option.textContent = genre;
+
+      if (genre === selectedGenre) {
+        option.selected = true;
+      }
+
+      select.appendChild(option);
+    });
+  });
+}

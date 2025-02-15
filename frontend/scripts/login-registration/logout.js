@@ -1,4 +1,4 @@
-import { logoutUser } from "./api-users.js";
+import { logoutUser } from "./api-auth.js";
 
 const logoutBtn = document.getElementById("logout-btn");
 

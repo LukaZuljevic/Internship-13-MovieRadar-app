@@ -10,7 +10,7 @@ export function handleAddMovie() {
   document.body.style.overflow = "hidden";
 }
 
-closeBtn.addEventListener("click", function () {
+closeBtn.addEventListener("click", function (event) {
   event.preventDefault();
   document.body.style.overflow = "auto";
   overlay.style.display = "none";
@@ -21,7 +21,7 @@ addMovieBtn.addEventListener("click", async function (event) {
   event.preventDefault();
 
   const title = document.getElementById("title").value.trim();
-  const genre = document.getElementById("genre").value.trim();
+  const genre = document.getElementById("genre").value;
   const releaseYear = parseInt(
     document.getElementById("releaseYear").value,
     10
