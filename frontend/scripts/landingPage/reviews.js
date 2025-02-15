@@ -1,4 +1,4 @@
-import { getMovieReviews } from "./api.js";
+import { getMovieReviews, postReview } from "./api.js";
 import { formatDate } from "./helpers.js";
 
 export async function addMovieReviews(movieId) {
@@ -26,4 +26,39 @@ export async function addMovieReviews(movieId) {
   });
 }
 
-export async function leaveMovieReview() {}
+export async function calculateMovieRating(movieId) {
+  const reviews = await getMovieReviews(movieId);
+
+  const averageRating =
+    reviews.length > 0
+      ? reviews.reduce((sum, obj) => sum + obj.rating, 0) / reviews.length
+      : 0;
+
+  return Math.round(averageRating);
+}
+
+export function leaveMovieReview(movieId) {
+  document
+    .querySelector(".leave-review > button")
+    .addEventListener("click", () => {
+      const movieRatingEl = document.querySelector(
+        'input[name="choosenRating"]:checked'
+      );
+
+      const movieDescription =
+        document.querySelector("#movieDescription").value;
+
+      const errorMessage = document.querySelector(
+        ".leave-review > .error-message"
+      );
+
+      if (!movieRatingEl || !movieDescription) {
+        errorMessage.textContent = "Morate odabrati ocjenu i unijeti tekst!";
+        errorMessage.style.display = "block";
+        return;
+      }
+
+      errorMessage.style.display = "none";
+      postReview(movieId, movieDescription, movieRatingEl.value);
+    });
+}

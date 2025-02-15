@@ -75,3 +75,23 @@ export function setupLoginRegister() {
     }
   });
 }
+
+export function getUserFromToken() {
+  try {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    if (!token) {
+      console.warn("JWT token not found in localStorage.");
+      return null;
+    }
+    const tokenParts = token.split(".");
+    if (tokenParts.length !== 3) {
+      return null;
+    }
+    const payload = atob(tokenParts[1]);
+    return JSON.parse(payload);
+  } catch (error) {
+    console.error("Error decoding JWT:", error);
+    return null;
+  }
+}

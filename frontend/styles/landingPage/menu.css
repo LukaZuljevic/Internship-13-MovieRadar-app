@@ -103,6 +103,12 @@
   background-color: rgb(12, 74, 108);
 }
 
+.movie-filter-nav > .filter-message {
+  display: none;
+  text-align: center;
+  color: red;
+}
+
 .movie-filter-nav .filters {
   display: flex;
   justify-content: space-around;

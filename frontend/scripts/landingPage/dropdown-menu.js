@@ -1,3 +1,5 @@
+import { filterMovies } from "./api.js";
+
 function selectActiveLi(event) {
   document.querySelectorAll(".nav-bar ul li").forEach((li) => {
     li.classList.remove("active");
@@ -36,4 +38,46 @@ function toggleHamburgerNav() {
   }
 }
 
-export { selectActiveLi, toggleHamburgerNav };
+async function showFilteredMovies() {
+  const filterMsg = document.querySelector(".filter-message");
+  filterMsg.style.display = "none";
+
+  const genre = document.getElementById("genreFilter").value;
+  const rating = document.getElementById("ratingFilter").value;
+  const releaseYear = document.querySelector(
+    '.filter input[type="number"]'
+  ).value;
+
+  if (!genre && !rating && !releaseYear) {
+    filterMsg.style.display = "block";
+    return;
+  }
+
+  const movies = await filterMovies(genre, rating, releaseYear);
+
+  document.querySelector(".movie-filter-nav").style.display = "none";
+
+  console.log(movies);
+
+  if (movies.length < 1) {
+    document.querySelector(".movies-container").innerHTML =
+      "<h1>Nema filmova sa ovim filterom</h1>";
+  }
+
+  const moviesContainerEl = document.querySelector(".movies-container");
+  moviesContainerEl.innerHTML = "";
+
+  movies.forEach((m) => {
+    moviesContainerEl.innerHTML += `<div class="movie-card" data-id=${m.id}>
+            <img
+              src=${m.imageUrl}
+              alt=""
+            />
+            <div class="movie-heading">
+              <h2>${m.title} (${m.releaseYear})</h2>
+            </div>
+          </div>`;
+  });
+}
+
+export { selectActiveLi, toggleHamburgerNav, showFilteredMovies };

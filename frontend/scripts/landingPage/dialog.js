@@ -1,16 +1,21 @@
-import { addMovieReviews } from "./reviews.js";
+import {
+  addMovieReviews,
+  calculateMovieRating,
+  leaveMovieReview,
+} from "./reviews.js";
 
-function openDialog(event, movies) {
+async function openDialog(event, movies) {
   const dialogEl = document.querySelector(".movie-info-dialog");
   dialogEl.showModal();
   dialogEl.style.display = "flex";
 
   const card = event.target.closest(".movie-card");
   const movieData = movies.find((m) => m.id === card.dataset.id);
+  const averageRating = await calculateMovieRating(card.dataset.id);
 
-  document.querySelector(
-    ".movie-info-container > h2"
-  ).innerHTML = `${movieData.title}&nbsp;<span>4/5</span>`;
+  document.querySelector(".movie-info-container > h2").innerHTML = `${
+    movieData.title
+  }&nbsp;<span>${averageRating > 0 ? averageRating + "/5" : "N/A"}</span>`;
   document.querySelector(".movie-details .release-year").textContent =
     movieData.releaseYear;
   document.querySelector(".movie-details .movie-genre").textContent =
@@ -22,12 +27,25 @@ function openDialog(event, movies) {
     .setAttribute("src", movieData.imageUrl);
 
   addMovieReviews(card.dataset.id);
+  leaveMovieReview(card.dataset.id);
 }
 
 function closeDialog() {
   const dialogEl = document.querySelector(".movie-info-dialog");
   dialogEl.close();
   dialogEl.style.display = "none";
+  document.querySelector(".leave-review > .error-message").style.display =
+    "none";
+
+  const radioButtons = document.querySelectorAll('input[name="choosenRating"]');
+
+  radioButtons.forEach((radioButton) => {
+    if (radioButton.checked) {
+      radioButton.checked = false;
+    }
+  });
+
+  document.querySelector("#movieDescription").value = "";
 }
 
 function selectActiveBtn(event) {

@@ -1,3 +1,5 @@
+import { getUserFromToken } from "../login-registration/login.js";
+
 const API_BASE_URL = "https://localhost:51140/api";
 const jwtToken = localStorage.getItem("token");
 
@@ -13,7 +15,6 @@ async function getAllMovies() {
   return response.json();
 }
 
-//Zasad je ovako ali cekam da naprave endpoint tako da mogu za jedan film recenzije
 async function getMovieReviews(movieId) {
   const response = await fetch(`${API_BASE_URL}/reviews/movie/${movieId}`, {
     credentials: "include",
@@ -33,7 +34,15 @@ async function getMovieReviews(movieId) {
   return response.json();
 }
 
-async function addReview(userId, movieId, content, rating) {
+async function postReview(movieId, content, rating) {
+  const user = getUserFromToken();
+  const userId = user.sub;
+
+  console.log("UserId" + userId);
+  console.log("MovieId" + movieId);
+  console.log("Content" + content);
+  console.log("Rating" + rating);
+
   const response = await fetch(`${API_BASE_URL}/reviews`, {
     method: "POST",
     credentials: "include",
@@ -41,22 +50,27 @@ async function addReview(userId, movieId, content, rating) {
       Authorization: `Bearer ${jwtToken}`,
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({ movieId, userId, content, rating }),
   });
 
   return response.json();
 }
 
-// Takoder cekam da naprave endpoint
-async function getUser() {
-  const response = await fetch(`${API_BASE_URL}/reviews`, {
-    credentials: "include",
-    headers: {
-      Authorization: `Bearer ${jwtToken}`,
-      "Content-Type": "application/json",
-    },
-  });
+async function filterMovies(genre, rating, releaseYear) {
+  const response = await fetch(
+    `${API_BASE_URL}/movies/filter?${genre && "genre=" + genre + "&"}${
+      rating && "minRating=" + rating + "&"
+    }${releaseYear && "releaseYear=" + releaseYear + "&"}`,
+    {
+      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
 
   return response.json();
 }
 
-export { getAllMovies, getMovieReviews };
+export { getAllMovies, getMovieReviews, postReview, filterMovies };
