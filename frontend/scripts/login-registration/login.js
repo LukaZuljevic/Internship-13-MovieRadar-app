@@ -1,4 +1,4 @@
-import { registerUser, loginUser } from "./api-users.js";
+import { registerUser, loginUser } from "./api-auth.js";
 import { validateLogin, validateRegister } from "./validation.js";
 
 export function setupLoginRegister() {
