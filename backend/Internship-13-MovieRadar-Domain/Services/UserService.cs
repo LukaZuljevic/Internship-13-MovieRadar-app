@@ -93,6 +93,7 @@ namespace Internship_13_MovieRadar.Domain.Services
             var usersWithStats = await _userRepository.GetUsersReviewStatsAsync();
             return usersWithStats.Select(stats => new UserReviewStatsDto
             {
+                UserId = stats.Id,
                 FirstName = stats.FirstName,
                 LastName = stats.LastName,
                 ReviewCount = stats.ReviewCount,
