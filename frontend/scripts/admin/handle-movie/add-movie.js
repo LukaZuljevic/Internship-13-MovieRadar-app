@@ -46,6 +46,7 @@ addMovieBtn.addEventListener("click", async function (event) {
   if (result) {
     alert("Movie added successfully!");
     overlay.style.display = "none";
+    document.body.style.overflow = "auto";
     addMovieForm.reset();
   }
 });
