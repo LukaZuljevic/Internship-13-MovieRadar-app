@@ -113,10 +113,6 @@ export async function checkUserMovieReview(movieId) {
   const writeReviewEl = document.querySelector(".write-review");
   const alreadyLeftReviewEl = document.querySelector(".user-movie-review");
 
-  console.log(writeReviewEl);
-
-  console.log(review);
-
   if (review) {
     alreadyLeftReviewEl.style.display = "block";
     writeReviewEl.style.display = "none";

@@ -79,7 +79,6 @@ export function setupLoginRegister() {
 export function getUserFromToken() {
   try {
     const token = localStorage.getItem("token");
-    console.log(token);
     if (!token) {
       console.warn("JWT token not found in localStorage.");
       return null;

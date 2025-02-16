@@ -58,7 +58,6 @@ async function showFilteredMovies() {
 
   document.querySelector(".movie-filter-nav").style.display = "none";
 
-  console.log(movies);
   const movieSectionH1 = document.querySelector(".movies-section > h1");
   movieSectionH1.textContent = "Filtrirani filmovi";
 
