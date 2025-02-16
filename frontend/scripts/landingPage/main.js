@@ -1,5 +1,6 @@
 import {
   selectActiveLi,
+  selectHamburgerLi,
   showFilteredMovies,
   toggleHamburgerNav,
 } from "./dropdown-menu.js";
@@ -27,30 +28,32 @@ mainNavList.forEach((li) => {
   li.addEventListener("click", (event) => selectActiveLi(event));
 });
 
-const showAllMovies = document.querySelector(".nav-bar ul li:first-of-type");
+const showAllMoviesEl = document.querySelectorAll(".showAllMovies");
 
-showAllMovies.addEventListener("click", async () => {
-  const movieSectionH1 = document.querySelector(".movies-section > h1");
-  movieSectionH1.textContent = "Svi filmovi";
-  movieSectionH1.style.display = "block";
-  moviesContainerEl.innerHTML = "";
+showAllMoviesEl.forEach((el) => {
+  el.addEventListener("click", async () => {
+    const movieSectionH1 = document.querySelector(".movies-section > h1");
+    movieSectionH1.textContent = "Svi filmovi";
+    movieSectionH1.style.display = "block";
+    moviesContainerEl.innerHTML = "";
 
-  movies.forEach((m) => {
-    moviesContainerEl.innerHTML += `<div class="movie-card" data-id=${m.id}>
-              <img
-                src=${m.imageUrl}
-                alt="Slika filma ${m.title}"
-              />
-              <div class="movie-heading">
-                <h2>${m.title} (${m.releaseYear})</h2>
-              </div>
-            </div>`;
-  });
+    movies.forEach((m) => {
+      moviesContainerEl.innerHTML += `<div class="movie-card" data-id=${m.id}>
+                <img
+                  src=${m.imageUrl}
+                  alt="Slika filma ${m.title}"
+                />
+                <div class="movie-heading">
+                  <h2>${m.title} (${m.releaseYear})</h2>
+                </div>
+              </div>`;
+    });
 
-  const movieCardElements = document.querySelectorAll(".movie-card");
+    const movieCardElements = document.querySelectorAll(".movie-card");
 
-  movieCardElements.forEach((card) => {
-    card.addEventListener("click", (event) => openDialog(event, movies));
+    movieCardElements.forEach((card) => {
+      card.addEventListener("click", (event) => openDialog(event, movies));
+    });
   });
 });
 
@@ -88,3 +91,9 @@ document
 document
   .querySelector(".nav-bar > ul > li:last-of-type")
   .addEventListener("click", showUserReviews);
+
+const hamburgerLiElements = document.querySelectorAll(".hamburger-nav");
+
+hamburgerLiElements.forEach((el) => {
+  el.addEventListener("click", (event) => selectHamburgerLi(event));
+});
