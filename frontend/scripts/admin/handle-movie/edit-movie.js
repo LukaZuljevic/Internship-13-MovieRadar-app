@@ -69,7 +69,7 @@ function openEditForm(movieId) {
         document.getElementById("edit-title").value = movie.title;
         document.getElementById("edit-description").value = movie.description;
         document.getElementById("edit-releaseYear").value = movie.releaseYear;
-        document.getElementById("edit-imageURL").value = movie.imageURL;
+        document.getElementById("edit-imageURL").value = movie.imageUrl;
 
         populateGenreDropdown(movie.genre);
 
@@ -120,6 +120,9 @@ editMovieForm.addEventListener("submit", async function (event) {
       alert("Movie updated successfully!");
       closeOverlay();
       editMovieForm.reset();
+      setTimeout(() => {
+        location.reload();
+      }, 200);
     } else {
       alert("Ime filma vec postoji, unesite neko drugo.");
     }
