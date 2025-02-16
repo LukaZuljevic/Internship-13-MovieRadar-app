@@ -63,7 +63,9 @@ namespace Internship_13_MovieRadar.Domain.Services
                 Id = movieReview.Id,
                 Content = movieReview.Content,
                 Rating = movieReview.Rating,
-                CreatedAt = movieReview.CreatedAt
+                CreatedAt = movieReview.CreatedAt,
+                MovieId = movieReview.MovieId,
+                MovieTitle = movieReview.MovieTitle
             }).ToList();
         }
 

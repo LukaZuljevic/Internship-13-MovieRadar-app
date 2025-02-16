@@ -51,24 +51,27 @@ namespace Internship_13_MovieRadar.Data.Repositories
             return count > 0;
         }
 
-        public async Task<List<Review>> GetMovieReviewsAsync(Guid movieId)
+        public async Task<List<ReviewWithMovie>> GetMovieReviewsAsync(Guid movieId)
         {
             var sql = @"
             SELECT 
                 r.Id,
                 r.Content,
                 r.Rating,
-                r.CreatedAt
+                r.CreatedAt,
+                m.Id AS MovieId,
+                m.Title AS MovieTitle
             FROM Reviews r
+            JOIN Movies m ON r.MovieId = m.Id
             WHERE r.MovieId = @MovieId
             ORDER BY r.CreatedAt DESC";
 
-            var reviews = await _connection.QueryAsync<Review>(sql, new { MovieId = movieId });
+            var reviews = await _connection.QueryAsync<ReviewWithMovie>(sql, new { MovieId = movieId });
 
             return reviews.ToList();
         }
 
-        public async Task<List<UserReviewWithMovie>> GetUserReviewsAsync(Guid userId)
+        public async Task<List<ReviewWithMovie>> GetUserReviewsAsync(Guid userId)
         {
             var sql = @"
                 SELECT 
@@ -84,7 +87,7 @@ namespace Internship_13_MovieRadar.Data.Repositories
                 ORDER BY r.CreatedAt DESC";
 
 
-            var reviews = await _connection.QueryAsync<UserReviewWithMovie>(sql, new { UserId = userId });
+            var reviews = await _connection.QueryAsync<ReviewWithMovie>(sql, new { UserId = userId });
 
             return reviews.ToList();
         }

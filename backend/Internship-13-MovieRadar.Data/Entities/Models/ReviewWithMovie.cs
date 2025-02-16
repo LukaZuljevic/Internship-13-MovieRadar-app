@@ -1,7 +1,7 @@
 ﻿
 namespace Internship_13_MovieRadar.Data.Entities.Models
 {
-    public class UserReviewWithMovie
+    public class ReviewWithMovie
     {
         public Guid Id { get; set; }
         public string Content { get; set; } = string.Empty;
