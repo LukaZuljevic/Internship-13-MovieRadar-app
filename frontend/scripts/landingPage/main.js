@@ -88,9 +88,11 @@ document
   .querySelector(".movie-filter-nav > button")
   .addEventListener("click", showFilteredMovies);
 
-document
-  .querySelector(".nav-bar > ul > li:last-of-type")
-  .addEventListener("click", showUserReviews);
+const showUserReviewsLi = document.querySelectorAll(".showUserReviews");
+
+showUserReviewsLi.forEach((el) => {
+  el.addEventListener("click", showUserReviews);
+});
 
 const hamburgerLiElements = document.querySelectorAll(".hamburger-nav");
 

@@ -54,3 +54,24 @@
 .user-review-heading .deleteReview:hover {
   background-color: #cd4549;
 }
+
+@media screen and (max-width: 800px) {
+  .user-reviews {
+    padding: 50px 10px;
+  }
+
+  .user-review-heading > h3:last-of-type {
+    font-size: 12px;
+  }
+
+  .user-review-heading > h3:first-of-type > span:last-of-type {
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  .user-review-heading .deleteReview {
+    padding: 5px;
+
+    font-size: 12px;
+  }
+}

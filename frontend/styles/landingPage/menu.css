@@ -122,9 +122,14 @@
 }
 
 .filter select {
+  width: auto !important;
+  height: auto;
   min-width: 50px;
   padding: 5px;
+  scale: 1;
   border-radius: 5px;
+  margin: 0;
+  text-align: left;
 }
 
 .filter label {
@@ -274,6 +279,7 @@
   color: black;
   list-style-type: none;
   box-shadow: 0px 0px 5px rgb(205, 205, 205);
+  z-index: 3;
 }
 
 .hamburger-nav > li {
@@ -383,8 +389,16 @@
     display: flex;
   }
 
-  .main-nav .nav-bar {
+  .main-nav .nav-bar ul {
     display: none;
+  }
+
+  .main-nav .nav-bar button {
+    display: none;
+  }
+
+  .filter label {
+    font-size: 14px;
   }
 }
 
