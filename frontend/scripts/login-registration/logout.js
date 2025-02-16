@@ -16,7 +16,9 @@ function checkSessionTimeout() {
   if (!loginTimestamp) return;
 
   const now = Date.now();
-  const timeElapsed = now - parseInt(loginTimestamp, 10);
+  const parsedTimestamp = parseInt(loginTimestamp, 10);
+  const timeElapsed = now - parsedTimestamp;
+
   const sessionDuration = 30 * 60 * 1000;
 
   if (timeElapsed >= sessionDuration) {
