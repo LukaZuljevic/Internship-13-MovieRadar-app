@@ -88,5 +88,11 @@ namespace Internship_13_MovieRadar.Data.Repositories
 
             return reviews.ToList();
         }
+
+        public async Task<Review?> GetReviewByUserIdAndMovieId(Guid userId, Guid movieId)
+        {
+            var sql = "SELECT * FROM reviews WHERE userid = @UserId AND movieid = @MovieId";
+            return await _connection.QueryFirstOrDefaultAsync<Review>(sql, new { UserId = userId, MovieId = movieId });
+        }
     }
 }

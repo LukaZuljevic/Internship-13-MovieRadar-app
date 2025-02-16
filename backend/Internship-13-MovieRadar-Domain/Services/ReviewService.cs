@@ -81,5 +81,21 @@ namespace Internship_13_MovieRadar.Domain.Services
                 MovieTitle = userReviews.MovieTitle
             }).ToList();
         }
+
+        public async Task<ReviewDto?> GetReviewByUserIdAndMovieIdAsync(Guid userId, Guid movieId)
+        {
+            var review = await _reviewRepository.GetReviewByUserIdAndMovieId(userId, movieId);
+
+            if (review == null)
+                return null;
+
+            return new ReviewDto
+            {
+                Id = review.Id,
+                Content = review.Content,
+                Rating = review.Rating,
+                CreatedAt = review.CreatedAt
+            };
+        }
     }
 }
