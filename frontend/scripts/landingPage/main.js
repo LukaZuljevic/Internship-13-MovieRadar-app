@@ -6,12 +6,21 @@ import {
 import { openDialog, closeDialog, selectActiveBtn } from "./dialog.js";
 import { getAllMovies } from "./api.js";
 import { showUserReviews } from "./reviews.js";
+import { getUserFromToken } from "../login-registration/login.js";
+
+const { role } = getUserFromToken();
+
+if (role === "Admin") {
+  const userOnlyEl = document.querySelectorAll(".userOnly");
+  userOnlyEl.forEach((el) => {
+    el.style.display = "none";
+  });
+}
 
 const movies = await getAllMovies();
 
 const mainNavList = document.querySelectorAll(".nav-bar ul li");
 const moviesContainerEl = document.querySelector(".movies-container");
-const dialogMenuBtns = document.querySelectorAll(".movie-info-nav > li");
 const dialogCloseIcon = document.querySelector(".x-icon");
 
 mainNavList.forEach((li) => {
@@ -67,10 +76,6 @@ movieCardElements.forEach((card) => {
 });
 
 dialogCloseIcon.addEventListener("click", closeDialog);
-
-dialogMenuBtns.forEach((btn) => {
-  btn.addEventListener("click", (event) => selectActiveBtn(event));
-});
 
 document
   .querySelector(".hamburger-icon")

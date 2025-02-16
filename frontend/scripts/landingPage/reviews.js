@@ -3,7 +3,9 @@ import {
   getMovieReviews,
   getUserReviews,
   postReview,
+  getUserMovieReview,
 } from "./api.js";
+import { closeDialog } from "./dialog.js";
 import { formatDate } from "./helpers.js";
 
 export async function addMovieReviews(movieId) {
@@ -44,7 +46,7 @@ export async function calculateMovieRating(movieId) {
 
 export function leaveMovieReview(movieId) {
   document
-    .querySelector(".leave-review > button")
+    .querySelector(".write-review > button")
     .addEventListener("click", () => {
       const movieRatingEl = document.querySelector(
         'input[name="choosenRating"]:checked'
@@ -54,7 +56,7 @@ export function leaveMovieReview(movieId) {
         document.querySelector("#movieDescription").value;
 
       const errorMessage = document.querySelector(
-        ".leave-review > .error-message"
+        ".write-review > .error-message"
       );
 
       if (!movieRatingEl || !movieDescription) {
@@ -65,6 +67,7 @@ export function leaveMovieReview(movieId) {
 
       errorMessage.style.display = "none";
       postReview(movieId, movieDescription, movieRatingEl.value);
+      closeDialog();
     });
 }
 
@@ -103,4 +106,23 @@ export async function showUserReviews() {
       showUserReviews();
     });
   });
+}
+
+export async function checkUserMovieReview(movieId) {
+  const review = await getUserMovieReview(movieId);
+  const writeReviewEl = document.querySelector(".write-review");
+  const alreadyLeftReviewEl = document.querySelector(".user-movie-review");
+
+  console.log(writeReviewEl);
+
+  console.log(review);
+
+  if (review) {
+    alreadyLeftReviewEl.style.display = "block";
+    writeReviewEl.style.display = "none";
+    return;
+  }
+
+  writeReviewEl.style.display = "block";
+  alreadyLeftReviewEl.style.display = "none";
 }
