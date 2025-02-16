@@ -26,3 +26,31 @@
   gap: 10px;
   justify-content: space-between;
 }
+
+.user-review-heading > h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-review-heading > h3:first-of-type > span:last-of-type {
+  background-color: rgb(224, 190, 0);
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 15%;
+}
+
+.user-review-heading .deleteReview {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #ff555a;
+  color: white;
+}
+
+.user-review-heading .deleteReview:hover {
+  background-color: #cd4549;
+}

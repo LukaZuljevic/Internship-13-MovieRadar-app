@@ -5,6 +5,7 @@ import {
 } from "./dropdown-menu.js";
 import { openDialog, closeDialog, selectActiveBtn } from "./dialog.js";
 import { getAllMovies } from "./api.js";
+import { showUserReviews } from "./reviews.js";
 
 const movies = await getAllMovies();
 
@@ -78,3 +79,7 @@ document
 document
   .querySelector(".movie-filter-nav > button")
   .addEventListener("click", showFilteredMovies);
+
+document
+  .querySelector(".nav-bar > ul > li:last-of-type")
+  .addEventListener("click", showUserReviews);

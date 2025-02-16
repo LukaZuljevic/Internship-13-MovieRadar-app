@@ -59,14 +59,15 @@ async function showFilteredMovies() {
   document.querySelector(".movie-filter-nav").style.display = "none";
 
   console.log(movies);
+  const movieSectionH1 = document.querySelector(".movies-section > h1");
+  movieSectionH1.textContent = "Filtrirani filmovi";
 
   if (movies.length < 1) {
     document.querySelector(".movies-container").innerHTML =
       "<h1>Nema filmova sa ovim filterom</h1>";
+    return;
   }
 
-  const movieSectionH1 = document.querySelector(".movies-section > h1");
-  movieSectionH1.textContent = "Filtrirani filmovi";
   movieSectionH1.style.display = "block";
   const moviesContainerEl = document.querySelector(".movies-container");
   moviesContainerEl.innerHTML = "";

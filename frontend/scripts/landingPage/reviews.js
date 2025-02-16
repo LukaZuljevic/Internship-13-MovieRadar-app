@@ -1,4 +1,9 @@
-import { getMovieReviews, postReview } from "./api.js";
+import {
+  deleteReview,
+  getMovieReviews,
+  getUserReviews,
+  postReview,
+} from "./api.js";
 import { formatDate } from "./helpers.js";
 
 export async function addMovieReviews(movieId) {
@@ -61,4 +66,41 @@ export function leaveMovieReview(movieId) {
       errorMessage.style.display = "none";
       postReview(movieId, movieDescription, movieRatingEl.value);
     });
+}
+
+export async function showUserReviews() {
+  const reviews = await getUserReviews();
+  const userReviewsEl = document.querySelector(".user-reviews");
+  userReviewsEl.innerHTML = "<h1>Moje recenzije</h1>";
+
+  if (reviews.length < 1) {
+    userReviewsEl.innerHTML += "<h3>Nemate recenzija</h3>";
+    return;
+  }
+
+  reviews.forEach((r) => {
+    userReviewsEl.innerHTML += `<div class="user-review-card">
+        <div class="user-review-heading">
+          <h3><span>${r.movieTitle}</span><span>${r.rating}/5</span></h3>
+          <h3><span>${formatDate(
+            r.createdAt
+          )}</span><button class="deleteReview" data-id="${
+      r.id
+    }">Obrisi</button></h3>
+        </div>
+        <p>
+          ${r.content}
+        </p>
+      </div>`;
+  });
+
+  const deleteReviewBtns = document.querySelectorAll(".deleteReview");
+
+  deleteReviewBtns.forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      await deleteReview(btn.dataset.id);
+
+      showUserReviews();
+    });
+  });
 }
