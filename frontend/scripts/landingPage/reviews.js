@@ -47,30 +47,36 @@ export async function calculateMovieRating(movieId) {
 }
 
 export function leaveMovieReview(movieId) {
-  document
-    .querySelector(".write-review > button")
-    .addEventListener("click", () => {
-      const movieRatingEl = document.querySelector(
-        'input[name="choosenRating"]:checked'
-      );
+  const reviewButton = document.querySelector(".write-review > button");
 
-      const movieDescription =
-        document.querySelector("#movieDescription").value;
+  reviewButton.replaceWith(reviewButton.cloneNode(true));
 
-      const errorMessage = document.querySelector(
-        ".write-review > .error-message"
-      );
+  const newButton = document.querySelector(".write-review > button");
 
-      if (!movieRatingEl || !movieDescription) {
-        errorMessage.textContent = "Morate odabrati ocjenu i unijeti tekst!";
-        errorMessage.style.display = "block";
-        return;
-      }
+  newButton.addEventListener("click", () => {
+    const movieRatingEl = document.querySelector(
+      'input[name="choosenRating"]:checked'
+    );
 
-      errorMessage.style.display = "none";
-      postReview(movieId, movieDescription, movieRatingEl.value);
-      closeDialog();
-    });
+    const movieDescription = document.querySelector("#movieDescription").value;
+
+    const errorMessage = document.querySelector(
+      ".write-review > .error-message"
+    );
+
+    if (!movieRatingEl || !movieDescription) {
+      errorMessage.textContent = "Morate odabrati ocjenu i unijeti tekst!";
+      errorMessage.style.display = "block";
+      return;
+    }
+
+    errorMessage.style.display = "none";
+    console.log("movieId" + movieId);
+    console.log("movieDes" + movieDescription);
+    console.log("movieRating" + movieRatingEl.value);
+    postReview(movieId, movieDescription, movieRatingEl.value);
+    closeDialog();
+  });
 }
 
 export async function showUserReviews() {

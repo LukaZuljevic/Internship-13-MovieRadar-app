@@ -10,7 +10,7 @@ async function openDialog(event, movies) {
   dialogEl.showModal();
   dialogEl.style.display = "flex";
 
-  const card = event.target.closest(".movie-card");
+  let card = event.target.closest(".movie-card");
   const movieData = movies.find((m) => m.id === card.dataset.id);
   const averageRating = await calculateMovieRating(card.dataset.id);
   const dialogMenuBtns = document.querySelectorAll(".movie-info-nav > li");
@@ -38,6 +38,7 @@ async function openDialog(event, movies) {
     .setAttribute("alt", `Slika za film ${movieData.title}`);
 
   addMovieReviews(card.dataset.id);
+  console.log(card.dataset.id);
   leaveMovieReview(card.dataset.id);
   checkUserMovieReview(card.dataset.id);
 }
