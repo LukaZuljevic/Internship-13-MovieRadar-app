@@ -9,8 +9,8 @@ namespace Internship_13_MovieRadar.Data.Interfaces
         Task<Review> CreateAsync(Review review);
         Task<bool> DeleteAsync(Guid id);
         Task<bool> ExistsAsync(Guid userId, Guid movieId);
-        Task<List<ReviewWithMovie>> GetMovieReviewsAsync(Guid movieId);
-        Task<List<ReviewWithMovie>> GetUserReviewsAsync(Guid userId);
+        Task<List<ReviewWithMovieAndUser>> GetMovieReviewsAsync(Guid movieId);
+        Task<List<ReviewWithMovieAndUser>> GetUserReviewsAsync(Guid userId);
         Task<Review?> GetReviewByUserIdAndMovieId(Guid userId, Guid movieId);
     }
 }

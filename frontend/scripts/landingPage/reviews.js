@@ -23,7 +23,9 @@ export async function addMovieReviews(movieId) {
   reviews.forEach((r) => {
     movieReviewsEl.innerHTML += `<div class="review">
               <div class="review-heading">
-                <p><span>Josip Vojkovic</span><span>${r.rating}/5</span></p>
+                <p><span>${r.userFirstName} ${r.userLastName}</span><span>${
+      r.rating
+    }/5</span></p>
                 <p>${formatDate(r.createdAt)}</p>
               </div>
               <p>
