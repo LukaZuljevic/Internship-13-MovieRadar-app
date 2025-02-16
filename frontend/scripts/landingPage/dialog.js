@@ -38,7 +38,6 @@ async function openDialog(event, movies) {
     .setAttribute("alt", `Slika za film ${movieData.title}`);
 
   addMovieReviews(card.dataset.id);
-  console.log(card.dataset.id);
   leaveMovieReview(card.dataset.id);
   checkUserMovieReview(card.dataset.id);
 }
