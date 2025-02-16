@@ -39,6 +39,7 @@ async function openDialog(event, movies) {
 
   addMovieReviews(card.dataset.id);
   leaveMovieReview(card.dataset.id);
+  checkUserMovieReview(card.dataset.id);
 }
 
 function closeDialog() {
@@ -81,7 +82,6 @@ function selectActiveBtn(event, movieId) {
     infoEl.style.display = "none";
     reviewsEl.style.display = "none";
     leaveReviewEl.style.display = "block";
-    checkUserMovieReview(movieId);
   }
 }
 
