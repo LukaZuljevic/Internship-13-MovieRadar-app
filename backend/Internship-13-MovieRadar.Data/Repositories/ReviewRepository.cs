@@ -1,4 +1,4 @@
-﻿﻿using System.Data;
+﻿﻿﻿using System.Data;
 using Internship_13_MovieRadar.Data.Entities.Models;
 using Internship_13_MovieRadar.Data.Interfaces;
 using Dapper;
@@ -87,6 +87,12 @@ namespace Internship_13_MovieRadar.Data.Repositories
             var reviews = await _connection.QueryAsync<UserReviewWithMovie>(sql, new { UserId = userId });
 
             return reviews.ToList();
+        }
+
+        public async Task<Review?> GetReviewByUserIdAndMovieId(Guid userId, Guid movieId)
+        {
+            var sql = "SELECT * FROM reviews WHERE userid = @UserId AND movieid = @MovieId";
+            return await _connection.QueryFirstOrDefaultAsync<Review>(sql, new { UserId = userId, MovieId = movieId });
         }
     }
 }

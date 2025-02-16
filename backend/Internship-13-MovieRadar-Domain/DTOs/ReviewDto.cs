@@ -1,4 +1,4 @@
-﻿﻿namespace Internship_13_MovieRadar_Domain.DTOs
+﻿﻿﻿namespace Internship_13_MovieRadar_Domain.DTOs
 {
     public class ReviewDto
     {
@@ -7,7 +7,6 @@
         public int Rating { get; set; }
         public DateTime CreatedAt { get; set; }
         public Guid MovieId { get; set; }
-
         public string MovieTitle { get; set; } = string.Empty;
     }
 }
