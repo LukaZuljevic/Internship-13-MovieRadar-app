@@ -1,4 +1,4 @@
-﻿using System.Data;
+﻿﻿﻿using System.Data;
 using Internship_13_MovieRadar.Data.Entities.Models;
 using Internship_13_MovieRadar.Data.Interfaces;
 using Dapper;
@@ -68,21 +68,31 @@ namespace Internship_13_MovieRadar.Data.Repositories
             return reviews.ToList();
         }
 
-        public async Task<List<Review>> GetUserReviewsAsync(Guid userId)
+        public async Task<List<UserReviewWithMovie>> GetUserReviewsAsync(Guid userId)
         {
             var sql = @"
-            SELECT 
-                r.Id,
-                r.Content,
-                r.Rating,
-                r.CreatedAt
-            FROM Reviews r
-            WHERE r.UserId = @UserId
-            ORDER BY r.CreatedAt DESC";
+                SELECT 
+                    r.Id,
+                    r.Content,
+                    r.Rating,
+                    r.CreatedAt,
+                    m.Id AS MovieId,
+                    m.Title AS MovieTitle
+                FROM Reviews r
+                JOIN Movies m ON r.MovieId = m.Id
+                WHERE r.UserId = @UserId
+                ORDER BY r.CreatedAt DESC";
 
-            var reviews = await _connection.QueryAsync<Review>(sql, new { UserId = userId });
+
+            var reviews = await _connection.QueryAsync<UserReviewWithMovie>(sql, new { UserId = userId });
 
             return reviews.ToList();
+        }
+
+        public async Task<Review?> GetReviewByUserIdAndMovieId(Guid userId, Guid movieId)
+        {
+            var sql = "SELECT * FROM reviews WHERE userid = @UserId AND movieid = @MovieId";
+            return await _connection.QueryFirstOrDefaultAsync<Review>(sql, new { UserId = userId, MovieId = movieId });
         }
     }
 }

@@ -10,6 +10,7 @@
 .landingPageMenu > .main-nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: black;
   padding: 0px 20px;
   box-shadow: 0px 0px 5px rgb(100, 100, 100);
@@ -102,6 +103,12 @@
   background-color: rgb(12, 74, 108);
 }
 
+.movie-filter-nav > .filter-message {
+  display: none;
+  text-align: center;
+  color: red;
+}
+
 .movie-filter-nav .filters {
   display: flex;
   justify-content: space-around;
@@ -114,25 +121,10 @@
   flex-direction: column;
 }
 
-.filter h3 {
-  font-size: 18px;
-}
-
-.filter > ul {
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.filter > ul > li {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.filter input[type="radio"] {
-  cursor: pointer;
+.filter select {
+  min-width: 50px;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .filter label {
@@ -142,7 +134,8 @@
 
 .filter input[type="number"] {
   width: 60px;
-  padding: 0 3px;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .landingPageMenu .navbar {
@@ -267,4 +260,130 @@
 .genre-menu-parent:hover .genre-dropdown-menu,
 .ratings-menu-parent:hover .ratings-dropdown-menu {
   display: flex;
+}
+
+.hamburger-nav {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  padding: 10px;
+  background-color: white;
+  color: black;
+  list-style-type: none;
+  box-shadow: 0px 0px 5px rgb(205, 205, 205);
+}
+
+.hamburger-nav > li {
+  padding: 5px 0;
+  cursor: pointer;
+  border-top: 1px solid rgb(220, 220, 220);
+}
+
+.hamburger-nav > li > ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0 10px;
+}
+
+.hamburger-nav > li > ul > li {
+  padding: 5px 0;
+  border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+.hamburger-nav > li > ul > li:last-of-type {
+  border-bottom: none;
+}
+
+.hamburger-nav > li:first-of-type {
+  border-top: none;
+}
+
+.hamburger-nav > li:hover {
+  list-style-type: disc;
+  margin-left: 15px;
+}
+
+.hamburger-nav > button {
+  padding: 7px 0px;
+  width: 200px;
+  margin: 0 auto;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #275e7c;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.hamburger-nav > button:hover {
+  background-color: rgb(12, 74, 108);
+}
+
+.hamburger-icon,
+.hamburger-icon-active {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.hamburger-icon-active {
+  position: relative;
+}
+
+.hamburger-icon > div {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 2px;
+}
+
+.hamburger-icon-active > div {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+.hamburger-icon-active > div:first-of-type {
+  transform: translate(-50%, -50%) rotate(-45deg);
+  transform-origin: center center;
+}
+
+.hamburger-icon-active > div:nth-of-type(2) {
+  display: none;
+}
+
+.hamburger-icon-active > div:last-of-type {
+  transform: translate(-50%, -50%) rotate(45deg);
+  transform-origin: center center;
+}
+
+.hamburger-icon:hover,
+.hamburger-icon-active:hover {
+  background-color: rgb(255, 255, 255, 0.2);
+}
+
+@media screen and (max-width: 800px) {
+  .hamburger-icon {
+    display: flex;
+  }
+
+  .main-nav .nav-bar {
+    display: none;
+  }
 }

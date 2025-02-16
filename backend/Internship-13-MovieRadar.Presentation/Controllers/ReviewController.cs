@@ -50,7 +50,7 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
         {
             var reviews = await _reviewService.GetMovieReviewsAsync(movieId);
             if (reviews == null || !reviews.Any())
-                return NotFound("No reviews found for this movie");
+                return NoContent();
 
             return Ok(reviews);
         }
@@ -60,9 +60,20 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
         {
             var reviews = await _reviewService.GetUserReviewsAsync(userId);
             if (reviews == null || !reviews.Any())
-                return NotFound("No reviews found for this user");
+                return NoContent();
 
             return Ok(reviews);
+        }
+
+        [HttpGet("user/{userId}/movie/{movieId}")]
+
+        public async Task<IActionResult> GetReviewByUserIdAndMovieId(Guid userId, Guid movieId)
+        {
+            var review = await _reviewService.GetReviewByUserIdAndMovieIdAsync(userId, movieId);
+            if (review == null)
+                return NoContent();
+            
+            return Ok(review);
         }
     }
 }

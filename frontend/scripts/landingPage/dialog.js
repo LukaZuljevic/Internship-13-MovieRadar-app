@@ -1,7 +1,60 @@
-const dialogMenuBtns = document.querySelectorAll(".movie-info-nav > li");
-const dialogCloseIcon = document.querySelector(".x-icon");
+import {
+  addMovieReviews,
+  calculateMovieRating,
+  leaveMovieReview,
+} from "./reviews.js";
+
+async function openDialog(event, movies) {
+  const dialogEl = document.querySelector(".movie-info-dialog");
+  dialogEl.showModal();
+  dialogEl.style.display = "flex";
+
+  const card = event.target.closest(".movie-card");
+  const movieData = movies.find((m) => m.id === card.dataset.id);
+  const averageRating = await calculateMovieRating(card.dataset.id);
+
+  document.querySelector(".movie-info-container > h2").innerHTML = `${
+    movieData.title
+  }&nbsp;<span>${averageRating > 0 ? averageRating + "/5" : "N/A"}</span>`;
+  document.querySelector(".movie-details .release-year").textContent =
+    movieData.releaseYear;
+  document.querySelector(".movie-details .movie-genre").textContent =
+    movieData.genre;
+  document.querySelector(".movie-details .movie-description").textContent =
+    movieData.description;
+  document
+    .querySelector(".movie-info-dialog .movie-image")
+    .setAttribute("src", movieData.imageUrl);
+  document
+    .querySelector(".movie-info-dialog .movie-image")
+    .setAttribute("alt", `Slika za film ${movieData.title}`);
+
+  addMovieReviews(card.dataset.id);
+  leaveMovieReview(card.dataset.id);
+}
+
+function closeDialog() {
+  const dialogEl = document.querySelector(".movie-info-dialog");
+  dialogEl.close();
+  dialogEl.style.display = "none";
+  document.querySelector(".leave-review > .error-message").style.display =
+    "none";
+
+  const radioButtons = document.querySelectorAll('input[name="choosenRating"]');
+
+  radioButtons.forEach((radioButton) => {
+    if (radioButton.checked) {
+      radioButton.checked = false;
+    }
+  });
+
+  document.querySelector("#movieDescription").value = "";
+}
+
 function selectActiveBtn(event) {
-  dialogMenuBtns.forEach((btn) => btn.classList.remove("active"));
+  document
+    .querySelectorAll(".movie-info-nav > li")
+    .forEach((btn) => btn.classList.remove("active"));
   event.target.classList.add("active");
 
   const infoEl = document.querySelector(".movie-details");
@@ -23,14 +76,4 @@ function selectActiveBtn(event) {
   }
 }
 
-function closeDialog() {
-  const dialogEl = document.querySelector(".movie-info-dialog");
-  dialogEl.close();
-  dialogEl.style.display = "none";
-}
-
-dialogCloseIcon.addEventListener("click", closeDialog);
-
-dialogMenuBtns.forEach((btn) => {
-  btn.addEventListener("click", (event) => selectActiveBtn(event));
-});
+export { openDialog, closeDialog, selectActiveBtn };

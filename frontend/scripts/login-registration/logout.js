@@ -1,4 +1,5 @@
 import { logoutUser } from "./api-auth.js";
+import { logoutUser } from "./api-auth.js";
 
 const logoutBtn = document.getElementById("logout-btn");
 let isLoggingOut = false;
