@@ -64,5 +64,16 @@ namespace Internship_13_MovieRadar.Presentation.Controllers
 
             return Ok(reviews);
         }
+
+        [HttpGet("user/{userId}/movie/{movieId}")]
+
+        public async Task<IActionResult> GetReviewByUserIdAndMovieId(Guid userId, Guid movieId)
+        {
+            var review = await _reviewService.GetReviewByUserIdAndMovieIdAsync(userId, movieId);
+            if (review == null)
+                return NoContent();
+            
+            return Ok(review);
+        }
     }
 }

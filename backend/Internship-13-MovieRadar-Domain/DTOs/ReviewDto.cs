@@ -7,7 +7,6 @@
         public int Rating { get; set; }
         public DateTime CreatedAt { get; set; }
         public Guid MovieId { get; set; }
-
         public string MovieTitle { get; set; } = string.Empty;
     }
 }
