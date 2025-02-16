@@ -73,6 +73,9 @@ deleteMovieBtn.addEventListener("click", async function () {
         alert("Movie deleted successfully!");
         overlay.style.display = "none";
         document.body.style.overflow = "auto";
+        setTimeout(() => {
+          location.reload();
+        }, 200);
       }
     } catch (error) {
       alert("Error deleting movie!");

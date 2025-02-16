@@ -24,6 +24,25 @@ function selectActiveLi(event) {
   }
 }
 
+function selectHamburgerLi(event) {
+  const dropdownMenu = document.querySelector(".movie-filter-nav");
+  document.querySelector(".hamburger-nav").style.display = "none";
+  toggleHamburgerNav();
+
+  if (event.target.textContent === "Filtriraj") {
+    dropdownMenu.style.display = "flex";
+    document.querySelector(".movies-section").style.display = "flex";
+  } else if (event.target.textContent === "Moje recenzije") {
+    dropdownMenu.style.display = "none";
+    document.querySelector(".movies-section").style.display = "none";
+    document.querySelector(".user-reviews").style.display = "flex";
+  } else {
+    dropdownMenu.style.display = "none";
+    document.querySelector(".movies-section").style.display = "flex";
+    document.querySelector(".user-reviews").style.display = "none";
+  }
+}
+
 function toggleHamburgerNav() {
   const hamburgerIcon = document.querySelector(".hamburger-icon");
   const hamburgerNav = document.querySelector(".hamburger-nav");
@@ -58,7 +77,6 @@ async function showFilteredMovies() {
 
   document.querySelector(".movie-filter-nav").style.display = "none";
 
-  console.log(movies);
   const movieSectionH1 = document.querySelector(".movies-section > h1");
   movieSectionH1.textContent = "Filtrirani filmovi";
 
@@ -90,4 +108,9 @@ async function showFilteredMovies() {
   });
 }
 
-export { selectActiveLi, toggleHamburgerNav, showFilteredMovies };
+export {
+  selectActiveLi,
+  toggleHamburgerNav,
+  showFilteredMovies,
+  selectHamburgerLi,
+};

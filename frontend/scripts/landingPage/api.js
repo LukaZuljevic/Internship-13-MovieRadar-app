@@ -85,11 +85,6 @@ async function postReview(movieId, content, rating) {
   const user = getUserFromToken();
   const userId = user.sub;
 
-  console.log("UserId" + userId);
-  console.log("MovieId" + movieId);
-  console.log("Content" + content);
-  console.log("Rating" + rating);
-
   const response = await fetch(`${API_BASE_URL}/reviews`, {
     method: "POST",
     credentials: "include",

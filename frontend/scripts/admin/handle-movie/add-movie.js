@@ -35,7 +35,7 @@ addMovieBtn.addEventListener("click", async function (event) {
   }
 
   if (releaseYear < 1888 || releaseYear > 2030) {
-    alert("Godina izlaska mora biti izmedjuu 1888 i 2030.");
+    alert("Godina izlaska mora biti izmedju 1888 i 2030.");
     return;
   }
 
@@ -54,6 +54,7 @@ addMovieBtn.addEventListener("click", async function (event) {
     overlay.style.display = "none";
     document.body.style.overflow = "auto";
     addMovieForm.reset();
+    location.reload();
   } else {
     alert("Ime filma vec postoji, unesite neko drugo.");
   }
