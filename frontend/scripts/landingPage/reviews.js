@@ -71,9 +71,6 @@ export function leaveMovieReview(movieId) {
     }
 
     errorMessage.style.display = "none";
-    console.log("movieId" + movieId);
-    console.log("movieDes" + movieDescription);
-    console.log("movieRating" + movieRatingEl.value);
     postReview(movieId, movieDescription, movieRatingEl.value);
     closeDialog();
   });
