@@ -1,4 +1,3 @@
-﻿﻿
 namespace Internship_13_MovieRadar.Data.Entities.Models
 {
     public class ReviewWithMovieAndUser
