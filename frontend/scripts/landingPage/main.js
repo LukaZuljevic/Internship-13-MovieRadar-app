@@ -35,12 +35,12 @@ showAllMovies.addEventListener("click", async () => {
                 <h2>${m.title} (${m.releaseYear})</h2>
               </div>
             </div>`;
+  });
 
-    const movieCardElements = document.querySelectorAll(".movie-card");
+  const movieCardElements = document.querySelectorAll(".movie-card");
 
-    movieCardElements.forEach((card) => {
-      card.addEventListener("click", (event) => openDialog(event, movies));
-    });
+  movieCardElements.forEach((card) => {
+    card.addEventListener("click", (event) => openDialog(event, movies));
   });
 });
 
@@ -57,12 +57,12 @@ movies.forEach((m) => {
               <h2>${m.title} (${m.releaseYear})</h2>
             </div>
           </div>`;
+});
 
-  const movieCardElements = document.querySelectorAll(".movie-card");
+const movieCardElements = document.querySelectorAll(".movie-card");
 
-  movieCardElements.forEach((card) => {
-    card.addEventListener("click", (event) => openDialog(event, movies));
-  });
+movieCardElements.forEach((card) => {
+  card.addEventListener("click", (event) => openDialog(event, movies));
 });
 
 dialogCloseIcon.addEventListener("click", closeDialog);

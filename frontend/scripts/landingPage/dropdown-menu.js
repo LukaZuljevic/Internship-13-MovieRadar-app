@@ -1,4 +1,5 @@
 import { filterMovies } from "./api.js";
+import { openDialog } from "./dialog.js";
 
 function selectActiveLi(event) {
   document.querySelectorAll(".nav-bar ul li").forEach((li) => {
@@ -80,6 +81,11 @@ async function showFilteredMovies() {
               <h2>${m.title} (${m.releaseYear})</h2>
             </div>
           </div>`;
+  });
+  const movieCardElements = document.querySelectorAll(".movie-card");
+
+  movieCardElements.forEach((card) => {
+    card.addEventListener("click", (event) => openDialog(event, movies));
   });
 }
 

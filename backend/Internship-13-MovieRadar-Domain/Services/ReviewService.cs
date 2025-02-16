@@ -1,4 +1,4 @@
-﻿using Internship_13_MovieRadar.Data.Entities.Models;
+﻿﻿using Internship_13_MovieRadar.Data.Entities.Models;
 using Internship_13_MovieRadar.Data.Interfaces;
 using Internship_13_MovieRadar.Data.Repositories;
 using Internship_13_MovieRadar_Domain.DTOs;
@@ -77,6 +77,8 @@ namespace Internship_13_MovieRadar.Domain.Services
                 Content = userReviews.Content,
                 Rating = userReviews.Rating,
                 CreatedAt = userReviews.CreatedAt,
+                MovieId = userReviews.MovieId,
+                MovieTitle = userReviews.MovieTitle
             }).ToList();
         }
     }

@@ -24,7 +24,7 @@ async function getMovieReviews(movieId) {
     },
   });
 
-  if (response.status === 404) {
+  if (response.status === 204) {
     return [];
   } else if (!response.ok) {
     const errorMessage = response.text();
