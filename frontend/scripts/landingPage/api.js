@@ -56,6 +56,31 @@ async function getUserReviews() {
   return response.json();
 }
 
+async function getUserMovieReview(movieId) {
+  const user = getUserFromToken();
+  const userId = user.sub;
+
+  const response = await fetch(
+    `${API_BASE_URL}/reviews/user/${userId}/movie/${movieId}`,
+    {
+      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  if (response.status === 204) {
+    return null;
+  } else if (!response.ok) {
+    const errorMessage = response.text();
+    throw new Error(errorMessage);
+  }
+
+  return response.json();
+}
+
 async function postReview(movieId, content, rating) {
   const user = getUserFromToken();
   const userId = user.sub;
@@ -74,8 +99,6 @@ async function postReview(movieId, content, rating) {
     },
     body: JSON.stringify({ movieId, userId, content, rating }),
   });
-
-  return response.json();
 }
 
 async function deleteReview(reviewId) {
@@ -113,4 +136,5 @@ export {
   filterMovies,
   getUserReviews,
   deleteReview,
+  getUserMovieReview,
 };

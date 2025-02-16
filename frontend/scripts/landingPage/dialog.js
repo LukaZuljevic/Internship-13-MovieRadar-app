@@ -1,6 +1,7 @@
 import {
   addMovieReviews,
   calculateMovieRating,
+  checkUserMovieReview,
   leaveMovieReview,
 } from "./reviews.js";
 
@@ -12,6 +13,13 @@ async function openDialog(event, movies) {
   const card = event.target.closest(".movie-card");
   const movieData = movies.find((m) => m.id === card.dataset.id);
   const averageRating = await calculateMovieRating(card.dataset.id);
+  const dialogMenuBtns = document.querySelectorAll(".movie-info-nav > li");
+
+  dialogMenuBtns.forEach((btn) => {
+    btn.addEventListener("click", (event) =>
+      selectActiveBtn(event, card.dataset.id)
+    );
+  });
 
   document.querySelector(".movie-info-container > h2").innerHTML = `${
     movieData.title
@@ -37,7 +45,7 @@ function closeDialog() {
   const dialogEl = document.querySelector(".movie-info-dialog");
   dialogEl.close();
   dialogEl.style.display = "none";
-  document.querySelector(".leave-review > .error-message").style.display =
+  document.querySelector(".write-review > .error-message").style.display =
     "none";
 
   const radioButtons = document.querySelectorAll('input[name="choosenRating"]');
@@ -51,7 +59,7 @@ function closeDialog() {
   document.querySelector("#movieDescription").value = "";
 }
 
-function selectActiveBtn(event) {
+function selectActiveBtn(event, movieId) {
   document
     .querySelectorAll(".movie-info-nav > li")
     .forEach((btn) => btn.classList.remove("active"));
@@ -73,6 +81,7 @@ function selectActiveBtn(event) {
     infoEl.style.display = "none";
     reviewsEl.style.display = "none";
     leaveReviewEl.style.display = "block";
+    checkUserMovieReview(movieId);
   }
 }
 
