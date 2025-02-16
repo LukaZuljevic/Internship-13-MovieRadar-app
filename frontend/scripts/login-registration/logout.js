@@ -18,7 +18,6 @@ function checkSessionTimeout() {
   const now = Date.now();
   const parsedTimestamp = parseInt(loginTimestamp, 10);
   const timeElapsed = now - parsedTimestamp;
-
   const sessionDuration = 30 * 60 * 1000;
 
   if (timeElapsed >= sessionDuration) {
@@ -31,7 +30,6 @@ logoutBtns.forEach((btn) => {
   btn.addEventListener("click", async function () {
     if (isLoggingOut) return;
     isLoggingOut = true;
-
     try {
       await logoutUser();
 

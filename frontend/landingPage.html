@@ -6,6 +6,7 @@
     <link rel="icon" href="images/landingPage/flavicon.png" type="image/png" />
     <link rel="stylesheet" href="styles/index.css" />
     <script src="scripts/login-registration/logout.js" type="module"></script>
+    <script src="scripts/admin/admin.js" type="module" defer></script>
     <script src="scripts/landingPage/main.js" type="module" defer></script>
     <script src="scripts/landingPage/api.js" type="module" defer></script>
     <title>MovieRadar App</title>
@@ -25,6 +26,19 @@
             <li class="userOnly">Moje recenzije</li>
           </ul>
           <button class="logout-btn">Odjava</button>
+          <div id="admin-dropdown-container">
+            <label id="admin-label">Admin</label>
+            <div id="admin-dropdown" class="dropdown-content">
+              <div class="dropdown-item" data-action="addFilm">Dodaj film</div>
+              <div class="dropdown-item" data-action="deleteFilm">
+                Obrisi film
+              </div>
+              <div class="dropdown-item" data-action="editFilm">Uredi film</div>
+              <div class="dropdown-item" data-action="manageUsers">
+                Upravljaj korisnicima
+              </div>
+            </div>
+          </div>
         </div>
         <div class="hamburger-icon">
           <div></div>
@@ -79,6 +93,125 @@
       </nav>
     </menu>
     <!-- Endline of navigations section -->
+
+    <!--admin-->
+    <div id="overlay-add-movie-form">
+      <form id="add-movie-form" class="login-container admin-container">
+        <button id="close-add-overlay">✖</button>
+        <h3 class="input-title">Unesite naziv filma</h3>
+        <input
+          type="text"
+          id="title"
+          class="input-box"
+          placeholder="Title"
+          required
+        />
+
+        <h3 class="input-title">Unesite žanr filma</h3>
+        <select id="genre" class="input-box" required></select>
+
+        <h3 class="input-title">Unesite opis</h3>
+        <input
+          type="text"
+          id="description"
+          class="input-box"
+          placeholder="Description"
+          required
+        />
+
+        <h3 class="input-title">Unesite godinu izdanja</h3>
+        <input
+          type="number"
+          id="releaseYear"
+          class="input-box"
+          placeholder="Release year"
+          required
+        />
+
+        <h3 class="input-title">Unesite URL slike</h3>
+        <input
+          type="text"
+          id="imageURL"
+          class="input-box"
+          placeholder="Image URL"
+          required
+        />
+
+        <button id="addMovie-btn" class="submit-btn">Dodaj film</button>
+      </form>
+    </div>
+
+    <div id="overlay-delete-movie-form">
+      <div id="delete-movie-container" class="login-container admin-container">
+        <h3 class="input-title">Svi filmovi</h3>
+        <button id="close-delete-overlay">✖</button>
+        <div class="delete-movies-squares-div" id="movieList"></div>
+
+        <div class="delete-confirm-box">
+          <h3 class="input-title"></h3>
+          <button id="deleteMovie-btn" class="submit-btn">Obrisi film</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="overlay-edit-movie-form" style="display: none">
+      <div id="edit-movie-container" class="login-container admin-container">
+        <h3 class="input-title">Svi filmovi</h3>
+        <button id="close-edit-overlay">✖</button>
+        <div id="edit-movieList"></div>
+      </div>
+      <form id="edit-movie-form" class="login-container admin-container">
+        <button id="close-edit-form-overlay">✖</button>
+        <h3 class="input-title">Novi naziv filma</h3>
+        <input
+          type="text"
+          id="edit-title"
+          class="input-box"
+          placeholder="Title"
+          required
+        />
+
+        <h3 class="input-title">Novi žanr filma</h3>
+        <select id="edit-genre" class="input-box"></select>
+
+        <h3 class="input-title">Novi opis</h3>
+        <input
+          type="text"
+          id="edit-description"
+          class="input-box"
+          placeholder="Description"
+          required
+        />
+
+        <h3 class="input-title">Novi godinu izdanja</h3>
+        <input
+          type="number"
+          id="edit-releaseYear"
+          class="input-box"
+          placeholder="Release year"
+          required
+        />
+
+        <h3 class="input-title">Novi URL slike</h3>
+        <input
+          type="text"
+          id="edit-imageURL"
+          class="input-box"
+          placeholder="Image URL"
+          required
+        />
+
+        <button id="editMovie-btn" class="submit-btn">Spremi promjene</button>
+      </form>
+    </div>
+
+    <div id="overlay-user-list">
+      <div id="user-list-container" class="login-container admin-container">
+        <button id="close-user-overlay">✖</button>
+        <div id="user-list"></div>
+      </div>
+    </div>
+    <!--admin-->
 
     <!-- List of movies section -->
     <section class="movies-section">

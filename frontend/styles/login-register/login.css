@@ -1,8 +1,10 @@
 #login-register-body {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  min-height: 100vh;
+  margin: 0;
 }
 
 .login-container {
@@ -14,8 +16,6 @@
   align-self: center;
   width: 40%;
   height: auto;
-  margin-bottom: 20px;
-  margin-top: 20px;
   border-radius: 20px;
   position: relative;
   background-color: rgb(255, 234, 207);
@@ -23,8 +23,10 @@
 
 #register {
   height: auto;
-  margin-bottom: 100px;
+  padding-bottom: 1050px;
   display: none;
+  height: 120vh;
+  margin: 40px;
 }
 
 .input-title,
@@ -99,10 +101,10 @@
   font-size: 1em;
   background-color: transparent;
   position: relative;
-  margin-top: 90px;
+  margin-top: 70px;
+  padding: 40px;
   padding-bottom: 20px;
   text-align: center;
-  width: 80%;
-  left: 10%;
+  align-self: center;
   color: black;
 }

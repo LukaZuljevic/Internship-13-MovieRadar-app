@@ -4,8 +4,12 @@
 @import url(landingPage/movies.css);
 @import url(landingPage/user-reviews.css);
 
-/*login*/
 @import url(login-register/login.css);
+@import url(admin/admin.css);
+@import url(admin/movie-form.css);
+@import url(admin/movie-list.css);
+@import url(admin/users.css);
+@import url(admin/dropdown-genre.css);
 
 * {
   margin: 0;
